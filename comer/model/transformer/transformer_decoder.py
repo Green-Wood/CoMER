@@ -90,7 +90,7 @@ class TransformerDecoderLayer(nn.Module):
         self,
         tgt: Tensor,
         memory: Tensor,
-        arm: Tensor,
+        arm: Optional[AttentionRefinementModule],
         tgt_mask: Optional[Tensor] = None,
         memory_mask: Optional[Tensor] = None,
         tgt_key_padding_mask: Optional[Tensor] = None,
