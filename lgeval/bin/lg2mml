@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Make sure that CROHMELibDir and LgEvalDir are defined in
+# your shell enviroment, e.g. by including:
+#	
+#	export LgEvalDir=<path_to_LgEval>
+#	export CROHMELibDir=<path_to_CROHMELib>       		
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file (the initialization file for bash shell). The PATH
+# alteration will add the tools to your search path. 
+
+if [ $# -lt 1 ]
+then
+	echo "LgEval lg2mml: Label graph to Presentation MathML converter"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: lg2mml file.lg"
+	echo ""
+	echo "Converts a label graph file to a MathML file,"
+	echo "written as file.mml to the current directory."
+	exit 0
+fi
+
+BNAME=`basename $1 .lg`
+
+python $LgEvalDir/src/lg2txt.py $1 $LgEvalDir/translate/mathMLMap.csv > temp.mml
+txl -I $CROHMELibDir/src -I $CROHMELibDir/src/Grammars temp.mml $CROHMELibDir/src/pprintMathML.Txl > $BNAME.mml
+rm temp.mml

@@ -1,0 +1,10 @@
+# example with multiple label to embedded segmentation
+# a b     with cell and symbol
+N, n1, a, 1.0
+N, n2, b, 1.0
+N, n1, *c, 1.0
+N, n2, *c, 1.0
+
+E, n1,n2,R,1.0
+E, n1,n2,*c,1.0
+E, n2,n1,*c,1.0

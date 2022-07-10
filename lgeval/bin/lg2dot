@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Make sure that CROHMELibDir and LgEvalDir are defined in
+# your shell enviroment, e.g. by including:
+#	
+#	export LgEvalDir=<path_to_LgEval>
+#	export CROHMELibDir=<path_to_CROHMELib>       		
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file (the initialization file for bash shell). The PATH
+# alteration will add the tools to your search path. 
+
+if [ $# -lt 1 ]
+then
+	echo "LgEval lg2dot: Label graph to dot (GraphViz) converter"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: lg2dot file1.lg [file2.lg] [graph_type]"
+	echo ""
+	echo "Converts a label graph file files to a .dot file,"
+	echo "which can then be converted to a .pdf, .png or other"
+	echo "image format using the GraphViz 'dot' program."
+	echo ""
+	echo "If a second .lg file is provided, then the difference"
+	echo "between the first graph and ground truth (the second"
+	echo "file) is visualized."
+	echo ""
+	echo "The graph_type argument may be one of the following:"
+	echo "   - [default; no argument] a directed graph over objects."
+	echo "   - b : a bipartite graph over primitives"
+	echo "   - s : a bipartite segmentation graph"
+	echo "   - p : a directed graph over strokes"
+	echo "   - t : a tree (NOTE: requires a valid hierachical structure)"
+	exit 0
+fi
+
+BNAME=`basename $1 .lg`
+
+# Generate dot file, then call dot and generate a .pdf file.
+python $LgEvalDir/src/lg2dot.py $@ > $BNAME.dot
+dot -Tpdf $BNAME.dot -o $BNAME.pdf 
+

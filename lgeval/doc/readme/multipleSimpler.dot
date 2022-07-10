@@ -1,0 +1,24 @@
+digraph lg {
+	rankdir=LR; ranksep=1.0;
+	edge[fontsize=10,weight=1]; node[fontsize=13]; graph[concentrate=true,ordering=out];
+
+	/*  NODES (PRIMITIVES) */
+	s1 [label="[\ns1", color=blue];
+	s2 [label="Matrix x\ns2", color=blue];
+	s3 [label="Matrix x\ns3", color=blue];
+	s4 [label="2 Matrix\ns4", color=blue];
+	s5 [label="1 Matrix\ns5", color=blue];
+	s6 [label="]\ns6", color=blue];
+	
+	/* EDGES (PRIMITIVE RELATIONSHIPS) */
+	s1 -> s2 [style=invis];
+	s5 -> s6 [style=invis];
+	s2 -> s3 [dir=both,label="Matrix x"];
+	s2 -> s4 [label="Matrix Sup"];
+	s2 -> s5 [dir=both,label="Matrix"];
+	s3 -> s4 [label="Matrix Sup"];
+	s3 -> s5 [dir=both,label="Matrix"];
+	s4 -> s2 [label="Matrix"];
+	s4 -> s3 [label="Matrix"];
+	s4 -> s5 [dir=both,label="Matrix"];
+}

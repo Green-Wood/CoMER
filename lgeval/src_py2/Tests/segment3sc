@@ -1,0 +1,7 @@
+# Two isolated symbols (of *different* classes), 
+# no edges.
+
+O,x1,x,1.0, node1,node2
+O,t1,t,1.0, node3,node4
+
+

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>README</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<!-- MathJax Support for in-line LaTeX -->
+
+<style TYPE="text/css">
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
+</style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<hr>
+
+<h1 id="toc_0">Label Graph Evaluation Tools (LgEval)</h1>
+
+<h2 id="toc_1">Version 0.3.5 (June 2018)</h2>
+
+<hr>
+
+<p><em>Copyright (c) 2012-2018, Richard Zanibbi and Harold Mouchère</em></p>
+
+<p><a href="http://www.cs.rit.edu/%7Erlaz" title="Richard Zanibbi&#39;s Home Page">Richard Zanibbi</a> (rlaz@cs.rit.edu)<br>
+Document and Pattern Recognition Lab,
+Rochester Institute of Technology, USA</p>
+
+<p><a href="http://www.irccyn.ec-nantes.fr/%7Emouchere" title="Harold Mouchère&#39;s Home Page">Harold Mouchère</a> (harold.mouchere@univ-nantes.fr)<br>
+IRCCyN/IVC Lab, University of Nantes, France</p>
+
+<hr>
+
+<h2 id="toc_2">License</h2>
+
+<p><em>These tools are provided &#39;as is&#39; without any guarantee of suitability for non-research use.  No commercial use is permitted. The tools are being distributed under a Creative Commons license (please see the LICENSE file, and the directory cc_license contains a file detailing the specifics of the license).</em></p>
+
+<h2 id="toc_3">Contents</h2>
+
+<ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#install">Installation</a></li>
+<li><a href="#lgdescription">Label Graph File Format</a><br>
+
+<ul>
+<li><a href="#primitive">I. Primitive Format</a></li>
+<li><a href="#object">II. Object Format</a></li>
+<li><a href="#multiple">III. Multiple Levels of Structure</a></li>
+</ul></li>
+<li><a href="#tools">LgEval Tools</a></li>
+<li><a href="#other">Additional Programs</a></li>
+<li><a href="#refs">References</a></li>
+</ul>
+
+<h2 id="toc_4"><a name="notes"></a>Notes</h2>
+
+<ol>
+<li><p>For those wishing to use LgEval with the CROHME competition data, you will also need to install CROHMELib, which is provided separately.</p></li>
+<li><p>We also ask that you cite the following paper describing label graphs and associated
+metrics in any publications that you produce using LgEval:  </p>
+
+<p>R. Zanibbi, H. Mouchere, and C. Viard-Gaudin (2013) <a href="http://www.cs.rit.edu/%7Erlaz/files/ZMV_DRR2013.pdf" title="DRR 2013 Paper on Label Graph Metrics">Evaluating Structural Pattern Recognition for Handwritten Math via Primitive Label Graphs</a>. Proc. Document Recognition and Retrieval, Proc. SPIE vol. 8658, pp. 17-1 - 17-11, San Francisco, CA.    </p></li>
+<li><p>Information about file differences, metrics and key data structures used for evaluation are provided in the <a href="README_MetricsData.txt" title="README: Metrics and Data">README_MetricsData.txt</a> file. </p></li>
+</ol>
+
+<h2 id="toc_5"><a name="purpose"></a>Purpose</h2>
+
+<p>The Label Graph Evaluation tools (LgEval) were originally used for scoring handwritten math recognition systems for the <a href="http://www.isical.ac.in/%7Ecrohme/index.html" title="CROHME Competition Web Page">Competition on Recognition of Online Handwritten Mathematical Expressions</a> which has been run annually between 2011 and 2014. 
+For CROHME, the library was used to obtain stroke and symbol-level evaluation of handwritten math expressions. However, label graphs are a very general formalism, and may be used to represent and evaluate structure for other problems.</p>
+
+<p>A <em>label graph</em> is simply a labeled directed graph. Both nodes and edges are labeled, representing the grouping of input primitives into objects (e.g. grouping strokes into symbols), object types (e.g. symbol names) along with relationships between objects. The section <a href="#lgdescription">Label Graph Files</a> describes the representation in detail. The current version of the library may be used to represent and evaluate multiple levels of structure (e.g. for matrices, which contains symbols, cells, rows, and columns).</p>
+
+<p>Label graphs allow an <em>absolute</em> difference between two structural interpretations to be computed, even when the segmentation of primitives into objects disagree, and when primitives are missing in one or other interpretation. This difference is obtained directly from disagreeing edge and node labels, along with associated Hamming distances (i.e. counting disagreeing node and/or edge labels). Input primitives are assumed to be a fixed set, but can represent any object (e.g. connected components, bounding boxes, pixels in an image, or a combination of these).</p>
+
+<p>In addition to metrics, the library provides visualization of label graphs at the primitive and object levels using the <strong>lg2dot</strong> program. Additional information about label graphs and CROHME may be found in the <a href="#refs">References</a> section. </p>
+
+<h2 id="toc_6"><a name="install"></a>Installation</h2>
+
+<p><strong>Dependencies:</strong> Before you install LgEval, make sure that the following have also been installed on your system.</p>
+
+<ol>
+<li>bash</li>
+<li>perl (<strong>with LibXML</strong>)</li>
+<li>python 2.6/2.7</li>
+<li>Graphviz (for &#39;dot&#39;)</li>
+<li>TXL (www.txl.ca)  (required for CROHMELib translation tools)</li>
+</ol>
+
+<p>Make sure that <em>CROHMELibDir</em> and <em>LgEvalDir</em> are defined in
+   your shell enviroment, e.g. by including the following in your .bashrc  initialization script for bash shell. The last line adds the
+   tools to your search path.</p>
+
+<div><pre><code class="language-none">export LgEvalDir=&lt;path_to_LgEval&gt;
+export CROHMELibDir=&lt;path_to_CROHMELib&gt;     
+export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin</code></pre></div>
+
+<p>To avoid warnings about stack sizes from TXL, issue the command below from the bash command line (<strong>Note:</strong> this requires root user priveleges). This increases the maximum call stack size for the shell. You may also be able to add this to your .bashrc or other shell initialization script.</p>
+
+<div><pre><code class="language-none">sudo ulimit -s 16384</code></pre></div>
+
+<hr>
+
+<h2 id="toc_7"><a name="lgdescription"></a>Label Graph File Format</h2>
+
+<p>There are two formats that may be used to represent a label graph, which may be combined in a single file. Additional example .lg files are provided in the <em>src/Tests/</em> subdirectory. </p>
+
+<h3 id="toc_8"><a name="primitive"></a>I. Primitive Format (Adjacency Matrix)</h3>
+
+<p>This format introduced for CROHME 2013 is the most basic. The .lg file
+defines an adjacency matrix for a labeled graph, where
+self-edges are node labels. The file defines nodes with identifiers
+and labels along with edge labels, with any unspecified labels being
+assigned a default value (underscore, &#39;_&#39;). </p>
+
+<p>Nodes that belong to the same object are represented by directed edges
+labeled &#39;*&#39; between all pairs of nodes in the object. For example, all
+strokes in a symbol are represented by directed &#39;*&#39; edges between all pairs
+of strokes (nodes).</p>
+
+<p>Relationships between objects are represented by edges from all nodes in the
+parent object of the relationship to every node in the child object of the
+relationship.  For example, a &#39;Right&#39; relationship may be defined using a
+labeled directed edge from every node in the object at left to every stroke
+in the symbol at right. Undirected relationships are represented by a pair
+of directed edges between nodes (e.g. for the &#39;*&#39; relationship defining groupings of nodes into objects).</p>
+
+<p>For CROHME, nodes are used to represent strokes, which are grouped into
+symbols (objects), with spatial relationships defined between symbols. It is
+assumed that every stroke belongs to exactly one symbol. Here is an example of <em>2+2</em> provided with LgEval (<em>src/Tests/2p2_simple.lg</em>). There are four strokes (primitives),
+named <em>s1-s4</em>. The &#39;right&#39; relationship is represented using the label <em>Right</em>, and the
+merging of strokes into a symbol by the label <em>*</em>.</p>
+
+<div><pre><code class="language-none"># 2 + 2 (Primitive format)
+# Four nodes (strokes, with symbol labels)
+# FORMAT:
+# N, Primitive ID, Label, Weight
+N, s1, 2, 1.0
+N, s2, +, 1.0
+N, s3, +, 1.0
+N, s4, 2, 1.0
+
+# Edges
+# First, undirected merge edge (two directed edges)
+# Strokes s2 and s3 form a &#39;+&#39;
+# FORMAT:
+# E, Primitive ID (Parent), Primitive ID (Child), Label, Weight
+E, s2, s3, *, 1.0
+E, s3, s2, *, 1.0
+
+# Finally, four relationship edges for
+# 2 -Right-&gt; + -Right-&gt; 2
+E, s1, s2, Right, 1.0
+E, s1, s3, Right, 1.0
+E, s2, s4, Right, 1.0
+E, s3, s4, Right, 1.0</code></pre></div>
+
+<p>An advantage of this representation is that differences between
+interpretations can be defined based on disagreeing labels between two
+adjacency matrices, with this difference represented in a third adjacency
+matrix. This is useful particularly when the groupings of nodes into objects
+differs between interpretations.</p>
+
+<p>The graph represented in the .lg file above is shown below. This image was produced using the <strong>lg2dot</strong> tool. Strokes are shown as nodes, and relationships
+between strokes as edges.
+ <center>
+ <img align=center border=1 height=200 src="doc/readme/2p2_tree.png" alt="Primitive Label Graph for 2+2">  </p>
+
+<p></center><strong>Fig. 1. Primitive Label Graph for &#39;$2+2$&#39; Written with Four Strokes. Strokes are represented by nodes labeled s1-s4.</strong></p>
+
+<h3 id="toc_9"><a name="object"></a> II. Object Format</h3>
+
+<p>In this representation, an object and its type are defined by a labeled list of primitive identifiers (e.g. the set of strokes in a
+   symbol and the symbol type), along with relationships 
+   given by labeled edges between objects.</p>
+
+<p>This is a more compact representation than the &#39;raw&#39; adjacency matrix
+   representation. There is no need to define merge (&#39;*&#39;) edges, and edges are defined between objects rather than primitives. Here is our <em>2+2</em> example again, but this time using the object relationship format.</p>
+
+<div><pre><code class="language-none"># 2 + 2 (Object format)
+# 3 objects (symbols)
+# FORMAT:
+# O, Object ID, Label, Weight, List of Primitive IDs (strokes in a symbol)
+O, 2_a, 2, 1.0, s1
+O, +_a, +, 1.0, s2, s3
+O, 2_b, 2, 1.0, s4
+
+# Relationships (2 object edges)
+# FORMAT:
+# R, Object ID (Parent), Object ID (Child), Label, Weight   - OR -
+# EO, Object ID (Parent), Object ID (Child), Label, Weight
+R, 2_a, +_a, Right, 1.0
+R, +_a, 2_b, Right, 1.0</code></pre></div>
+
+<p>This format is similar to the one used in the University of Waterloo (Canada)
+   <a href="https://www.scg.uwaterloo.ca/mathbrush/corpus.shtml" title="Mathbrush corpus"> MathBrush handwritten math corpus </a> created by Scott MacLean et al. </p>
+
+<h3 id="toc_10"><a name="multiple"></a> III. Multiple Levels of Structure</h3>
+
+<p>In CROHME 2014, the ability for
+nodes to belong to more than one object was added, by allowing a set of
+labels to be defined for each node and edge in the underlying adjacency matrix. 
+For LgEval to handle this, <strong>object types and relationships must be distinct between
+levels of structure, and object labels must be distinct from relationship labels.</strong></p>
+
+<p>For
+example, it would be a mistake to use the label &#39;R&#39; for both the symbol &#39;R&#39;
+and the &#39;Right-of&#39; spatial relationship. Similarly, using &#39;Right&#39; to
+represent the left-to-right order of symbols on a baseline and the
+left-to-right ordering of cells can lead to problems, as it it may confuse
+which objects at what level of structure are intended for a given relationship. </p>
+
+<p><strong>The merging of nodes into objects is also represented differently.</strong> Each node
+and edge between nodes in an object have the same label
+(e.g.  for CROHME, all nodes and edges for a handwritten <em>x</em> are labeled <em>x</em>). Provided that labels across structural levels are distinct,
+this allows symbols, cells, and rows in a matrix to be distinguished using a
+single labeled adjacency matrix.</p>
+
+<p>Below is an example (<em>/src/Tests/MultiLevelExample.lg</em>) illustrating the representation
+used to accomodate vectors and matrices for CROHME 2014. 
+The example is a handwritten vector, a matrix with one row containing x squared and 1. 
+Rather than two levels of structure as before for primitives and objects, here there are multiple levels of structure arranged in a hierarchy. From bottom to top of the hierarchy, we have:</p>
+
+<ol>
+<li>Primitives (six: strokes <em>s1-s6</em>)</li>
+<li>Symbols (five: <em>[<em>1, x</em>1, 2<em>1, 1</em>1, and ]_1</em>) comprised of Primitives;</li>
+<li>Cells (two: <em>Cell<em>1, Cell</em>2</em>) comprised of Symbols;</li>
+<li>Rows (one: <em>Row_1</em>) and Columns (two: <em>Col<em>1, Col</em>2</em>) comprised of Cells;</li>
+<li>Matrices (one: <em>Vec_1</em>) comprised of Cells;</li>
+<li>The top-level expression structure comprised of matrices and symbols. </li>
+</ol>
+
+<p>While it is natural to think of matrices as containing cells, cells containing symbols, etc.,  note that the
+<strong>representation of objects is defined using strokes
+(i.e. input primitives belonging to each object)</strong>. To limit the size of the file, the containment of symbols in cells, cells in rows, cells in matrices etc. is implicit, as this can be recovered from other information.
+At the top level of the expression, cells in a matrix are treated as a unit. It is assumed that there are no empty cells in matrices for CROHME 2014.</p>
+
+<div><pre><code class="language-none"># Example of multiple levels of structure: vector [ x^2 1 ]
+# This represents Symbols, Cells, Rows, Columns, Matrix and
+# the top-level expression structure.
+# Symbols (level above primitives (strokes))
+O, [_1, [, 1.0, s1
+O, x_1, x, 1.0, s2, s3
+O, 2_1, 2, 1.0, s4
+O, 1_1, 1, 1.0, s5
+O, ]_1, ], 1.0, s6
+
+# Symbol layout (within cells)
+R, x_1, 2_1, Sup, 1.0
+
+# Cells (level above symbols)
+O, Cell_1, Cell, 1.0, s2, s3, s4
+O, Cell_2, Cell, 1.0, s5
+
+# Rows (1) and Columns (2)
+O, Row_1, Row, 1.0, s2, s3, s4, s5
+O, Col_1, Col, 1.0, s2, s3, s4
+O, Col_2, Col, 1.0, s5
+
+# Vector Grid (contains all strokes in cells)
+O, Vec_1, Matrix, 1.0, s2, s3, s4, s5
+
+# Layout of Cells in our one row, and all cells
+# for both columns.
+R, Cell_1, Cell_2, NextCell-Row, 1.0
+R, Col_1, Col_2, NextCol, 1.0
+
+# Layout of expression at top level (matrices and symbols 
+# outside of matrices)
+R, [_1, Vec_1, Right, 1.0
+R, Vec_1, ]_1, Right, 1.0</code></pre></div>
+
+<p>An illustration of the resulting label graph obtained using <strong>lg2dot</strong> is shown below. Multiple labels for nodes and edges are shown with lists (e.g. &quot;Cell Col Matrix Row Sup&quot; near the top of the graph for an edge from <em>s2</em> to <em>s4</em>). Where two strokes have a directed edges between them with the same label (i.e. a symmetric relationship), a single edge with two arrows is used (e.g. for &quot;Cell Col Matrix Row x&quot; in both directions between <em>s2</em> and <em>s3</em>).</p>
+
+<p><center>
+<img align=center border=1 width=600 src="doc/readme/multilevel.png" alt="Primitive Label Graph for a Vector">  </p>
+
+<p></center>
+<strong>Fig. 2. Primitive Label Graph for &#39;$[x^2 1]$&#39; Written with Six Strokes. Strokes are represented by nodes labeled s1-s6. This graph is complex because of the multiple levels of structure involved. Both edges and nodes may contain multiple labels.</strong></p>
+
+<p>Fig. 2 is very dense, as it represents the grouping of strokes into different objects, such as the strokes inside the vector being identified as belonging to both symbols and cells of the vector. Fig. 3 presents a filtered version of this graph, representing only the vector contents (as an object labeled <em>Matrix</em>), the individual symbols, and the one symbol-level spatial relationship (for $x^2$). As an example of how relationships are represented when there are multiple levels of structure, consider the <em>Right</em> relationships between the brackets and the vector contents. There is a <em>Right</em> edge from the stroke used to draw the left bracket to each stroke in the Matrix object (as seen in Fig. 1). Similarly, the right bracket is represented as being at <em>Right</em> of the Matrix contents by defining an edge from every stroke in the Matrix object to the stroke drawn for the right bracket (again, as seen in Fig. 1).  </p>
+
+<p><center>
+<img align=center border=1 width=750 src="doc/readme/multipleSimpler.png" alt="Simpler Primitive Label Graph for a Vector">  </p>
+
+<p></center>
+**Fig. 3. Filtered Version of Fig. 2. The graph shows symbols, the <em>Matrix</em> object defining vector contents, and the superscript relationship for $x^2$.  **</p>
+
+<hr>
+
+<h2 id="toc_11"><a name="tools"></a>LgEval Tools</h2>
+
+<p>The main tools for LgEval are provided in the <em>bin/</em> subdirectory. Call a script without arguments for usage instructions. A doxygen-generated summary of files and classes is available at <a href="doc/html/files.html">doc/html/files.html</a>.</p>
+
+<p><strong>lg2OR and lg2NE</strong><br>
+    Label graph format converters. Each takes a label graph as input, and outputs a label graph in OR or NE format on standard output.</p>
+
+<p><strong>lg2dot</strong><br>
+    Create .dot and .pdf output for a label graph, or visualize the
+    difference between two label graphs. Different graph types may be
+    produced (requires Graphviz), and differences between
+    a pair of graphs may also be visualized. The following graph
+    types are supported:</p>
+
+<ul>
+<li>Primitive label graphs (e.g. as shown in Figs. 1-3 above)</li>
+<li>Bipartite primitive label graphs</li>
+<li>Bipartite segmentation graphs for primitives</li>
+<li>Directed Acylcic Graph (DAG) represention of objects and object relationships </li>
+<li><p>Rooted tree for hierarchical relationship structures (e.g. symbol layout in math expressions)</p>
+
+<p><strong>Note:</strong> The DAG and tree visualizations assume that a single level of structure is
+being visualized.</p></li>
+</ul>
+
+<p><strong>evaluate, evaluateMat</strong><br>
+    <em>evaluate</em> is the main evaluation script for label graphs. It 
+    automatically produces metrics, differences, a result summary,
+    and visualizations of recognition errors (requires Graphviz). The program
+    produces evaluation results given a directory of output files and
+    a corresponding directory of ground truth files, or a user-defined file list.</p>
+
+<p><em>evaluateMat</em> is used to evaluate output for expressions containing matrices
+    (used for the matrix recognition task in CROHME 2014). </p>
+
+<div><pre><code class="language-none">NOTE: If a node is absent in one of two graphs being compared, it will be inserted as an &#39;ABSENT&#39; node with unlabeled edges (&#39;_&#39;) between the ABSENT node and all other nodes in the graph. See Lg.matchAbsent() in the file lg.py.</code></pre></div>
+
+<p><strong>confHist</strong><br>
+Create structure confusion histograms, which show target structures (e.g. of
+1-3 symbols) or stroke groups, along with corresponding error graphs and their
+frequencies. To save space, the user can specify the minimum number of times
+that an error must occur to be included in the output. This provides a detailed
+summary of the specific segmentation and classification errors made by a
+recognition algorithm. The structure confusion histograms at the object and
+stroke levels are stored in a (large) .html file.</p>
+
+<p><strong>cdiff, ldiff and vdiff</strong><br>
+Used to compile labeling errors of given types (<em>cdiff</em>), or return the a list of the files containing these errors (<em>ldiff</em>) and view them (<em>vdiff</em>) using &#39;less.&#39; Regular expression matching over node and edge labels is supported (&#39;egrep&#39; format), and files with or without segmentation errors may be selected for. These tools operate on the .diff files created by <em>evaluate.</em></p>
+
+<p><strong>getlg, getinkml, getpdf</strong><br>
+From a file containing a list of .lg files (one per line), copy these files from one directory to another (<em>getlg</em>), or copy corresponding .inkml files or dot-generated pdf files from one directory to another (<em>getinkml</em>,<em>getpdf</em>).</p>
+
+<p><strong>lg2lgtree</strong><br>
+    Converts a directory of label graphs using lgfilter (i.e. producing
+    trees as output), writing the output files to another directory.</p>
+
+<p><strong>lg2mml</strong><br>
+    Create MathML output from a label graph (requires CROHMELib). </p>
+
+<p><strong>lgfilter</strong><br>
+    Removes non-tree edges from a hierarchically structured label graph (e.g. to obtain symbol
+    layout trees from a DAG with inherited relationships for math notation).  </p>
+
+<p><strong>relabelEdges and relabelOldCROHME</strong><br>
+Tools to replace edge labels in &#39;old&#39; label graph files using &#39;*&#39; to indicate
+merged primitives.</p>
+
+<h2 id="toc_12"><a name="other"></a>Additional Programs</h2>
+
+<p>All programs below are written in Python (2.x compatible). These
+   are located in the <em>src/</em> directory.</p>
+
+<p><strong>metricDist.py</strong><br>
+    Used to select a metric from a CSV file (.m) produced by the &#39;evallg.py&#39;
+    program (used by <strong>evaluate</strong>). Useful for producing histograms.</p>
+
+<p><strong>mergeLg.py</strong><br>
+    Reads two or more .lg files and merges them, printing the result on
+    standard output.</p>
+
+<p><strong>lg2txt.py</strong><br>
+    Convert a graph to a string encoding. Symbol and structure
+    mappings are be defined using rules in an accompanying .csv file. An example MathML mapping file is provided in <em>translate/mathMLMap.csv.</em> A (largely incomplete) LaTeX mapping (<em>translate/symbolMap.csv</em>) is also provided.</p>
+
+<p><strong>Unit Tests</strong><br>
+Programs to test functionality for basic label graph operations.  </p>
+
+<ul>
+<li>testlg.py</li>
+<li>testNewSeg.py</li>
+</ul>
+
+<hr>
+
+<h2 id="toc_13"><a name="refs"></a>References</h2>
+
+<p>Further details about label graphs, the metrics used in LgEval and information about the CROHME competitions may be found in the publications listed below. The file README_MetricsAndDataStructures.txt provides some additional information about metrics produced for the raw results, and data structures used in LgEval.</p>
+
+<ul>
+<li><p>H. Mouchere, R. Zanibbi, U. Garain and C. Viard-Gaudin. (2016) <a href="http://www.cs.rit.edu/%7Erlaz/files/CROHME_revision.pdf">Advancing the State-of-the-Art for Handwritten Math Recognition: The CROHME Competitions, 2011-2014</a>. Int&#39;l Journal on Document Analysis and Recognition 19(2): 173-189.</p></li>
+<li><p>H. Mouchere, C. Viard-Gaudin, R. Zanibbi and U. Garain. (2014) <a href="http://www.cs.rit.edu/%7Erlaz/files/Crohme2014FinalVersion.pdf" title="CROHME 2014 ICFHR paper">ICFHR 2014 Competition on Recognition of On-line Handwritten Mathematical Expressions (CROHME 2014)</a>. Proc. Int&#39;l Conf. Frontiers in Handwriting Recognition, pp. 791-796, Crete, Greece. </p></li>
+<li><p>R. Zanibbi, H. Mouchere, and C. Viard-Gaudin (2013) <a href="http://www.cs.rit.edu/%7Erlaz/files/ZMV_DRR2013.pdf" title="DRR 2013 Paper on Label Graph Metrics">Evaluating Structural Pattern Recognition for Handwritten Math via Primitive Label Graphs Proc. Document Recognition and Retrieval</a>, Proc. SPIE vol. 8658, pp. 17-1 - 17-11, San Francisco, CA. </p></li>
+<li><p>H. Mouchere, C. Viard-Gaudin, R. Zanibbi, U. Garain, D.H. Kim and J.H. Kim (2013) <a href="http://www.cs.rit.edu/%7Erlaz/files/ICDAR_CROHME2013.pdf" title="CROHME 2013 ICDAR paper">ICDAR 2013 CROHME: Third International Competition on Recognition of Online Handwritten Mathematical Expressions</a>. Proc. Int&#39;l Conf. Document Analysis and Recognition, pp. 1428-1432, Washington, DC.</p></li>
+<li><p>R. Zanibbi, A. Pillay, H. Mouchere, C. Viard-Gaudin, and D. Blostein. (2011) <a href="http://www.cs.rit.edu/%7Erlaz/files/MathMetricICDAR2011.pdf" title="ICDAR 2011 Paper on Stroke-Based Performance Metrics for Handwritten Expressions">Stroke-Based Performance Metrics for Handwritten Mathematical Expressions</a>. Proc. Int&#39;l Conf. Document Analysis and Recognition, pp. 334-338, Beijing. </p></li>
+</ul>
+
+<hr>
+
+<p><em>This material is based upon work supported by the National Science Foundation (USA) under Grant No. IIS-1016815. Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</em></p>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+# IUD, CROHME_2014_IVC_F102_E39
+# Objects(14):
+O, SUB_1, *M, 1.0, 2, 3, 4, 5
+O, 1_1, 1, 1.0, 3
+O, SUB_4, *R, 1.0, 4
+O, 1_2, 1, 1.0, 5
+O, SUB_2, *R, 1.0, 2, 3
+O, -_1, -, 1.0, 2
+O, SUB_6, *R, 1.0, 5
+O, COL_8, *C, 1.0, 2, 3, 4, 5
+O, SUB_7, *Cell, 1.0, 5
+O, SUB_5, *Cell, 1.0, 4
+O, 0_1, 0, 1.0, 4
+O, ]_1, ], 1.0, 6
+O, SUB_3, *Cell, 1.0, 2, 3
+O, [_1, [, 1.0, 1, 0
+
+# Relations from SRT:
+EO, -_1, 1_1, R, 1.0
+EO, SUB_1, ]_1, R, 1.0
+EO, SUB_2, SUB_4, Nrow, 1.0
+EO, SUB_3, SUB_5, NcellC, 1.0
+EO, SUB_4, SUB_6, Nrow, 1.0
+EO, SUB_5, SUB_7, NcellC, 1.0
+EO, [_1, SUB_1, R, 1.0

@@ -1,0 +1,108 @@
+CHANGES File
+
+June 21, 2016 (v 0.3.4)
+- Updated dates in README, License, etc.
+
+April 4, 2016 (v 0.3.3)
+
+- Corrected errors in src/sumMetric.py, where
+  metrics for objects/symbols were correct,
+  but for primitives edge metrics were being
+  computed correctly, but reported incorrectly
+  in Summary.txt.
+
+June 9, 2015
+
+- Modified call to perl to remove '-i' in evaluate script
+  (was generating error messages)
+- Changed segment relation detection code to compare segments
+  more directly, rather than using component edges in each
+  relationship (lg.py). Harold found bug where we were looking
+  for automatic object identifiers generated for the input
+  graph in the relationship pairs for the second (reference/
+  ground truth) graph. 
+- Corrected *S entries for .diff file output. These
+  were being computed based on segmentation edge label
+  disagreements, rather than the presence of one pair
+  of primitives being merged in one graph and not
+  the other.
+
+
+May 17, 2015
+
+- DEBUG:
+
+  ABSENT nodes were 'matching' against target objects (e.g. single-stroke
+  symbols). This was producing negative false positive values, and inaccurate
+  precision values. Added a test in lg.py compareSegments() function to fix this
+  (around line 710).
+
+
+----
+
+Oct. 1-9, 2014
+R. Zanibbi
+
+Major work on the library recently, including:
+
+	- Changed metric output format for evallg.py, adding information for
+	  detection f-measures; structure, object and relation detection and
+	  detection + classification rates; relative correc. class/detection rates
+	
+	- Modified file outputs for evaluate script:
+		- Now creating a human-readable spreadsheet (.csv) will all raw metrics,
+		  to faciliate analysis in spreadsheet programs, statistical packages, etc.
+		- Producing list of processed files with Correct/Incorrect indication
+		- Separate directory for .dot graphs for files with errors
+		- Confusion matrix file now has a separate plot for just relationship vs.
+		  relationship confusions on edges, along with the 'full' edge 
+		  label confusion matrix. 
+
+		  * Significant effort to clarify correct merge but wrong class vs.
+		    segmentation disagreements in the Summary.txt and ConfusionMatrix.html
+			files (in Summary, for directed and undirected edges).
+
+	- Created scripts to automate relabeling 'old' N/E format CROHME files
+	  using '*' for merge edges (relabelEdges and relabelOldCROHME in bin/)
+
+	- Debugging of metric computations
+
+		- D_S (merge edge rate) was incorrect when segments are defined
+		  inconsistently (e.g. only 'merge' in one direction, vs. both).
+		  Corrected.
+
+        - Removed computation of percentage metrics to reduce raw result
+		  spreadsheet. These are easily computed, along with descriptive
+		  statistics and distributions in standard spreadsheets/statistical
+		  packages.
+
+		- Various small errors related to when files are empty, have missing
+		  primitives, or have additional primitives within them.
+	
+	- lg.csvObject() function will write out lg data in the new O/R format,
+	  with a brief explanation of the format in the file.
+
+	- Final touches on debugging/refining lg2dot, which I modified significantly
+	  in early September to produce more readable output that is more consistent
+	  across the different graph types.
+
+	- Created file summarizing 'raw' metric data types and key data structures
+	  in lg.py (which tend to be hard to remember).
+
+	- **Added ability to use 'evaluate' or 'confHist' with either a pair
+	  of directories, or a list of files.
+
+	- Added lgOR and lgNE converters, so that files can be pretty printed
+	  and/or converted easily between formats. Objects are still identified
+	  by common labels on edges and nodes (i.e. '*' for merging primitives
+	  is deprecated, although still accepted at input time).
+	
+	- Added cliff, ldiff and vdiff tools for finding instances/file with common 
+          errors using regular expression matching over .diff files produced by the
+	  'evaluate' script.
+
+    - *Debugged lg2txt.py, which was not working properly with some labels
+	  (in particular, for square roots using 'Inside' relationships). Also
+	  updated the translate/mathMLMap.csv file accordingly.
+
+	- Added ability to export a file list from structure confusion histogram output.

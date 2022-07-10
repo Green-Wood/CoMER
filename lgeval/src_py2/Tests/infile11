@@ -1,0 +1,6 @@
+# Single x - two strokes.
+
+N, node1, x, 1.0
+N, node2, x, 1.0
+E, node1, node2, *, 1.0
+E, node2, node1, *, 1.0

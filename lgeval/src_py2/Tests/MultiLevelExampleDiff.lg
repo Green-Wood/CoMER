@@ -1,0 +1,34 @@
+# Example of multiple levels of structure: vector [ x^2 1 ]
+# This represents Symbols, Cells, Rows, Columns, Matrix and
+# the top-level expression structure.
+# Symbols (level above primitives (strokes))
+O, [_1, [, 1.0, s1
+O, x_1, x, 1.0, s2, s3
+O, 2_1, 2, 1.0, s4
+O, 1_1, 1, 1.0, s5
+O, ]_1, ], 1.0, s6
+
+# Symbol layout (within cells)
+R, x_1, 2_1, Sup, 1.0
+
+# Cells (level above symbols)
+O, Cell_1, Cell, 1.0, s2, s3, s4
+
+# Rows (1) and Columns (2)
+O, Row_1, Row, 1.0, s2, s3, s4
+O, Col_1, Col, 1.0, s2, s3
+O, Col_2, Col, 1.0, s4
+
+# Vector Grid (contains all strokes in cells)
+O, Vec_1, Matrix, 1.0, s2, s3, s4, s5
+
+# Layout of Cells in the one row, and of all cells 
+# in the two columns.
+R, Cell_1, Cell_2, NextCell-Row, 1.0
+R, Col_1, Col_2, NextCol, 1.0
+
+# Layout of expression at top level (matrices and symbols 
+# outside of matrices)
+R, [_1, Vec_1, Right, 1.0
+R, Vec_1, ]_1, Right, 1.0
+

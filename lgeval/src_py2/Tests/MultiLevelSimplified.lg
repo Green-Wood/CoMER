@@ -1,0 +1,16 @@
+# Simpler graph for vector [ x^2 1 ]
+# (No cell, row or column labels)
+# Symbols (level above primitives (strokes))
+O, [_1, [, 1.0, s1
+O, x_1, x, 1.0, s2, s3
+O, 2_1, 2, 1.0, s4
+O, 1_1, 1, 1.0, s5
+O, ]_1, ], 1.0, s6
+
+# Symbol layout (within cells)
+R, x_1, 2_1, Sup, 1.0
+
+# Vector Grid (contains all strokes in cells)
+O, Vec_1, Matrix, 1.0, s2, s3, s4, s5
+
+

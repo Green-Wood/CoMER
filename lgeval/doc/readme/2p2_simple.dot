@@ -1,0 +1,37 @@
+digraph lg {
+	rankdir=LR; ranksep=1.0;
+	edge[fontsize=10,weight=1]; node[fontsize=13]; graph[ordering=out];
+
+	/*  NODES (PRIMITIVES) */
+	subgraph cluster0{
+		rank=1; color=white;
+		Ls1 [label="{'2': 1.0}\ns1", color = blue];
+		Rs1 [label="{'2': 1.0}\ns1", color = blue];
+		Ls1 -> Rs1 [style=invis, weight=1000]}
+
+	subgraph cluster1{
+		rank=2; color=white;
+		Ls2 [label="{'+': 1.0}\ns2", color = blue];
+		Rs2 [label="{'+': 1.0}\ns2", color = blue];
+		Ls2 -> Rs2 [style=invis, weight=1000]}
+
+	subgraph cluster2{
+		rank=3; color=white;
+		Ls3 [label="{'+': 1.0}\ns3", color = blue];
+		Rs3 [label="{'+': 1.0}\ns3", color = blue];
+		Ls3 -> Rs3 [style=invis, weight=1000]}
+
+	subgraph cluster3{
+		rank=4; color=white;
+		Ls4 [label="{'2': 1.0}\ns4", color = blue];
+		Rs4 [label="{'2': 1.0}\ns4", color = blue];
+		Ls4 -> Rs4 [style=invis, weight=1000]}
+
+	/*  EDGES (PRIMITIVE RELATIONSHIPS) */
+	Ls1 -> Rs2 [label="{'Right': 1.0}"];
+	Ls1 -> Rs3 [label="{'Right': 1.0}"];
+	Ls2 -> Rs3 [label="{'+': 1.0}"];
+	Ls2 -> Rs4 [label="{'Right': 1.0}"];
+	Ls3 -> Rs2 [label="{'+': 1.0}"];
+	Ls3 -> Rs4 [label="{'Right': 1.0}"];
+}

@@ -1,0 +1,34 @@
+# Example symbol and structure LaTeX mapping file.
+#
+# Whitepsace between commas is kept for patterns/replacements.
+# Only symbols that must be replaced are listed; any other symbol
+# label will remain unaltered after lookup in bg2tex.py.
+#
+# 'SYMBOLS' and 'STRUCTURE' are used to indicate which table
+# is being filled at a given point in the file.
+#
+# Replacements are defined by (Pattern,->,Replacement) rules. For symbols:
+#
+#     symbol,->,newSymbol
+#
+# and for structures (i.e. a symbol with associated regions):
+#
+#     symbol,relation1,...,relationN,->,newSymbol,relationA,...,relationX
+#
+# where each of 'relationA' through 'relationX' match a relation on the left-hand
+# side of the rule - this allows the order of arguments (e.g. for a fraction) to
+# be defined. Relations on the left will be sorted alphabetically before being added
+# to the structure mapping table.
+
+SYMBOLS
+cos,->,\cos
+sqrt,->,\sqrt
+
+STRUCTURE
+sqrt,CONTAINS,->,\sqrt,CONTAINS
+-,B,A,->,\frac,A,B
+SUP,->, ^, { , }
+SUB,->, _, { , }
+R,->, ,,
+HOR,->, ,,
+

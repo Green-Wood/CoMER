@@ -1,0 +1,6 @@
+# x^2, with two strokes in the x.
+
+O,o1,x,1.0,node1,node2
+O,o2,2,1.0,node3
+EO,o1,o2,SUP,1.0
+

@@ -1,0 +1,21 @@
+# x + y ^ 2, but with some (meaningless) alternate
+# node and edge labels (for node4, edge (node1,node2))
+
+N,node1, x, 1.0
+N, node2, +, 1.0
+N, node2, t, 0.01
+N, node3, y, 1.0
+N, node3, z, 0.07
+N, node4, 2, 1.0
+N, node4, 3, 0.5
+N,node4, 4, 0.25
+E, node1, node2, HOR, 1.0
+E, node1, node2, SUP, 0.5
+E, node1, node3, HOR, 1.0
+E, node1, node4, HOR, 1.0
+E, node2, node3, HOR, 1.0
+E, node2, node4, HOR, 1.0
+E, node3, node4, SUP, 1.0
+
+
+

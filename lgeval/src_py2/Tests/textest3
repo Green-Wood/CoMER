@@ -1,0 +1,13 @@
+# A graph to test fraction mappings for bg2tex
+
+N,node5,sqrt,1.0
+N,node0,n,1.0
+N,node1,-,1.0
+N,node2,1,1.0
+N,node3,2,1.0
+N,node4,a,1.0
+E,node1,node2,A,1.0
+E,node1,node3,B,1.0
+E,node1,node4,HOR,1.0
+E,node5,node0,CONTAINS,1.0
+E,node5,node1,HOR,1.0

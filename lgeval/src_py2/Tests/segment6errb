@@ -1,0 +1,24 @@
+# idem than segment6 file but with miss seg and class of the I 
+# ** Now the 'I' has three 'strokes.'
+# - -> R -> 1
+# 1 -> SUP -> a
+#   -> SUB -> a
+
+N,node1,I,1.0
+N,node4,I,1.0
+N,node5,-,1.0
+N,node2,a,1.0
+N,node3,a,1.0
+
+E,node1,node4,*,1.0
+E,node4,node1,*,1.0
+
+E,node5,node1,R,1.0
+E,node5,node4,R,1.0
+
+E,node1,node2,SUP,1.0
+E,node1,node3,SUB,1.0
+
+E,node4,node2,SUP,1.0
+E,node4,node3,SUB,1.0
+

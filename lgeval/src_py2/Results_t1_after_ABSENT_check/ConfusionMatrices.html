@@ -1,0 +1,49 @@
+<html><head><style type="text/css">
+table { border-collapse:collapse;}
+p { line-height: 125%;}
+ul { line-height: 125%;}
+th{ text-align: right; padding: 4px;}
+td { text-align: right; border: 1px solid lightgray; padding: 4px; }
+tr:hover{background-color:rgb(180,200,235);}
+ td:hover{background-color:yellow;} 
+</style></head>
+<font face="helvetica,arial,sans-serif">
+<h2>LgEval Error Summary</h2>
+Sun May 17 22:13:13 2015
+<br>
+
+<b>File:</b> t1<br>
+<p>All confusion matrices show only errors. In each matrix, output labels appear in the left column, and target labels in the top row.</p>
+<UL><LI><A href="#nodes">Node Label Confusion Matrix</A> <LI> <A HREF="#ShortEdges">Edge Label Confusion Matrix (short - ignoring object class confusions)<A> <LI> <A HREF="#Edges">Edge Label Matrix (all labels)</A> </UL>
+<hr>
+<h2><A NAME="nodes">Node Label Confusion Matrix</A></h2>
+<p>3 unique node labels. 4 errors. ABSENT: a node missing in the output or target graph</p>
+<table>
+<tr><th><i>(Out:Rows)</i></th><th>+</th><th>2</th><th>ABSENT</th></tr>
+<tr><th>+</th><td class="col_0"></td><td class="col_1"></td><td class="col_2"></td><th>+</th></tr>
+<tr><th>2</th><td class="col_0"></td><td class="col_1"></td><td class="col_2"></td><th>2</th></tr>
+<tr><th>ABSENT</th><td class="col_0">2</td><td class="col_1">2</td><td class="col_2"></td><th>ABSENT</th></tr>
+<tr><th></th><th>+</th><th>2</th><th>ABSENT</th></tr>
+</table>
+<br><hr><br>
+<h2><A NAME="ShortEdges">Edge Label Confusion Matrix (Short)</A></h2>
+<p>2 unique relationship labels + * representing grouping two nodes into an object (any type). 6 errors <UL><LI>2 Directed segmentation and node pair classification errors (entries in '*'-labeled row and column) <UL><LI><b>0 edges between correctly grouped nodes, but with conflicting classification (* vs. *)</b> <LI>0 false positive merge edges (* vs. other)<LI>2 false negative merge edges (other vs. *) </UL>  <LI>4 Directed relationship errors (remaining matrix entries) </UL></p></p>
+<table>
+<tr><th><i>(Out:Rows)</i></th><th>*</th><th>Right</th><th>_</th></tr>
+<tr><th>*</th><td class="col_0"></td><td class="col_1"></td><td class="col_2"></td><th>*</th></tr>
+<tr><th>Right</th><td class="col_0"></td><td class="col_1"></td><td class="col_2"></td><th>Right</th></tr>
+<tr><th>_</th><td class="col_0">2</td><td class="col_1">4</td><td class="col_2"></td><th>_</th></tr>
+<tr><th></th><th>*</th><th>Right</th><th>_</th></tr>
+</table>
+<br><hr><br>
+<h2><A NAME="Edges">Edge Label Confusion Matrix (All Errors)</A></h2>
+<p>3 unique edge labels representing relationships and node groupings for specific symbol types. 6 errors</p>
+<table>
+<tr><th><i>(Out:Rows)</i></th><th>+</th><th>Right</th><th>_</th></tr>
+<tr><th>+</th><td class="col_0"></td><td class="col_1"></td><td class="col_2"></td><th>+</th></tr>
+<tr><th>Right</th><td class="col_0"></td><td class="col_1"></td><td class="col_2"></td><th>Right</th></tr>
+<tr><th>_</th><td class="col_0">2</td><td class="col_1">4</td><td class="col_2"></td><th>_</th></tr>
+<tr><th></th><th>+</th><th>Right</th><th>_</th></tr>
+</table>
+</font>
+</html>

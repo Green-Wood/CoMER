@@ -1,0 +1,71 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]
+then
+	echo "LgEval confHist: Structure Confusion Histogram Generator"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2013-2014"
+	echo ""
+	echo "Usage: confHist dir1 dir2 graphSize [minCount] [strokes] OR"
+	echo "       confHist fileList graphSize [minCount] [strokes]"
+	echo ""
+	echo "Creates an .html file containing structure confusion histograms"
+	echo "at the object level. The histograms visualize errors by their"
+	echo "frequency when comparing files in dir1 vs. dir2 (dir2 is 'ground truth')."
+	echo "It is assumed that every .lg file in dir1 exists in dir2, and a file"
+	echo "dir1_vs_dir2 is created as output."
+	echo ""
+	echo "If a file list is provided, then each line of the file"
+	echo "(format: 'outputfile_path targetfile_path') is used for comparison."
+	echo ""
+	echo "graphSize is the number of objects/primitives in targets to analyze."
+	echo "minCount is the minimum number of times an error should occur before"
+	echo "detailed information is provided in the confusion histogram. By default,"
+	echo "all errors are shown (minCount = 1)."
+	echo ""
+	echo "If an optional argument is provided (<strokes>), then stroke"
+	echo "confusion histograms will be constructed in addition to object"
+	echo "confusion histograms."
+	echo ""
+	echo "Output is written to the file CH_<dir1_vs_dir2>.html or"
+	echo "CH_<fileList>.html, depending upon the arguments used."
+	exit 0
+fi
+
+if [ -d $1 ]
+then
+	# Remove trailing slashes.
+	dir1=${1%/}
+	dir2=${2%/}
+	base1=`basename $dir1`
+	base2=`basename $dir2`
+	INFILE="${base1}_vs_${base2}"
+	
+	# Two directories passed (hopefully).
+	# NOTE: Assumes same number of .lg files with
+	#       matching names.
+	ls $dir1/*.lg > _f1
+	ls $dir2/*.lg > _f2
+
+	L1=`wc -l _f1 | awk '{print $1}'`
+	L2=`wc -l _f2 | awk '{print $1}'`
+	if [ "$L1" != "$L2" ]
+	then
+		echo "  !! Error: differing number of .lg files:"
+		echo "     ($L1) $dir1"
+		echo "     ($L2) $dir2"
+		rm -f _f1 _f2
+		exit 1
+	fi
+
+	paste -d" " _f1 _f2 > $INFILE
+	rm -f _f1 _f2 
+	
+	# HACK: ${@:3} selects args starting from the third.
+	python $LgEvalDir/src/confHists.py $INFILE ${@:3}
+	#rm $INFILE
+else
+	# User-provided file list.
+	python $LgEvalDir/src/confHists.py $@
+fi
+
+exit 0

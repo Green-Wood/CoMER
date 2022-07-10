@@ -1,0 +1,25 @@
+#Sortie IRISA "/media/sf_Donnees/Flowcharts2/Resultats/Apprentissage/070515_b/writer21_2.res.lg"
+O, _0, connection, 1.0, 0
+O, _1, arrow, 1.0, 1, 2
+O, _12, data, 1.0, 12, 13, 11
+O, _9, text, 1.0, 9, 10, 8, 7, 6, 5, 4, 3
+O, _29, arrow, 1.0, 29, 30
+O, _18, text, 1.0, 18, 19, 22, 20, 23, 21, 17, 16, 24, 25, 14, 15
+O, _27, process, 1.0, 27, 28, 26
+O, _43, arrow, 1.0, 43, 44
+O, _41, data, 1.0, 41, 42, 40
+O, _37, text, 1.0, 37, 36, 35, 38, 34, 39, 33, 32, 31
+O, _46, arrow, 1.0, 46, 47
+O, _45, connection, 1.0, 45
+
+EO, _46, _45, Targ, 1.0
+EO, _46, _41, Src, 1.0
+EO, _41, _37, AssTxt, 1.0
+EO, _43, _41, Targ, 1.0
+EO, _43, _27, Src, 1.0
+EO, _27, _18, AssTxt, 1.0
+EO, _29, _27, Targ, 1.0
+EO, _29, _12, Src, 1.0
+EO, _12, _9, AssTxt, 1.0
+EO, _1, _12, Targ, 1.0
+EO, _1, _0, Src, 1.0

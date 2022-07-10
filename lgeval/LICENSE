@@ -1,0 +1,23 @@
+License and Copyright
+
+The LgEval evaluation toolkit is Copyright (c) 01/06/2013, 01/10/2014, 06/20/2016 Richard Zanibbi
+and Harold Mouchère. LgEval is free software; you may redistribute it and/or
+modify it under the terms of the Creative Commons CC BY-NC-SA 3.0
+(Attribution-NonCommercial-ShareAlike 3.0 Unported)
+
+These programs are distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the Creative Commons License CC BY-NC-SA 3.0 for
+more details.  You should have received a copy of the Creative Commons License
+along with this program; if not, you can also find the Creative Commons licence
+on the Creative Commons web site.
+
+In addition, we ask that you acknowlege LgEval and its authors in any
+program or publications in which LgEval is used. (You are not required to do
+so; it is your choice to decide whether you wish to comply with this request
+or not.) For general publications, we ask that you reference:
+
+Zanibbi, R., Mouchère, H., and Viard-Gaudin, C. "Evaluating structural pattern 
+recognition for handwritten math via primitive label graphs," Proc. Document
+Recognition and Retrieval XX, San Francisco, CA, Feb. 2012.
+

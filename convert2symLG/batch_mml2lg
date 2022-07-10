@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# NOTE:
+#
+# Make sure that CROHMELibDir and LgEvalDir are defined in your shell
+# enviroment, e.g. by including:
+#	
+#	export CROHMELibDir=<path_to_CROHMELib> 
+#	export LgEvalDir=<path_to_LgEval>
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file for bash shell.
+
+if [ $# -lt 1 ]
+then
+	echo "CROHMELib *Batch* CROHME .inkml to Label Graph (.lg) Converter"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: batch_mml2Lg <dir> [<lgdir>]"
+	echo ""
+	echo "Converts a directory of CROHME .inkml files to .lg files."
+	echo "  .lg files are placed in <dir> or in <lgdir> if specified."
+	echo ""
+	echo "Note: Error messages from failed conversions are written to"
+	echo "  ConvertCrohmeLgErrors-<dir>."
+
+	exit 0
+fi
+
+rm -f ConvertCrohmeLgErrors-$1
+
+OUTDIR=$1
+if [ $# -gt 1 ]
+then
+	OUTDIR=$2
+
+	if ! [ -d $OUTDIR ] 
+	then
+		mkdir $OUTDIR
+	fi
+fi
+
+for file in $1/*.inkml
+do
+	#echo "Converting: $file"
+	BNAME=`basename $file .inkml`
+	OUT="$OUTDIR/$BNAME.lg"
+	if [ $OUT -ot $file ]
+	then
+		perl $Convert2SymLGDir/mml2lg.pl -s $file 2> $1/../conv_temp$$ > $1/../temp$$.lg
+		X=`cat $1/../conv_temp$$`
+
+		# If not empty, record that this file conversion failed, and
+		# delete the output file.
+		if [ -n "$X" ]
+		then
+			# Send error message to standard error, store in log file.
+			echo "  ERROR: $X" >&2
+			echo ">> Crohme to Label Graph CONVERSION ERROR: $file" >> ConvertCrohmeLgErrors-$1
+			echo "$X" >> ConvertCrohmeLgErrors-$1
+			
+			# Keep the file - let the evaluation tools find missing symbols etc.
+			#rm -f $OUT
+		fi
+		mv $1/../temp$$.lg $OUT
+	else
+		echo "  Already converted."
+	fi
+done
+echo "done."
+rm -f $1/../conv_temp$$ $1/../temp$$.lg
+

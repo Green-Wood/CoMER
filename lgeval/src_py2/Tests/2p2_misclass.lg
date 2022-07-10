@@ -1,0 +1,13 @@
+# 2 + 2 (object format)
+# 3 objects (symbols)
+# FORMAT:
+# O, Object ID, Label, Weight, List of Primitive identifiers (strokes in a symbol)
+O, 2_a, 5, 1.0, s1
+O, +_a, +, 1.0, s2, s3
+O, 2_b, 2, 1.0, s4
+
+# Relationships (2 object edges)
+# FORMAT:
+# R, Object ID (Parent), Object ID (Child), Label, Weight
+R, 2_a, +_a, Sup, 1.0
+R, +_a, 2_b, Right, 1.0

@@ -1,0 +1,56 @@
+digraph lg {
+	rankdir=LR; ranksep=1.0;
+	edge[fontsize=11,weight=1]; node[fontsize=13]; graph[concentrate=true,ordering=out];
+
+	/*  NODES (PRIMITIVES) */
+	0 [label="\cos\n0", color=blue];
+	1 [label="\cos\n1", color=blue];
+	10 [label="2\n10", color=blue];
+	11 [label="+\n11", color=blue];
+	12 [label="+\n12", color=blue];
+	13 [label="b\n13", color=blue];
+	14 [label="2\n14", color=blue];
+	15 [label="+\n15", color=blue];
+	16 [label="+\n16", color=blue];
+	17 [label="c\n17", color=blue];
+	18 [label="2\n18", color=blue];
+	2 [label="\cos\n2", color=blue];
+	3 [label="\\alpha\n3", color=blue];
+	4 [label="=\n4", color=blue];
+	5 [label="=\n5", color=blue];
+	6 [label="a\n6", color=blue];
+	7 [label="-\n7", color=blue];
+	8 [label="\sqrt\n8", color=blue];
+	9 [label="a\n9", color=blue];
+	
+	/* EDGES (PRIMITIVE RELATIONSHIPS) */
+	0 -> 1 [dir=both,label="\cos"];
+	0 -> 2 [dir=both,label="\cos"];
+	0 -> 3 [label="Right"];
+	1 -> 2 [dir=both,label="\cos"];
+	1 -> 3 [label="Right"];
+	11 -> 12 [dir=both,label="+"];
+	11 -> 13 [label="Right"];
+	12 -> 13 [label="Right"];
+	13 -> 14 [label="Sup"];
+	13 -> 15 [label="Right"];
+	13 -> 16 [label="Right"];
+	15 -> 16 [dir=both,label="+"];
+	15 -> 17 [label="Right"];
+	16 -> 17 [label="Right"];
+	17 -> 18 [label="Sup"];
+	2 -> 3 [label="Right"];
+	3 -> 4 [label="Right"];
+	3 -> 5 [label="Right"];
+	4 -> 5 [dir=both,label="="];
+	4 -> 7 [label="Right"];
+	5 -> 7 [label="Right"];
+	7 -> 6 [label="Above"];
+	7 -> 8 [label="Below"];
+	8 -> 11 [label="Inside"];
+	8 -> 12 [label="Inside"];
+	8 -> 9 [label="Inside"];
+	9 -> 10 [label="Sup"];
+	9 -> 11 [label="Right"];
+	9 -> 12 [label="Right"];
+}

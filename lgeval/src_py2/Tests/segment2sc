@@ -1,0 +1,13 @@
+# Ex^y, with two strokes in the x and y, 4 strokes in the E.
+
+O,oE,E,1.0,node1,node2,node3,node4
+O,oX,x,1.0,node5,node6
+O,oY,y,1.0,node7,node8
+
+# E is adjacent to x and y 
+EO,oE,oX,HOR,1.0
+EO,oE,oY,HOR,1.0
+
+# y is supersript to x
+EO,oX,oY,SUP,1.0
+

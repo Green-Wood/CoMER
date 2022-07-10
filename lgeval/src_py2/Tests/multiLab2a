@@ -1,0 +1,12 @@
+# example with multiple label to embedded segmentation
+# a b     with cell and symbol (a with 2 strokes)
+# mis segmentation for cell
+
+O, a1, a, 1.0, n0,n1
+O, b1, b, 1.0, n2
+O, c1, *cell,1.0, n0,n1
+O, c2, *cell,1.0, n2
+
+
+EO, a1,b1, R, 1.0
+

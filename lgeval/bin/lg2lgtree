@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Make sure that CROHMELibDir and LgEvalDir are defined in
+# your shell enviroment, e.g. by including:
+#	
+#	export LgEvalDir=<path_to_LgEval>
+#	export CROHMELibDir=<path_to_CROHMELib>       		
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file (the initialization file for bash shell). The PATH
+# alteration will add the tools to your search path. 
+
+if [ $# -lt 2 ]
+then
+	echo "LgEval lg2lgtree: Label graph to Label graph tree converter "
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: lg2lgtree <indir> <outdir>"
+	echo ""
+	echo "Removes non-tree edges in all .lg files located in <indir>"
+	echo "(assuming trees are present!)"
+	echo ""
+	echo "Converted .lg files are written to <outdir>."
+	echo ""
+	echo "Warning: this assumes that each node and edge has a single label."
+		
+	exit 0
+fi
+
+if [ ! -d $2 ]
+then
+	mkdir $2
+fi
+
+for file in $1/*.lg
+do
+	echo "Converting: $file"
+	BASE=`basename $file`
+	lgfilter $file $2/$BASE
+done
+
+echo "done."
+

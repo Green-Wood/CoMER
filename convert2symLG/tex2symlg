@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#Mahshad Mahdavi, Feb 2019
+
+# generating mathML from latex using pandoc then rendering LG from mathml
+
+if [ $# -lt 2 ]
+then
+	echo " -----------------------------------------"
+        echo "Usage: tex2lg <texdir> <lgdir>"
+        echo " -----------------------------------------"
+	exit 0
+fi
+
+OUTDIR=$2
+
+if ! [ -d $OUTDIR ]
+then
+        mkdir $OUTDIR
+fi
+
+mDir="$1/../mml_temp/"
+mkdir $mDir
+
+for file in $1/*.txt
+do
+        # echo "Converting: $file"
+        BNAME=`basename $file .txt`
+        OUT="$OUTDIR/$BNAME.lg"
+        if [ $OUT -ot $file ]
+        then
+		
+		txtDir=$file
+		mmlDir="$mDir/$BNAME.mml"
+
+        	pandoc --mathml -s $txtDir -o $mmlDir
+      	fi
+	
+done
+
+
+#convert mml to lg
+$Convert2SymLGDir/mml2symlg $mDir $OUTDIR
+
+
+rm -r $mDir
+
+

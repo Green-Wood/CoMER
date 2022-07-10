@@ -1,0 +1,19 @@
+# Fig4b paper's example : \frac{a}{bd}
+# one misslabeled relation (2 errors)
+
+N,s1, a, 1.0
+N, s2, hline, 1.0
+N, s3, b, 1.0
+N, s4, d, 1.0
+N, s5, d, 1.0
+
+E, s2, s1, U, 1.0
+E, s2, s3, D, 1.0
+E, s2, s4, D, 1.0
+E, s2, s5, D, 1.0
+E, s3, s4, R, 1.0
+E, s3, s5, R, 1.0
+E, s4, s5, *, 1.0
+E, s5, s4, *, 1.0
+
+

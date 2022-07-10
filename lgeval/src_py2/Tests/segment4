@@ -1,0 +1,20 @@
+# Two isolated symbols (of *different* classes), 
+# no edges - one symbol with two alternative classifications.
+# (and x/c and a t)
+
+N,node1,x,1.0
+N,node1,c,0.9
+N,node2,x,1.0
+N,node2,c,0.9
+
+E,node1,node2,x,1.0
+E,node2,node1,x,1.0
+E,node1,node2,c,0.9
+E,node2,node1,c,0.9
+
+N,node3,t,1.0
+N,node4,t,1.0
+
+E,node3,node4,t,1.0
+E,node4,node3,t,1.0
+

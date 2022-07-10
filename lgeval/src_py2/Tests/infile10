@@ -1,0 +1,8 @@
+# For this file, nodes 2-6 should be added to the node list
+# in the 'self.nlabels' datastructure.
+
+N,node1,x,1.9
+E,node1,node2,L,1.0
+E,node2,node3,L,1.0
+E,node4,node1,L,1.0
+E,node5,node6,L,1.0

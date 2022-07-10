@@ -1,0 +1,48 @@
+seed_everything: 7
+trainer:
+  checkpoint_callback: true
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+      init_args:
+        logging_interval: epoch
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        save_top_k: 1
+        monitor: val_ExpRate
+        mode: max
+        filename: '{epoch}-{step}-{val_ExpRate:.4f}'
+  # gpus: 1
+  gpus: 0, 1, 2, 3
+  accelerator: ddp
+  check_val_every_n_epoch: 2
+  max_epochs: 300
+  deterministic: true
+model:
+  d_model: 256
+  # encoder
+  growth_rate: 24
+  num_layers: 16
+  # decoder
+  nhead: 8
+  num_decoder_layers: 3
+  dim_feedforward: 1024
+  dropout: 0.3
+  dc: 32
+  cross_coverage: true
+  self_coverage: true
+  # beam search
+  beam_size: 10
+  max_len: 200
+  alpha: 1.0
+  early_stopping: false
+  temperature: 1.0
+  # training
+  learning_rate: 0.08
+  patience: 20
+data:
+  zipfile_path: data.zip
+  test_year: 2014
+  train_batch_size: 8
+  eval_batch_size: 4
+  num_workers: 5
+  scale_aug: true

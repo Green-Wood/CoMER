@@ -1,0 +1,18 @@
+# Fig4c paper's example : \frac{a}{b^{01}}
+# classification and Segmentation errors
+
+N,s1, a, 1.0
+N, s2, hline, 1.0
+N, s3, b, 1.0
+N, s4, 0, 1.0
+N, s5, 1, 1.0
+
+E, s2, s1, U, 1.0
+E, s2, s3, D, 1.0
+E, s2, s4, D, 1.0
+E, s2, s5, D, 1.0
+E, s3, s4, Sup, 1.0
+E, s3, s5, Sup, 1.0
+E, s4, s5, R, 1.0
+
+

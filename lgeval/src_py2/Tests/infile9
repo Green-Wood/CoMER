@@ -1,0 +1,6 @@
+# Repeated entries (i.e. identical labels, different values)
+
+N, node1, x, 1.0
+N, node1, x, 0.5
+E, node1, node2, HOR, 1.0
+E, node1, node2, HOR, 0.5

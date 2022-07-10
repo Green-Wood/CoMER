@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ $# -lt 3 ]
+then
+	echo "LgEval getpdf: Copy dot-generated .pdf files in .lg file list to a directory"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2014"
+	echo ""
+	echo "Usage: getpdf <lgfilelist> <pdfdir> <outdir>"
+	echo ""
+	echo "Copies .pdf files for .lg file names in lgfilelist from indir"
+	echo "to outdir."
+	exit 0
+fi
+
+if [ ! -f $1 ]
+then
+	echo ".lg list file $1 does not exist."
+	exit 1
+fi
+
+if [ ! -d $2 ]
+then
+	echo "Directory $2 does not exist."
+	exit 2
+fi
+
+if [ ! -d $3 ]
+then
+	echo "Creating directory $3."
+	mkdir $3
+fi
+
+for file in `cat $1`
+do
+	# Replace the file extension; use ${2%/} to remove trailing slash.
+	INKML_FILE=`basename $file .lg`.pdf
+	cp ${2%/}/$INKML_FILE $3
+done

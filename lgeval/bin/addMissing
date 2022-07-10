@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]
+then
+	echo "LgEval addMissing: Add missing .lg files in an output directory"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2014"
+	echo ""
+	echo "Usage: addMissing outDir gtDir"
+	echo ""
+	echo "Create an empty .lg file (i.e. empty graph) for each .lg file in"
+	echo "gtDir that is not present in outDir. Missing files are reported."
+	exit 0
+fi
+
+for file in `ls $2/*.lg`
+do
+	localFile=`basename $file`
+	if ! [ -f $1/$localFile ]
+	then
+		echo "# Missing .lg File: $localFile" >  $1/$localFile
+		echo "  Creating missing file: $1/$localFile"
+	fi
+done

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo "LgEval relabelOldCROHME: Edge Relabeler for Old CROHME Files"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: relabelOldCROHME <dir>"
+	echo ""
+	echo "Used to relabel old 'raw' label graph files with N and E"
+	echo "entries, converting short names for relationships to the"
+	echo "longer ones used for CROHME 2014."
+	echo ""
+	echo "Note: '*' relationships to indicate merging primitives into"
+	echo "      objects will be replaced by edges containing the class"
+	echo "      of the object the primitive pair belongs to."
+	exit 0
+fi
+
+for file in $1/*.lg
+do
+	# Replace (R)ight, (A)bove, (B)elow and (I)nside relationships.
+	relabelEdges $file R Right A Above B Below I Inside > tempFile
+	mv tempFile $file
+done
+

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ $# -lt 3 ]
+then
+	echo "LgEval vdiff: View Files with Common Errors"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: vdiff [-NESC] outputPattern targetPattern <files>"
+	echo ""
+	echo "View a list of files that contain errors on label graph"
+	echo "nodes or edges matching the provided patterns (grep-format"
+	echo "regular expressions). Matching files are sent to 'less.'"
+	echo ""
+	echo "*Note: the pattern 'any' will match any label."
+	echo ""
+	echo "The second argument indicates whether to limit matches to"
+	echo "(N)ode label errors, (E)dge label errors, and/or files with"
+	echo "(S)egmentation errors or only (C)orrect segmentations."
+	exit 0
+fi
+
+# Use ldiff to do the selection.
+FILELIST=`ldiff $@`
+if [ ${#FILELIST} -gt 0 ]
+then
+	less $FILELIST
+else
+	echo "No matching files."
+fi

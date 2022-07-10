@@ -1,0 +1,9 @@
+# Simple batch file; contains all examples from
+# the ICDAR 2011 paper.
+
+tests/paperExampleGT,tests/paperExampleGT
+tests/paperExampleGT,tests/paperExampleErrA
+tests/paperExampleGT,tests/paperExampleErrB
+tests/paperExampleGT,tests/paperExampleErrC
+tests/paperExampleGT,tests/paperExampleErrD
+

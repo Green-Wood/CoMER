@@ -1,0 +1,5 @@
+# 2x
+
+N, node4, 2, 1.0
+N, node1, x, 1.0
+E, node4, node1, HOR, 1.0

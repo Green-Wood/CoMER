@@ -1,0 +1,117 @@
+#!/bin/bash
+
+# Make sure that CROHMELibDir and LgEvalDir are defined in
+# your shell enviroment, e.g. by including:
+#	
+#	export LgEvalDir=<path_to_LgEval>
+#	export CROHMELibDir=<path_to_CROHMELib>       		
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file (the initialization file for bash shell). The PATH
+# alteration will add the tools to your search path. 
+
+if [ $# -lt 2 ]
+then
+	echo "LgEval evaluateMat: Label graph matrix evaluation (CROHME 2014)"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2013"
+	echo ""
+	echo "Usage: evaluateMat outputDir groundTruthDir [t/d/s/b]"
+	echo ""
+	echo "Evaluates all label graph (.lg) files in outputDir against"
+	echo "corresponding files in groundTruthDir. groundTruthDir is used"
+	echo "to generate the list of files to be compared (i.e. if a file is"
+	echo "not in the ground truth directory, it will not be considered)."
+	
+	echo "*The label graphs are filtered for different objects and"
+	echo " relationship types (e.g. for Rows and Columns), with"
+	echo " metrics compiled for the different levels/types of structure."
+	echo ""
+	echo "Outputs"
+	echo "-----------------------------"
+	echo " Results<outputDir>/"
+	echo "    Summary : summary of performance metrics"
+	echo "    Correct : list outputDir files matching ground truth"
+	echo "    Metrics.csv : metrics for all .lg files compared"
+	echo "    Diffs.diff : all differences between files"
+	echo "    ConfusionMatrix.html : node and edge label confusion matrix"
+	echo "        (errors only)"
+	echo "" 
+	echo "    Metrics/ : directory with .csv (metric) and .diff (difference) file for"
+	echo "      each comparison. .dot (GraphViz) and .pdf files are generated for"
+	echo "      viewing differences between files if a third argument is provided."
+	echo ""
+	echo "NOTE: the different visualizations of structural differences are described"
+	echo "      if you run lg2dot without arguments (object (t)ree; (d)irected graph"
+	echo "      over objects; primitive (s)egmentation graph; (b)ipartite graph over"
+	echo "      primitives."
+	exit 0
+fi
+
+dir=$1
+BNAME=`basename $1`
+truthDir=$2
+ResultsDir=Results_$BNAME
+
+
+mkdir -p $ResultsDir/Metrics
+mkdir -p $ResultsDir/MatMetrics
+
+
+echo "Output File Directory:  $1"
+echo "Ground Truth Directory: $2"
+echo ""
+
+# Compute all .csv metrics outputs (per-file), and .diff results (per-file).
+echo "Evaluating files..."
+PREFIX=res_
+for file in `ls $truthDir/*.lg`
+do
+	FNAME=`basename $file .lg`
+	nextFile=$dir/$FNAME.lg
+	if  [[ ! -e $ResultsDir/Metrics/$FNAME.csv ]]
+	then
+		# NOTE: the script convertCrohmeLg can be used to convert
+		#       crohme .inkml files to .lg files.
+		echo "  >> Comparing $FNAME.lg"
+
+		python $LgEvalDir/src/evallg.py $nextFile $file m > $ResultsDir/Metrics/$FNAME.csv
+		python $LgEvalDir/src/evallg.py $nextFile $file MATRIX $ResultsDir/MatMetrics/$FNAME
+		
+		DIFF=`python $LgEvalDir/src/evallg.py $nextFile $file diff`
+		if [ -n "$DIFF" ]
+		then
+			echo "$DIFF" > $ResultsDir/Metrics/$FNAME.diff 
+			
+			
+		else
+			rm -f $ResultsDir/Metrics/$FNAME.diff
+			echo "$nextFile" >> $ResultsDir/Correct
+		fi
+	else
+		echo "    Already processed: $file"
+	fi
+done
+
+# Compile all metrics/diffs,
+# and then compute metric summaries and confusion matrices.
+cat $ResultsDir/Metrics/*.csv > $ResultsDir/Metrics.csv
+ALLDIFFS=`ls $ResultsDir/Metrics | grep .diff`
+if [ -n "$ALLDIFFS" ]
+then
+	cat $ResultsDir/Metrics/*.diff > $ResultsDir/Diffs.diff
+else
+	touch $ResultsDir/__NoErrors
+	touch $ResultsDir/Diffs.diff  # empty - no errors.
+fi
+
+python $LgEvalDir/src/sumMetric.py "LABEL" $ResultsDir/Metrics.csv > $ResultsDir/__Summary
+python $LgEvalDir/src/sumDiff.py $ResultsDir/Diffs.diff html > $ResultsDir/ConfusionMatrix.html
+
+for typErr in Mat Cell Row Col Symb
+do
+	cat $ResultsDir/MatMetrics/*${typErr}.csv > $ResultsDir/Metrics${typErr}.csv
+	python $LgEvalDir/src/sumMetric.py "LABEL" $ResultsDir/Metrics${typErr}.csv > $ResultsDir/_${typErr}_Summary
+done
+
+echo "done."
+

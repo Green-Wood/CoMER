@@ -1,0 +1,2 @@
+File,Result,D_B,D_C,D_L,D_R,D_S,D_E(%),nNodes,nEdges,nSegRelEdges,dPairs,segPairErrors,nodeCorrect,edgeDiffClassCount,undirDiffClassCount,nSeg,detectedSeg,dSegRelEdges,CorrectSegments,CorrectSegmentsAndClass,ClassError,CorrectSegRels,CorrectSegRelLocations,SegRelErrors,hasCorrectSegments,hasCorrectSegLab,hasCorrectRelationLocations,hasCorrectRelLab,hasCorrectStructure
+t1/2p2_test.lg, Incorrect,10,3,7,3,4,0.697037628339,4,12,2,5,2,0,0,0,3,2,0,1,1,2,0,0,0,0,0,0,0,0

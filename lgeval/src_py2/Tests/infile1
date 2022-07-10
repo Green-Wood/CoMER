@@ -1,0 +1,4 @@
+# Single, valid node.
+N, node1, x, 1.0
+
+# Another comment; should be ignored safely.

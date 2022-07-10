@@ -1,0 +1,58 @@
+# Ex^y, with two strokes in the x and y, 4 strokes in the E.
+
+N,node1,E,1.0
+N,node2,E,1.0
+N,node3,E,1.0
+N,node4,E,1.0
+N,node5,x,1.0
+N,node6,x,1.0
+N,node7,y,1.0
+N,node8,y,1.0
+
+# Merge strokes in symbols
+# E 
+E,node1,node2,E,1.0
+E,node1,node3,E,1.0
+E,node1,node4,E,1.0
+E,node2,node1,E,1.0
+E,node2,node3,E,1.0
+E,node2,node4,E,1.0
+E,node3,node1,E,1.0
+E,node3,node2,E,1.0
+E,node3,node4,E,1.0
+E,node4,node1,E,1.0
+E,node4,node2,E,1.0
+E,node4,node3,E,1.0
+
+# X
+E,node5,node6,x,1.0
+E,node6,node5,x,1.0
+
+# Y
+E,node7,node8,y,1.0
+E,node8,node7,y,1.0
+
+# E is adjacent to x and y 
+E,node1,node5,HOR,1.0
+E,node1,node6,HOR,1.0
+E,node2,node5,HOR,1.0
+E,node2,node6,HOR,1.0
+E,node3,node5,HOR,1.0
+E,node3,node6,HOR,1.0
+E,node4,node5,HOR,1.0
+E,node4,node6,HOR,1.0
+
+E,node1,node7,HOR,1.0
+E,node1,node8,HOR,1.0
+E,node2,node7,HOR,1.0
+E,node2,node8,HOR,1.0
+E,node3,node7,HOR,1.0
+E,node3,node8,HOR,1.0
+E,node4,node7,HOR,1.0
+E,node4,node8,HOR,1.0
+
+# y is supersript to x
+E,node5,node7,SUP,1.0
+E,node5,node8,SUP,1.0
+E,node6,node7,SUP,1.0
+E,node6,node8,SUP,1.0

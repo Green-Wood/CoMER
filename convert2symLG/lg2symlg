@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#Mahshad Mahdavi, Feb 2019
+
+# generating symbolyc level LG from LG files with any sorts of primitives
+
+if [ $# -lt 2 ]
+then
+	echo " -----------------------------------------"
+        echo "Usage: lg2symlg <lgdir> <outdir>"
+        echo " -----------------------------------------"
+	exit 0
+fi
+
+OUTDIR=$2
+
+if ! [ -d $OUTDIR ]
+then
+	mkdir $OUTDIR
+fi
+
+
+
+python3 update_nodeTags.py $1  $OUTDIR
+
+
+	
+
+      
+    
+
+
+

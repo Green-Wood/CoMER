@@ -1,0 +1,7 @@
+# x_i^2
+
+N,node1,x,1.0
+N,node2,i,1.0
+N,node3,2,1.0
+E,node1,node2,SUB,1.0
+E,node1,node3,SUP,1.0

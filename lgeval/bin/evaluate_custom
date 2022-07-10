@@ -1,0 +1,213 @@
+#!/bin/bash
+
+# Make sure that CROHMELibDir and LgEvalDir are defined in
+# your shell enviroment, e.g. by including:
+#	
+#	export LgEvalDir=<path_to_LgEval>
+#	export CROHMELibDir=<path_to_CROHMELib>       		
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file (the initialization file for bash shell). The PATH
+# alteration will add the tools to your search path. 
+
+if [ $# -lt 1 ]
+then
+	echo "LgEval evaluate: Label graph evaluation tool"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: evaluate outputDir groundTruthDir [p/t/d/s/b] OR"
+	echo "       evaluate fileList [p/t/d/s/b]"
+	echo ""
+	echo "Evaluates all label graph (.lg) files in outputDir against"
+	echo "corresponding files in groundTruthDir. groundTruthDir is used"
+	echo "to generate the list of files to be compared (i.e. if a file is"
+	echo "not in the ground truth directory, it will not be considered)."
+	echo ""
+	echo "If a list of file pairs is provided instead ('output target' on each line)"
+	echo "then these file pairs are used for evaluation."
+	echo ""
+	echo "Outputs"
+	echo "-----------------------------"
+	echo " Results<outputDir/fileListName>/"
+	echo "    ConfusionMatrices.*:    confusion matrix spreadsheet (errors in csv/html)"
+	echo "    FileMetrics.csv:        file metrics spreadsheet"
+	echo "    Summary.txt:            summary of performance metrics"
+	echo "    labelsGT.txt:           list of node and edge labels in ground truth"
+	echo "    labelsOutput.txt:       list of node and edge labels in output files"
+	echo "" 
+	echo "    Metrics/: directory with .csv (metric) and .diff (difference) files"
+	echo "    graphErrors/: if dot output requested, visualizations for files with"
+	echo "      errors are stored here (.dot and .pdf format)."
+	echo ""
+	echo "NOTE: the different visualizations of structural differences are described"
+	echo "      if you run lg2dot without arguments (object (t)ree; (d)irected graph"
+	echo "      over objects; primitive (s)egmentation graph; (b)ipartite graph over"
+	echo "      primitives; (p): default directed graph over primitives."
+	exit 0
+fi
+
+DOTARG=""
+BNAME=`basename $1`
+MODE="Dir"
+
+TARGETS=""
+OUTPUTS=""
+if ! [ -d $1 ]
+then
+	LABEL_STRING="List File: $1"
+	echo "$LABEL_STRING"
+	MODE="List"
+	# Get the targets
+	OUTPUTS=`awk '{ print $1; }' $1`
+	OUTARR=($OUTPUTS)
+	TARGETS=`awk '{ print $2; }' $1`
+
+	if [ $# -gt 1 ]
+	then
+		DOTARG=$2
+	fi
+else
+	# Peculiar '$<string>' styntax is to preserve the newline.
+	OUT_STRING="Output File Directory:  $1"
+	GT_STRING="Ground Truth Directory: $2"
+	LABEL_STRING=$(printf '%s\n%s' "$OUT_STRING" "$GT_STRING")
+	echo "$LABEL_STRING"
+
+	OUTPUTS=`ls $1/*.lg`
+	TARGETS=`ls $2/*.lg`
+
+	if [ $# -gt 2 ]
+	then
+		DOTARG=$3
+	fi
+fi
+echo ""
+
+ResultsDir=$1/../Results_$BNAME
+if ! [ -d $ResultsDir ]
+then
+	mkdir $ResultsDir
+	mkdir $ResultsDir/Metrics
+
+	if [ "$DOTARG" != "" ]
+	then
+		mkdir $ResultsDir/errorGraphs
+		mkdir $ResultsDir/errorGraphs/dot
+		mkdir $ResultsDir/errorGraphs/pdf
+	fi
+fi
+
+
+# Compute all .csv metrics outputs (per-file), and .diff results (per-file).
+echo "Evaluating files..."
+
+# Compile labels from ground truth. This is needed for confusion matrices to
+# be properly defined.
+echo "$TARGETS" > $ResultsDir/tfileTarget
+python3 $LgEvalDir/src/compileLabels.py "$ResultsDir/tfileTarget" > "$ResultsDir/labelsGT.txt"
+
+# Do the same for outputs. This can come handy in many places.
+echo "$OUTPUTS" > $ResultsDir/tfileTarget
+python3 $LgEvalDir/src/compileLabels.py "$ResultsDir/tfileTarget" > "$ResultsDir/labelsOutput.txt"
+rm $ResultsDir/tfileTarget
+
+INDEX=0
+correct_n=0
+for file in $TARGETS
+do
+	FNAME=`basename $file .lg`
+	nextFile="_ERROR_"
+	if [ $MODE == "Dir" ]
+	then
+		nextFile=`echo "$1/$FNAME.lg" | perl -p -e "s/\/\//\//g"`
+	else
+		# Index to the next input file.
+		nextFile=${OUTARR[INDEX]}
+	fi
+
+	if  [[ ! -e $ResultsDir/Metrics/$FNAME.csv ]]
+	then
+		# NOTE: the script convertCrohmeLg can be used to convert
+		#       crohme .inkml files to .lg files.
+		echo "  >> Comparing $FNAME.lg"
+
+		# python3 $LgEvalDir/src/evallg.py $nextFile $file m INTER > $ResultsDir/Metrics/$FNAME.csv
+		DIFF=`python3 $LgEvalDir/src/evallg.py $nextFile $file diff`
+		CORRECT="Correct"
+		if [ -n "$DIFF" ]
+		then
+			# echo "$DIFF" > $ResultsDir/Metrics/$FNAME.diff 
+
+			# # If a third argument is provided, generate a .pdf file to visualize
+			# # differences between graphs.
+			# if [ "$DOTARG" != "" ]
+			# then
+			# 	if [ "$DOTARG" == "p" ]
+			# 	then
+			# 		lg2dot $nextFile $file
+			# 	else
+			# 		lg2dot $nextFile $file "$DOTARG"
+			# 	fi
+			# 	mv $FNAME.dot $ResultsDir/errorGraphs/dot
+			# 	mv $FNAME.pdf $ResultsDir/errorGraphs/pdf
+			# fi
+			
+			CORRECT="Incorrect"
+		else
+			rm -f $ResultsDir/Metrics/$FNAME.diff
+			correct_n=$((correct_n+1))
+		fi
+
+		# Add record of evaluating the file.
+		echo "$nextFile, $CORRECT" >> $ResultsDir/FileResults.csv
+	else
+		echo "    Already processed: $file"
+	fi
+
+	INDEX=$((INDEX+1))
+done
+echo "$correct_n" >> $ResultsDir/Correct_n.txt
+
+# # Compile all metrics/diffs,
+# # and then compute metric summaries and confusion matrices.
+# cat $ResultsDir/Metrics/*.csv > $ResultsDir/$BNAME.csv
+# ALLDIFFS=`ls $ResultsDir/Metrics | grep .diff`
+# if [ -n "$ALLDIFFS" ]
+# then
+# 	cat $ResultsDir/Metrics/*.diff > $ResultsDir/$BNAME.diff
+# else
+# 	touch $ResultsDir/00_NoErrors
+# 	touch $ResultsDir/$BNAME.diff  # empty - no errors.
+# fi
+
+# python3 $LgEvalDir/src/sumMetric.py "$LABEL_STRING" $ResultsDir/$BNAME.csv > $ResultsDir/Summary.txt
+# python3 $LgEvalDir/src/sumDiff.py $ResultsDir/$BNAME.diff $ResultsDir/labelsGT.txt html > $ResultsDir/ConfusionMatrices.html
+# python3 $LgEvalDir/src/sumDiff.py $ResultsDir/$BNAME.diff $ResultsDir/labelsGT.txt  > $ResultsDir/ConfusionMatrices.csv
+
+# # RZ Oct. 2014: Create spreadsheet pairing file names with metrics.
+# # Clean up raw metric data to make the file smaller and simpler.
+# # Use awk and head to select every odd (headers) and even (data) columns,
+# # Concatenate one header row with data contents.
+# awk -F',' '{ for (i=1;i<=NF;i+=2) printf ("%s%c", $i, i + 2 <= NF ? "," : "\n")}' $ResultsDir/$BNAME.csv > $ResultsDir/Headers.csv
+
+# # Obtain first row for data labels; insert a "File" label in the first column.
+# head -n 1 $ResultsDir/Headers.csv > $ResultsDir/HeaderRow.csv
+# HEAD=`cat $ResultsDir/HeaderRow.csv`
+# echo "File,Result,$HEAD" > $ResultsDir/HeaderRow.csv
+
+# awk -F',' '{ for (i=2;i<=NF;i+=2) printf ("%s%c", $i, i + 2 <= NF ? "," : "\n")}' $ResultsDir/$BNAME.csv > $ResultsDir/Data.csv
+
+# # Combine file names with raw data metrics, then add header labels.
+# paste -d , $ResultsDir/FileResults.csv $ResultsDir/Data.csv > $ResultsDir/DataNew.csv
+# cat $ResultsDir/HeaderRow.csv $ResultsDir/DataNew.csv > $ResultsDir/FileMetrics.csv
+
+# # Clean up
+# rm -f $ResultsDir/Headers.csv $ResultsDir/HeaderRow.csv $ResultsDir/Data.csv
+# rm -f $ResultsDir/DataNew.csv $ResultsDir/FileResults.csv
+
+# # Remove the compiled metrics and differences, but leave the individual metric/diff
+# # files in Metrics to support debugging for malformed or missing files, etc.
+# rm -f $ResultsDir/$BNAME.csv $ResultsDir/$BNAME.diff
+
+# echo "done."
+

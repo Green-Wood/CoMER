@@ -1,0 +1,2130 @@
+diff -r src_py2/compareTools.py src/compareTools.py
+37c37
+< 		if x in synonym.keys():
+---
+> 		if x in list(synonym):
+diff -r src_py2/compileLabels.py src/compileLabels.py
+35,36c35,36
+< 		for node in lg.nlabels.keys():
+< 			for label in lg.nlabels[ node ].keys():
+---
+> 		for node in list(lg.nlabels):
+> 			for label in list(lg.nlabels[ node ]):
+39,40c39,40
+< 		for edge in lg.elabels.keys():
+< 			for label in lg.elabels[ edge ].keys():
+---
+> 		for edge in list(lg.elabels):
+> 			for label in list(lg.elabels[ edge ]):
+diff -r src_py2/confHists.py src/confHists.py
+53,54c53,54
+< 					er.rednodes = set(er.nodes.keys()) & nodeClassErr
+< 					er.rededges = set(er.edges.keys()) & edgeErr
+---
+> 					er.rednodes = set(list(er.nodes)) & nodeClassErr
+> 					er.rededges = set(list(er.edges)) & edgeErr
+59,60c59,60
+< 					er.rednodes = set(er.nodes.keys()) & nodeClassErr
+< 					er.rededges = set(er.edges.keys()) & edgeErr
+---
+> 					er.rednodes = set(list(er.nodes)) & nodeClassErr
+> 					er.rededges = set(list(er.edges)) & edgeErr
+diff -r src_py2/evallg.py src/evallg.py
+75,76c75,76
+< 					er.rednodes = set(er.nodes.keys()) & nodeClassErr
+< 					er.rededges = set(er.edges.keys()) & edgeErr
+---
+> 					er.rednodes = set(list(er.nodes)) & nodeClassErr
+> 					er.rededges = set(list(er.edges)) & edgeErr
+80,81c80,81
+< 					er.rednodes = set(er.nodes.keys()) & nodeClassErr
+< 					er.rededges = set(er.edges.keys()) & edgeErr
+---
+> 					er.rednodes = set(list(er.nodes)) & nodeClassErr
+> 					er.rededges = set(list(er.edges)) & edgeErr
+Only in src/: __init__.py
+diff -r src_py2/lg2dot.py src/lg2dot.py
+26,30c26,29
+<         # Make sure to use underscore to represent empty label lists.
+<         if len(Labels) < 1:
+<             outString = '_'
+< 	
+<         return(outString)
+---
+> 	# Make sure to use underscore to represent empty label lists.
+> 	if len(Labels) < 1:
+> 		outString = '_'
+> 	return(outString)
+41,42c40,41
+< 		if idName in lg.nlabels.keys():
+< 			for nextLabel in lg.nlabels[ idName ].keys():
+---
+> 		if idName in list(lg.nlabels):
+> 			for nextLabel in list(lg.nlabels[ idName ]):
+58,59c57,58
+< 			if (pid, cid) in lg.elabels.keys():
+< 				for label in lg.elabels[ (pid, cid) ].keys():
+---
+> 			if (pid, cid) in list(lg.elabels):
+> 				for label in list(lg.elabels[ (pid, cid) ]):
+75,76c74,75
+< 	for primitive in sorted(list(lg.nlabels.keys())):
+< 		Rlabel = createLabelList(lg.nlabels[primitive].keys())
+---
+> 	for primitive in sorted(list(list(lg.nlabels))):
+> 		Rlabel = createLabelList(list(lg.nlabels[primitive]))
+81c80
+<                 for (id,_,RlabelList) in nodeDiffList:
+---
+> 		for (id,_,RlabelList) in nodeDiffList:
+86,88c85,87
+<                 Estring = ""
+<                 if len(Elabel) > 0:
+<                     Estring = "\n( " + createLabelList(Elabel) + " )"
+---
+> 		Estring = ""
+> 		if len(Elabel) > 0:
+> 			Estring = "\n( " + createLabelList(Elabel) + " )"
+100c99
+< 	for primitive in sorted(list(lg.nlabels.keys())):
+---
+> 	for primitive in sorted(list(list(lg.nlabels))):
+104c103
+< 		Llabel = createLabelList(lg.nlabels[primitive].keys())
+---
+> 		Llabel = createLabelList(list(lg.nlabels[primitive]))
+107,112c106,110
+<                 if not lg2 == None:
+<                     Rlabel = createLabelList(lg2.nlabels[primitive].keys())
+< 		
+<                 color = 'blue'
+<                 if not Llabel == Rlabel:
+< 		    color = "red,penwidth=2.0,fontsize=14,fontcolor=red"
+---
+> 		if not lg2 == None:
+> 			Rlabel = createLabelList(list(lg2.nlabels[primitive]))
+> 		color = 'blue'
+> 		if not Llabel == Rlabel:
+> 			color = "red,penwidth=2.0,fontsize=14,fontcolor=red"
+136c134
+< 	for cid in sorted(list(primitiveSegmentMap.keys())):
+---
+> 	for cid in sorted(list(list(primitiveSegmentMap))):
+144c142
+< 				if cid in sdiffs.keys():
+---
+> 				if cid in list(sdiffs):
+153c151
+< 		if cid in sdiffs.keys():
+---
+> 		if cid in list(sdiffs):
+168c166
+< 	edges = lg.elabels.keys()
+---
+> 	edges = list(lg.elabels)
+189c187
+<                 Elabel = []
+---
+> 		Elabel = []
+196,198c194,196
+<                 Estring = ""
+<                 if len(Elabel) > 0:
+<                     Estring = "\\n( " + createLabelList(Elabel) + " )"
+---
+> 		Estring = ""
+> 		if len(Elabel) > 0:
+> 			Estring = "\\n( " + createLabelList(Elabel) + " )"
+218c216
+<         """Produce a .dot string representation for a bipartite graph."""
+---
+> 	"""Produce a .dot string representation for a bipartite graph."""
+223c221
+< 	edges = lg.elabels.keys()
+---
+> 	edges = list(lg.elabels)
+233,237c231,234
+< 				otherLabel += getFirstElements(oelabel)
+<                 
+<                 otherString = ""
+<                 if len(otherLabel) > 0:
+<                     otherString = "\n( " + createLabelList(otherLabel) + " )"
+---
+> 				otherLabel += getFirstElements(oelabel)  
+> 		otherString = ""
+> 		if len(otherLabel) > 0:
+> 			otherString = "\n( " + createLabelList(otherLabel) + " )"
+259c256
+< 	for segmentId in sorted(list(segPrimMap.keys())):
+---
+> 	for segmentId in sorted(list(list(segPrimMap))):
+294c291
+< 	for edge in segRelDiffs.keys():
+---
+> 	for edge in list(segRelDiffs):
+303c300
+< 		elabel = createLabelList(lg.elabels[ (parentPrim, childPrim) ].keys())
+---
+> 		elabel = createLabelList(list(lg.elabels[ (parentPrim, childPrim) ]))
+315c312
+< 		if edge in segRelDiffs.keys() or \
+---
+> 		if edge in list(segRelDiffs) or \
+322c319
+< 		elabel = createLabelList(lg.elabels[ (parentPrim, childPrim) ].keys())
+---
+> 		elabel = createLabelList(list(lg.elabels[ (parentPrim, childPrim) ]))
+355,356c352,353
+<                 print("")
+<                 print("    The object graphs (options d and t) only show objects and edges defined in")
+---
+> 		print("")
+> 		print("    The object graphs (options d and t) only show objects and edges defined in")
+360c357
+<                 print("\n    VISUALIZING DIFFERENCES BETWEEN GRAPHS\n")
+---
+> 		print("\n    VISUALIZING DIFFERENCES BETWEEN GRAPHS\n")
+366c363
+<                 print("\n    REPRESENTATION\n")
+---
+> 		print("\n    REPRESENTATION\n")
+372,374c369,371
+<                 print("    bidirectional edges between primitives in the same object, which")
+<                 print("    have the same label as the object.")
+<                 print("")
+---
+> 		print("    bidirectional edges between primitives in the same object, which")
+> 		print("    have the same label as the object.")
+> 		print("")
+413c410
+< 			# Difference DAG over objects.         
+---
+> 			# Difference DAG over objects.
+diff -r src_py2/lg2txt.py src/lg2txt.py
+95,96c95,96
+< 	#print(structureMap.keys())
+< 	if key in structureMap.keys():
+---
+> 	#print(list(structureMap))
+> 	if key in list(structureMap):
+121c121
+< 	elif anyKey in structureMap.keys():
+---
+> 	elif anyKey in list(structureMap):
+159c159
+< 	if relation in structureMap.keys():
+---
+> 	if relation in list(structureMap):
+234c234
+< 						not relation in structureMap.keys() and not relation == 'I' and not relation == 'Inside' ):
+---
+> 						not relation in list(structureMap) and not relation == 'I' and not relation == 'Inside' ):
+Only in src_py2/: lgdot_test
+diff -r src_py2/lgfilter.py src/lgfilter.py
+49c49
+< 	for segment in segmentPrimitiveMap.keys():
+---
+> 	for segment in list(segmentPrimitiveMap):
+54c54
+< 			segLabel = str(lg.nlabels[stroke].keys()[0])
+---
+> 			segLabel = str(list(lg.nlabels[stroke])[0])
+74c74
+< 		objectList += '# ' + str(lg.elabels[(p1,p2)].keys()[0]) + ' ' + list1 + ':: ' + list2 + '\n'
+---
+> 		objectList += '# ' + str(list(lg.elabels[(p1,p2)])[0]) + ' ' + list1 + ':: ' + list2 + '\n'
+diff -r src_py2/lgio.py src/lgio.py
+47c47
+< 	for sdiff in sdiffs.keys():
+---
+> 	for sdiff in list(sdiffs):
+diff -r src_py2/lg.py src/lg.py
+61c61
+< 			for nid in nodeLabels.keys():
+---
+> 			for nid in list(nodeLabels):
+66c66
+< 				for label in nodeLabels[nid].keys():
+---
+> 				for label in list(nodeLabels[nid]):
+80c80
+< 			for eid in edgeLabels.keys():
+---
+> 			for eid in list(edgeLabels):
+86c86
+< 				for label in edgeLabels[eid].keys():
+---
+> 				for label in list(edgeLabels[eid]):
+124c124
+< 						if nid in self.nlabels.keys():
+---
+> 						if nid in list(self.nlabels):
+160c160
+< 							if nid in self.nlabels.keys():
+---
+> 							if nid in list(self.nlabels):
+172c172
+< 						elif primPair in self.elabels.keys():
+---
+> 						elif primPair in list(self.elabels):
+184c184
+< 									elabel =  list(self.nlabels[ primPair[0]].keys())[0]
+---
+> 									elabel =  list(self.nlabels[ primPair[0]])[0]
+218c218
+< 									elabel = list(self.nlabels[ primPair[0]].keys())[0]
+---
+> 									elabel = list(self.nlabels[ primPair[0]])[0]
+251c251
+< 							if nid in self.nlabels.keys():
+---
+> 							if nid in list(self.nlabels):
+271c271
+< 									if primPair in self.elabels.keys():
+---
+> 									if primPair in list(self.elabels):
+311c311
+< 										if primPair in self.elabels.keys():
+---
+> 										if primPair in list(self.elabels):
+338c338
+< 		for elabel in self.elabels.keys():
+---
+> 		for elabel in list(self.elabels):
+342c342
+< 			if not nid1 in self.nlabels.keys():
+---
+> 			if not nid1 in list(self.nlabels):
+346c346
+< 			if not nid2 in self.nlabels.keys():
+---
+> 			if not nid2 in list(self.nlabels):
+388,391c388,391
+< 		for nid in self.nlabels.keys():
+< 			nlabelcount = nlabelcount + len(self.nlabels[nid].keys())
+< 		for eid in self.elabels.keys():
+< 			elabelcount = elabelcount + len(self.elabels[eid].keys())
+---
+> 		for nid in list(self.nlabels):
+> 			nlabelcount = nlabelcount + len(list(self.nlabels[nid]))
+> 		for eid in list(self.elabels):
+> 			elabelcount = elabelcount + len(list(self.elabels[eid]))
+393c393
+< 		return 'Nodes: ' + str(len(self.nlabels.keys())) \
+---
+> 		return 'Nodes: ' + str(len(list(self.nlabels))) \
+395c395
+< 				+ ')   Edges: ' + str(len(self.elabels.keys())) \
+---
+> 				+ ')   Edges: ' + str(len(list(self.elabels))) \
+414c414
+< 		outputString += "# " + str(len(segmentPrimitiveMap.keys())) + " Objects"
+---
+> 		outputString += "# " + str(len(list(segmentPrimitiveMap))) + " Objects"
+419c419
+< 		for objectId in sorted( segmentPrimitiveMap.keys() ):
+---
+> 		for objectId in sorted( list(segmentPrimitiveMap) ):
+429c429
+< 		outputString += "# " + str( len(segmentEdges.keys()) ) + " Relationships (Pairs of Objects)"
+---
+> 		outputString += "# " + str( len(list(segmentEdges)) ) + " Relationships (Pairs of Objects)"
+434,435c434,435
+< 		for (parentObj, childObj) in sorted( segmentEdges.keys() ):
+< 			for relationship in sorted( segmentEdges[ (parentObj, childObj) ].keys() ):
+---
+> 		for (parentObj, childObj) in sorted( list(segmentEdges) ):
+> 			for relationship in sorted( list(segmentEdges[ (parentObj, childObj) ]) ):
+449c449
+< 		for nkey in self.nlabels.keys():
+---
+> 		for nkey in list(self.nlabels):
+451c451
+< 			for nlabel in nodeLabels.keys():
+---
+> 			for nlabel in list(nodeLabels):
+456c456
+< 		for npair in self.elabels.keys():
+---
+> 		for npair in list(self.elabels):
+458c458
+< 			for elabel in edgeLabels.keys():
+---
+> 			for elabel in list(edgeLabels):
+505,506c505,506
+< 		for (n1, n2) in self.elabels.keys():
+< 			commonLabels = set(self.nlabels[n1].keys()).intersection(self.nlabels[n2].keys(),self.elabels[(n1,n2)].keys())
+---
+> 		for (n1, n2) in list(self.elabels):
+> 			commonLabels = set(list(self.nlabels[n1])).intersection(list(self.nlabels[n2]),list(self.elabels[(n1,n2)]))
+526c526
+< 			for lab in segments.keys():
+---
+> 			for lab in list(segments):
+555c555
+< 			possibleRelationLabels = set(elabs.keys()).difference(self.nlabels[n1].keys(),self.nlabels[n2].keys())
+---
+> 			possibleRelationLabels = set(list(elabs)).difference(list(self.nlabels[n1]),list(self.nlabels[n2]))
+567c567
+< 										theRelationLab &= set(self.elabels[(p1,p2)].keys())
+---
+> 										theRelationLab &= set(list(self.elabels[(p1,p2)]))
+615,616c615,616
+< 		allNodes = set(ps1.keys())
+< 		assert allNodes == set(ps2.keys())
+---
+> 		allNodes = set(list(ps1))
+> 		assert allNodes == set(list(ps2))
+628c628
+< 		for primitive in ps1.keys():
+---
+> 		for primitive in list(ps1):
+636,637c636,637
+< 					if p != primitive and (p,primitive) in self.elabels.keys() and \
+< 							lab1 in self.elabels[ (p,primitive) ].keys():
+---
+> 					if p != primitive and (p,primitive) in list(self.elabels) and \
+> 							lab1 in list(self.elabels[ (p,primitive) ]):
+646,647c646,647
+< 					if p != primitive and (p,primitive) in lg2.elabels.keys() and \
+< 							lab2 in lg2.elabels[ (p, primitive) ].keys():
+---
+> 					if p != primitive and (p,primitive) in list(lg2.elabels) and \
+> 							lab2 in list(lg2.elabels[ (p, primitive) ]):
+658c658
+< 			commonPrim = set(edgeFromP1.keys()).intersection(edgeFromP2.keys())
+---
+> 			commonPrim = set(list(edgeFromP1)).intersection(list(edgeFromP2))
+666c666
+< 					if l1 in self.nlabels[p].keys() and l2 in lg2.nlabels[p].keys():
+---
+> 					if l1 in list(self.nlabels[p]) and l2 in list(lg2.nlabels[p]):
+679c679
+< 			for p in (set(edgeFromP1.keys()) - commonPrim):
+---
+> 			for p in (set(list(edgeFromP1)) - commonPrim):
+684c684
+< 			for p in (set(edgeFromP2.keys()) - commonPrim):
+---
+> 			for p in (set(list(edgeFromP2)) - commonPrim):
+705c705
+< 		for ObjID in sp2.keys():
+---
+> 		for ObjID in list(sp2):
+717c717
+< 		for ObjID in sp1.keys():
+---
+> 		for ObjID in list(sp1):
+724c724
+< 			if primitiveTupleList in targets.keys() \
+---
+> 			if primitiveTupleList in list(targets) \
+752c752
+< 		for thisPair in sre1.keys():
+---
+> 		for thisPair in list(sre1):
+765c765
+< 			if primitiveTupleListParent in targetObjIds.keys():
+---
+> 			if primitiveTupleListParent in list(targetObjIds):
+767c767
+< 			if primitiveTupleListChild in targetObjIds.keys():
+---
+> 			if primitiveTupleListChild in list(targetObjIds):
+774c774
+< 			elif not ( targetObjNameParent, targetObjNameChild ) in sre2.keys():
+---
+> 			elif not ( targetObjNameParent, targetObjNameChild ) in list(sre2):
+780,781c780,781
+< 				if not sorted( sre1[ thisPair ].keys() ) == \
+< 						sorted( sre2[ ( targetObjNameParent, targetObjNameChild )].keys() ):
+---
+> 				if not sorted( list(sre1[ thisPair ]) ) == \
+> 						sorted( list(sre2[ ( targetObjNameParent, targetObjNameChild )]) ):
+804,805c804,805
+< 		nLg2Objs = len(sp2orig.keys()) 
+< 		nLg1Objs = len(sp1orig.keys()) 
+---
+> 		nLg2Objs = len(list(sp2orig)) 
+> 		nLg1Objs = len(list(sp1orig)) 
+809c809
+< 		nLg1ObjsWithAbsent = len(sp1.keys())
+---
+> 		nLg1ObjsWithAbsent = len(list(sp1))
+820,823c820,823
+< 		hasCorrectRelationLocations = 1 if correctSegRelLocations == len(sre1.keys()) and \
+< 				correctSegRelLocations == len(sre2.keys()) else 0
+< 		hasCorrectRelationsAndLabels =  1 if correctSegRels == len(sre1.keys()) and \
+< 				correctSegRels == len(sre2.keys()) else 0
+---
+> 		hasCorrectRelationLocations = 1 if correctSegRelLocations == len(list(sre1)) and \
+> 				correctSegRelLocations == len(list(sre2)) else 0
+> 		hasCorrectRelationsAndLabels =  1 if correctSegRels == len(list(sre1)) and \
+> 				correctSegRels == len(list(sre2)) else 0
+834c834
+< 			("dSegRelEdges", len(sre1.keys())),
+---
+> 			("dSegRelEdges", len(list(sre1))),
+868c868
+< 		allNodes = set(lg2.nlabels.keys()).union(self.nlabels.keys())
+---
+> 		allNodes = set(list(lg2.nlabels)).union(list(self.nlabels))
+886,887c886,887
+< 		for nid in allNodes: #self.nlabels.keys():
+< 			(cost,errL) = self.cmpNodes(self.nlabels[nid].keys(),lg2.nlabels[nid].keys())
+---
+> 		for nid in allNodes: #list(self.nlabels):
+> 			(cost,errL) = self.cmpNodes(list(self.nlabels[nid]),list(lg2.nlabels[nid]))
+905c905
+< 			for npair in graph.elabels.keys():
+---
+> 			for npair in list(graph.elabels):
+908c908
+< 					(cost,errL) = self.cmpEdges(graph.elabels[ npair ].keys(),['_'])
+---
+> 					(cost,errL) = self.cmpEdges(list(graph.elabels[ npair ]),['_'])
+930,932c930,932
+< 		for npair in self.elabels.keys():
+< 			if npair in lg2.elabels.keys():
+< 				(cost,errL) = self.cmpEdges(self.elabels[npair].keys(),lg2.elabels[npair].keys())
+---
+> 		for npair in list(self.elabels):
+> 			if npair in list(lg2.elabels):
+> 				(cost,errL) = self.cmpEdges(list(self.elabels[npair]),list(lg2.elabels[npair]))
+956c956
+< 		for node in segDiffs.keys():
+---
+> 		for node in list(segDiffs):
+976c976
+< 		if len(self.nlabels.keys()) == 1 and \
+---
+> 		if len(list(self.nlabels)) == 1 and \
+1019c1019
+< 		rootNodes = set(segmentPrimitiveMap.keys())
+---
+> 		rootNodes = set(list(segmentPrimitiveMap))
+1021c1021
+< 			if not child in nodeParentMap.keys():
+---
+> 			if not child in list(nodeParentMap):
+1027c1027
+< 			if not parent in nodeChildMap.keys():
+---
+> 			if not parent in list(nodeChildMap):
+1041c1041
+< 			if nextNode in nodeChildMap.keys():
+---
+> 			if nextNode in list(nodeChildMap):
+1081,1082c1081,1082
+< 		selfNodes = set(self.nlabels.keys())
+< 		lg2Nodes = set(lg2.nlabels.keys())
+---
+> 		selfNodes = set(list(self.nlabels))
+> 		lg2Nodes = set(list(lg2.nlabels))
+1113,1114c1113,1114
+< 		for node1 in self.nlabels.keys():
+< 			for node2 in self.nlabels.keys():
+---
+> 		for node1 in list(self.nlabels):
+> 			for node2 in list(self.nlabels):
+1116c1116
+< 					if not (node1, node2) in self.elabels.keys():
+---
+> 					if not (node1, node2) in list(self.elabels):
+1123,1124c1123,1124
+< 		for edge in self.elabels.keys():
+< 			if set( self.elabels[ edge ].keys() ) == \
+---
+> 		for edge in list(self.elabels):
+> 			if set( list(self.elabels[ edge ]) ) == \
+1132c1132
+< 		for edge in self.hiddenEdges.keys():
+---
+> 		for edge in list(self.hiddenEdges):
+1174c1174
+< 		allNodes = set(gt.nlabels.keys()).union(self.nlabels.keys())
+---
+> 		allNodes = set(list(gt.nlabels)).union(list(self.nlabels))
+1178c1178
+< 			(cost,_) = self.cmpNodes(self.nlabels[nid].keys(),gt.nlabels[nid].keys())
+---
+> 			(cost,_) = self.cmpNodes(list(self.nlabels[nid]),list(gt.nlabels[nid]))
+1186c1186
+< 			for npair in graph.elabels.keys():
+---
+> 			for npair in list(graph.elabels):
+1189c1189
+< 					(cost,errL) = self.cmpEdges(graph.elabels[npair].keys(),['_'])
+---
+> 					(cost,errL) = self.cmpEdges(list(graph.elabels[npair]),['_'])
+1191c1191
+< 					(cost,errL) = self.cmpEdges(graph.elabels[npair].keys(),oGraph.elabels[npair].keys())
+---
+> 					(cost,errL) = self.cmpEdges(list(graph.elabels[npair]),list(oGraph.elabels[npair]))
+1205c1205
+< 		for object in self.nlabels.keys():
+---
+> 		for object in list(self.nlabels):
+1217c1217
+< 		for edge in self.elabels.keys():
+---
+> 		for edge in list(self.elabels):
+1234c1234
+< 		for node in self.nlabels.keys():
+---
+> 		for node in list(self.nlabels):
+1245c1245
+< 		for edge in self.elabels.keys():
+---
+> 		for edge in list(self.elabels):
+1264c1264
+< 		for n in self.nlabels.keys():
+---
+> 		for n in list(self.nlabels):
+1267c1267
+< 				yield smallGraph.SmallGraph([(n, "".join(self.nlabels[n].keys()))], [])
+---
+> 				yield smallGraph.SmallGraph([(n, "".join(list(self.nlabels[n])))], [])
+1274c1274
+< 				le = getEdgesToNeighbours(sub,self.elabels.keys())
+---
+> 				le = getEdgesToNeighbours(sub,list(self.elabels))
+1295,1297c1295,1297
+< 			sg.nodes[n] = self.nlabels[n].keys()
+< 		for e in getEdgesBetweenThem(nodelist,self.elabels.keys()):
+< 			sg.edges[e] = self.elabels[e].keys()
+---
+> 			sg.nodes[n] = list(self.nlabels[n])
+> 		for e in getEdgesBetweenThem(nodelist,list(self.elabels)):
+> 			sg.edges[e] = list(self.elabels[e])
+1306,1307c1306,1307
+< 				sg1 = self.getSubSmallGraph(struc.nodes.keys())
+< 				if(not (struc == sg1)):
+---
+> 				sg1 = self.getSubSmallGraph(list(struc.nodes))
+> 				if(not (struc == sg1)):		
+1326c1326
+< 		for primitive in psGT.keys():
+---
+> 		for primitive in list(psGT):
+1333,1334c1333,1334
+< 			obj1Id = ps1[primitive][ ps1[primitive].keys()[0] ]
+< 			obj2Id = psGT[primitive][ psGT[primitive].keys()[0] ]
+---
+> 			obj1Id = ps1[primitive][ list(ps1[primitive])[0] ]
+> 			obj2Id = psGT[primitive][ list(psGT[primitive])[0] ]
+1352c1352
+< 			elif len(self.nlabels.keys()) > 1:
+---
+> 			elif len(list(self.nlabels)) > 1:
+1364c1364
+< 			(cost, diff) = self.cmpNodes(self.nlabels[ firstPrim ].keys(),lgGT.nlabels[ firstPrim ].keys())
+---
+> 			(cost, diff) = self.cmpNodes(list(self.nlabels[ firstPrim ]),list(lgGT.nlabels[ firstPrim ]))
+1366,1367c1366,1367
+< 			segId1 = ps1[firstPrim][ ps1[ firstPrim ].keys()[0] ]
+< 			segId2 = psGT[firstPrim][ psGT[ firstPrim ].keys()[0] ]
+---
+> 			segId1 = ps1[firstPrim][ list(ps1[ firstPrim ])[0] ]
+> 			segId2 = psGT[firstPrim][ list(psGT[ firstPrim ])[0] ]
+1384c1384
+< 		for thisPair in sreGT.keys():
+---
+> 		for thisPair in list(sreGT):
+1398,1399c1398,1399
+< 					if not (parentId, childId) in self.elabels.keys() or \
+< 					   (0,[]) != self.cmpEdges(self.elabels[ (parentId, childId) ].keys(), lgGT.elabels[ (parentId, childId) ].keys()):
+---
+> 					if not (parentId, childId) in list(self.elabels) or \
+> 					   (0,[]) != self.cmpEdges(list(self.elabels[ (parentId, childId) ]), list(lgGT.elabels[ (parentId, childId) ])):
+1407c1407
+< 			if len(set(smg.nodes.keys()).intersection(allSegWithErr)) > 0:
+---
+> 			if len(set(list(smg.nodes)).intersection(allSegWithErr)) > 0:
+1409c1409
+< 			for pair in smg.edges.keys():
+---
+> 			for pair in list(smg.edges):
+1416c1416
+< 				for s in smg.nodes.keys():
+---
+> 				for s in list(smg.nodes):
+1437,1438c1437,1438
+< 		if label in llist1.keys() and \
+< 				label in llist2.keys():
+---
+> 		if label in list(llist1) and \
+> 				label in list(llist2):
+1442c1442
+< 		elif label in llist2.keys():
+---
+> 		elif label in list(llist2):
+1455,1456c1455,1456
+< 	objects1 = map1.keys()
+< 	objects2 = map2.keys()
+---
+> 	objects1 = list(map1)
+> 	objects2 = list(map2)
+Only in src_py2/: Results_t1
+Only in src_py2/: Results_t1_after_ABSENT_check
+Only in src_py2/: Results_t1_init
+diff -r src_py2/smallGraph.py src/smallGraph.py
+52c52
+< 		for k in self.nodes.keys():
+---
+> 		for k in list(self.nodes):
+54c54
+< 		for (e1,e2) in self.edges.keys():
+---
+> 		for (e1,e2) in list(self.edges):
+60,61c60,61
+< 		out = str(len(self.nodes.keys()))
+< 		for k in self.nodes.keys():
+---
+> 		out = str(len(list(self.nodes)))
+> 		for k in list(self.nodes):
+63,64c63,64
+< 		out = out + ","+str(len(self.edges.keys()))
+< 		for (e1,e2) in self.edges.keys():
+---
+> 		out = out + ","+str(len(list(self.edges)))
+> 		for (e1,e2) in list(self.edges):
+81,82c81,82
+< 		if(len(self.nodes.keys()) != len(osg.nodes.keys())):# or \ # problem with '_' edges which exist but should be ignored
+< 			#len(self.edges.keys()) != len(osg.edges.keys())):
+---
+> 		if(len(list(self.nodes)) != len(list(osg.nodes))):# or \ # problem with '_' edges which exist but should be ignored
+> 			#len(list(self.edges)) != len(list(osg.edges))):
+96c96
+< 		for m in itertools.permutations(self.nodes.keys()):
+---
+> 		for m in itertools.permutations(list(self.nodes)):
+105c105
+< 		mynodes = self.nodes.keys()
+---
+> 		mynodes = list(self.nodes)
+107c107
+< 		onodes = osg.nodes.keys()		
+---
+> 		onodes = list(osg.nodes)		
+127c127
+< 			if not (oa,ob) in osg.edges.keys():
+---
+> 			if not (oa,ob) in list(osg.edges):
+174,175c174,175
+< 		for (a,b) in self.edges.keys():
+< 			if a in parentCount.keys():
+---
+> 		for (a,b) in list(self.edges):
+> 			if a in list(parentCount):
+180c180
+< 			if b in childCount.keys():
+---
+> 			if b in list(childCount):
+189c189
+< 		nodes = self.nodes.keys()
+---
+> 		nodes = list(self.nodes)
+193c193
+< 		for selfNode in self.nodes.keys():
+---
+> 		for selfNode in list(self.nodes):
+197c197
+< 		#for k in self.nodes.keys():
+---
+> 		#for k in list(self.nodes):
+220c220
+< 		for (a,b) in self.edges.keys():
+---
+> 		for (a,b) in list(self.edges):
+254c254
+< 	print line
+---
+> 	print (line)
+258c258
+< 	print "Are they Iso (Y) : " + (str(sg == sg2))
+---
+> 	print ("Are they Iso (Y) : " + (str(sg == sg2)))
+260,261c260,261
+< 	print "Add an edge (2,3,R) on right side "
+< 	print "Are they Iso (N) : " + (str(sg == sg2))
+---
+> 	print ("Add an edge (2,3,R) on right side ")
+> 	print ("Are they Iso (N) : " + (str(sg == sg2)))
+263,265c263,265
+< 	print "Add an edge (2,3,U) on left side "
+< 	print "Are they Iso (N) : " + (str(sg == sg2))
+< 	print "change edge (2,3) to R on left side "
+---
+> 	print ("Add an edge (2,3,U) on left side ")
+> 	print ("Are they Iso (N) : " + (str(sg == sg2)))
+> 	print ("change edge (2,3) to R on left side ")
+267,268c267,268
+< 	print "Are they Iso (Y) : " + (str(sg == sg2))
+< 	print "New graph : "
+---
+> 	print ("Are they Iso (Y) : " + (str(sg == sg2)))
+> 	print ("New graph : ")
+271c271
+< 	print "Are they Iso (N) : " + (str(sg.iso(sg2)))
+---
+> 	print ("Are they Iso (N) : " + (str(sg.iso(sg2))))
+273,274c273,274
+< 	print "Add an edge (2,1,U) on right side "
+< 	print "Are they Iso (N) : " + (str(sg.iso(sg2))) + (str(sg2.iso(sg)))
+---
+> 	print ("Add an edge (2,1,U) on right side ")
+> 	print ("Are they Iso (N) : " + (str(sg.iso(sg2))) + (str(sg2.iso(sg))))
+276,278c276,278
+< 	print "Change edge (2,1)  to R on right side "
+< 	print "Are they Iso (Y) : " + (str(sg.iso(sg2)))+ (str(sg2.iso(sg)))
+< 	print " SVG test : "
+---
+> 	print ("Change edge (2,1)  to R on right side ")
+> 	print ("Are they Iso (Y) : " + (str(sg.iso(sg2)))+ (str(sg2.iso(sg))))
+> 	print (" SVG test : ")
+280c280
+< 	print sg.toSVG()
+---
+> 	print (sg.toSVG())
+diff -r src_py2/SmGrConfMatrix.py src/SmGrConfMatrix.py
+67,68c67,68
+<         It can save a list of object by adding it as param in the 
+<         incr() function"""
+---
+> 	It can save a list of object by adding it as param in the 
+> 	incr() function"""
+72,76c72,76
+<                 self.list = []
+<                 if(len(args)> 0):
+<                         self.value = int(args[0])
+<                         if (len(args) == 2):
+<                                 self.list = args[1]
+---
+> 		self.list = []
+> 		if(len(args)> 0):
+> 			self.value = int(args[0])
+> 			if (len(args) == 2):
+> 				self.list = args[1]
+87,93c87,93
+<         def getList(self,unique = True):
+<                 if unique:
+<                         return list(set(self.list))
+<                 else:
+<                         return self.list
+<         def add(self,c2):
+<                 return Counter(self.value + c2.value, self.list + c2.list)
+---
+> 	def getList(self,unique = True):
+> 		if unique:
+> 			return list(set(self.list))
+> 		else:
+> 			return self.list
+> 	def add(self,c2):
+> 		return Counter(self.value + c2.value, self.list + c2.list)
+95,96c95,96
+<         def __add__(self,c2):
+<                 return Counter(self.value + c2.value, self.list + c2.list)
+---
+> 	def __add__(self,c2):
+> 		return Counter(self.value + c2.value, self.list + c2.list)
+114,115c114,115
+<                 """ add 1 (one) to the counter indexed by row and column
+<                 an object can be added in the attached list"""
+---
+> 		""" add 1 (one) to the counter indexed by row and column
+> 		an object can be added in the attached list"""
+159,163c159,163
+<                 """ write in the output stream the HTML code for this matrix and
+<                 return a Counter object with
+<                 the number of unshown errors and the list of hidden elements
+<                 The list of files with errors is prefixed with the param viewerURL
+<                 in the href attribute."""
+---
+> 		""" write in the output stream the HTML code for this matrix and
+> 		return a Counter object with
+> 		the number of unshown errors and the list of hidden elements
+> 		The list of files with errors is prefixed with the param viewerURL
+> 		in the href attribute."""
+168c168
+<         # first count all error for each sub structure
+---
+> 	# first count all error for each sub structure
+274,277c274,277
+<                 """ write in the output stream the HTML code for this matrix and
+<                 use the ConfMatrix.toHTML to write the submatrices.
+<                 The list of files with error is prefixed with the param viewerURL
+<                 in the href attribute. """
+---
+> 		""" write in the output stream the HTML code for this matrix and
+> 		use the ConfMatrix.toHTML to write the submatrices.
+> 		The list of files with error is prefixed with the param viewerURL
+> 		in the href attribute. """
+284c284
+<                 # first count all errors for each object (over the full sub matrix)
+---
+> 		# first count all errors for each object (over the full sub matrix)
+287,288c287,288
+<                         for (_,c) in errmat.mat.getIter():
+<                                 nbE = nbE + sum([v for (_,v) in c.getIter()], Counter())
+---
+> 			for (_,c) in errmat.mat.getIter():
+> 				nbE = nbE + sum([v for (_,v) in c.getIter()], Counter())
+diff -r src_py2/statlgdb.py src/statlgdb.py
+27c27
+< 	for thisPair in sre.keys():
+---
+> 	for thisPair in list(sre):
+44c44
+< 	print "Computing histograms for files in: " + str(listName)
+---
+> 	print ("Computing histograms for files in: " + str(listName))
+50c50
+< 			print lgfile
+---
+> 			print (lgfile)
+diff -r src_py2/sumDiff.py src/sumDiff.py
+18,19c18,19
+< 	#thanks to "defaultdict" there is nothing to do !
+< 	confM[id1][id2] += 1
+---
+>         #thanks to "defaultdict" there is nothing to do !
+>         confM[id1][id2] += 1
+22c22
+< 	# Header
+---
+>         # Header
+24,36c24,36
+< 	for k in sorted(allID):
+< 		output.write(",'"+str(k)+"'")
+< 	output.write("\n")
+< 	
+< 	# Data
+< 	for k1 in sorted(allID):
+< 		output.write("'"+str(k1)+"'")
+< 		for k2 in sorted(allID):
+< 			if not confM[k1][k2] == 0:
+< 				output.write(","+str(confM[k1][k2]))
+< 			else:
+< 				output.write(",")
+< 		output.write("\n")
+---
+>         for k in sorted(allID):
+>                output.write(",'"+str(k)+"'")
+>         output.write("\n")
+>         
+>         # Data
+>         for k1 in sorted(allID):
+>                 output.write("'"+str(k1)+"'")
+>                 for k2 in sorted(allID):
+>                         if not confM[k1][k2] == 0:
+>                                 output.write(","+str(confM[k1][k2]))
+>                         else:
+>                                 output.write(",")
+>                 output.write("\n")
+40,57c40,57
+< 	for k in sorted(allID):
+< 		output.write("<th>"+str(k)+"</th>")
+< 	output.write("</tr>\n")
+< 	for k1 in sorted(allID):
+< 		output.write("<tr><th>"+str(k1)+"</th>")
+< 		i = 0
+< 		for k2 in sorted(allID):
+< 			val = str(confM[k1][k2])
+< 			if val == "0":
+< 				val = ""
+< 			output.write('<td class="col_'+str(i)+'">'+val+"</td>")
+< 			i = i+1
+< 		output.write("<th>"+str(k1)+"</th></tr>\n")
+< 	output.write("<tr><th></th>")
+< 	for k in sorted(allID):
+< 		output.write("<th>"+str(k)+"</th>")
+< 	output.write("</tr>\n")		
+< 	output.write("</table>\n")
+---
+>         for k in sorted(allID):
+>                 output.write("<th>"+str(k)+"</th>")
+>         output.write("</tr>\n")
+>         for k1 in sorted(allID):
+>                 output.write("<tr><th>"+str(k1)+"</th>")
+>                 i = 0
+>                 for k2 in sorted(allID):
+>                         val = str(confM[k1][k2])
+>                         if val == "0":
+>                                 val = ""
+>                         output.write('<td class="col_'+str(i)+'">'+val+"</td>")
+>                         i = i+1
+>                 output.write("<th>"+str(k1)+"</th></tr>\n")
+>         output.write("<tr><th></th>")
+>         for k in sorted(allID):
+>                 output.write("<th>"+str(k)+"</th>")
+>         output.write("</tr>\n")                
+>         output.write("</table>\n")
+60,65c60,65
+< 	output.write('<head><style type="text/css">\n')
+< 	output.write('table { border-collapse:collapse;}\n')
+< 	output.write('p { line-height: 125%;}\n')
+< 	output.write('ul { line-height: 125%;}\n')
+< 	output.write('th{ text-align: right; padding: 4px;}\n')
+< 	output.write('td { text-align: right; border: 1px solid lightgray; padding: 4px; }\n')
+---
+>         output.write('<head><style type="text/css">\n')
+>         output.write('table { border-collapse:collapse;}\n')
+>         output.write('p { line-height: 125%;}\n')
+>         output.write('ul { line-height: 125%;}\n')
+>         output.write('th{ text-align: right; padding: 4px;}\n')
+>         output.write('td { text-align: right; border: 1px solid lightgray; padding: 4px; }\n')
+67,74c67,74
+<         #output.write('h2 {	color: red;}\n')
+< 	output.write('tr:hover{background-color:rgb(180,200,235);}\n ')
+< 	#i = 0
+< 	#for k1 in sorted(allID):
+< 	#	output.write('td.col_'+str(i)+':hover {\nbackground-color:rgb(100,100,255);\n}\n')
+< 	#	i = i+1
+< 	output.write('td:hover{background-color:yellow;} \n')
+< 	output.write('</style></head>\n')
+---
+>         #output.write('h2 {        color: red;}\n')
+>         output.write('tr:hover{background-color:rgb(180,200,235);}\n ')
+>         #i = 0
+>         #for k1 in sorted(allID):
+>         #        output.write('td.col_'+str(i)+':hover {\nbackground-color:rgb(100,100,255);\n}\n')
+>         #        i = i+1
+>         output.write('td:hover{background-color:yellow;} \n')
+>         output.write('</style></head>\n')
+77,259c77,259
+< 	if len(sys.argv) < 3:
+< 		print("Usage : [[python]] sumDiff.py <file1.diff> <labelsGT.txt> [HTML]\n")
+< 		print("	Merge results for each line in file1.diff into confusion Matrices.")
+< 		print("	By default output is sent to stdout in CSV format.")
+< 		print(" requires list of GT labels from labelsGT.txt.")
+< 		print("	[HTML] option changes output format to HTML.")
+< 		sys.exit(0)
+< 	# Read data from CSV file.
+< 	fileName = sys.argv[1]
+< 	labelFile = sys.argv[2]
+< 	try:
+< 		fileReader = csv.reader(open(fileName))
+< 	except:
+< 		sys.stderr.write('  !! IO Error (cannot open): ' + fileName)
+< 		sys.exit(1)
+< 
+< 	try:
+< 		labelfileReader = csv.reader(open(labelFile))
+< 	except:
+< 		sys.stderr.write('  !! IO Error (cannot open): ' + fileName)
+< 		sys.exit(1)
+< 
+< 	# Read for node and edge label sets.
+< 	readEdges = False
+< 	gtNodeLabels = set()
+< 	gtEdgeLabels = set()
+< 	for row in labelfileReader:
+< 		if len(row) == 0:
+< 			continue
+< 		
+< 		nextEntry = row[0].strip()
+< 		if nextEntry == 'NODE LABELS:':
+< 			continue
+< 		elif nextEntry == 'EDGE LABELS:':
+< 			readEdges = True
+< 		else:
+< 			if readEdges:
+< 				gtEdgeLabels.add(nextEntry)
+< 			else:
+< 				gtNodeLabels.add(nextEntry)
+< 
+< 	withHTML = False
+< 	if len(sys.argv) > 3:
+< 		withHTML = True
+< 	#confusion matrix = dict->dict->int
+< 	labelM = collections.defaultdict(collections.defaultdict(int).copy)
+< 	spatRelM = collections.defaultdict(collections.defaultdict(int).copy)
+< 	#segRelM = collections.defaultdict(collections.defaultdict(int).copy)
+< 	
+< 	allLabel = set()
+< 	allSR = set()
+< 	rowCount = -1
+< 
+< 	# Idenfity all confused symbol labels. We will use this to
+< 	# present relationship and segmentation confusions separately.
+< 	symbolLabels = set([])
+< 
+< 	nodeErrors = 0
+< 	allSegErrors = 0
+< 	allRelErrors = 0
+< 	fposMerge = 0
+< 	fnegMerge = 0
+< 
+< 	for row in fileReader:
+< 		rowCount += 1
+< 
+< 		# Skip blank lines.
+< 		if len(row) == 0:
+< 			continue
+< 
+< 		entryType = row[0].strip()
+< 		#skip file names
+< 		if entryType == "DIFF":
+< 			continue
+< 		#process node label errors
+< 		elif entryType == "*N":
+< 			# Capture all confused symbol (node) labels.
+< 			symbolLabels.add(row[2].strip())
+< 			symbolLabels.add(row[5].strip())
+< 
+< 			addOneError(labelM,row[2].strip(),row[5].strip())
+< 			allLabel.add(row[2].strip())
+< 			allLabel.add(row[5].strip())
+< 
+< 			nodeErrors += 1
+< 
+< 		#process link errors
+< 		elif entryType == "*E":
+< 			# DEBUG
+< 			if row[3].strip() == "1.0" or row[6].strip() == "1.0":
+< 				print("ERROR at row: " + str(rowCount) + " for file: " + fileName)
+< 				print(row)
+< 			elif not len(row) == 8:
+< 				print("INVALID LENGTH at row: " + str(rowCount) + " for file: " + fileName)
+< 				print(row)
+< 			
+< 			outputLabel = row[3].strip()
+< 			otherLabel = row[6].strip()
+< 			addOneError(spatRelM, outputLabel, otherLabel)
+< 
+< 			allSR.add(outputLabel)
+< 			allSR.add(otherLabel)
+< 
+< 		elif entryType == "*S":
+< 			# Currently ignore segmentation errors (i.e. object-level errors)
+< 			continue
+< 		
+< 	# Obtain the list of edge labels that do not appear on nodes.
+< 	# DEBUG: need to consult all GT labels in general case (handling '*' input).
+< 	mergeEdgeLabel = '*'
+< 	relOnlyLabels = allSR.difference(symbolLabels).difference(gtNodeLabels)
+< 	relMergeLabels = relOnlyLabels.union(mergeEdgeLabel)
+< 
+< 	# Create a modified confusion histogram where all symbol/segmentation
+< 	# edge confusions are treated as being of the same type.
+< 	ShortEdgeMatrix = collections.defaultdict(collections.defaultdict(int).copy)
+< 	for output in spatRelM.keys():
+< 		olabel = output
+< 		if not output in relOnlyLabels:
+< 			olabel = mergeEdgeLabel
+< 
+< 		for target in spatRelM[output].keys():
+< 			tlabel = target
+< 			if not target in relOnlyLabels:
+< 				tlabel = mergeEdgeLabel
+< 
+< 			# Increment the entry for the appropriate matrix.
+< 			ShortEdgeMatrix[olabel][tlabel] += spatRelM[output][target]
+< 
+< 			if not olabel == output or not tlabel == target:
+< 				allSegErrors += spatRelM[output][target]
+< 				if not olabel == output and tlabel == target:
+< 					fposMerge += spatRelM[output][target]
+< 				elif not tlabel == target and olabel == output:
+< 					fnegMerge += spatRelM[output][target]
+< 			else:
+< 				allRelErrors += spatRelM[output][target]
+< 
+< 	if withHTML:
+< 		sys.stdout.write('<html>')
+< 		writeCSS(sys.stdout, allLabel.union(allSR))
+< 		print("<font face=\"helvetica,arial,sans-serif\">")
+< 		print("<h2>LgEval Error Summary</h2>")
+< 		print(time.strftime("%c"))
+< 		print("<br>\n")
+< 		print("<b>File:</b> " + os.path.splitext( os.path.split(fileName)[1] )[0] + "<br>")
+< 		print("<p>All confusion matrices show only errors. In each matrix, output labels appear in the left column, and target labels in the top row.</p>")
+< 		print("<UL><LI><A href=\"#nodes\">Node Label Confusion Matrix</A> <LI> <A HREF=\"#ShortEdges\">Edge Label Confusion Matrix (short - ignoring object class confusions)<A> <LI> <A HREF=\"#Edges\">Edge Label Matrix (all labels)</A> </UL>")
+< 		print ("<hr>")
+< 		print ("<h2><A NAME=\"nodes\">Node Label Confusion Matrix</A></h2>")
+< 		print ("<p>"+str(len(allLabel)) + " unique node labels. " + str(nodeErrors) + " errors. ABSENT: a node missing in the output or target graph</p>")
+< 		affMatHTML(sys.stdout, allLabel, labelM)
+< 		print("<br><hr><br>")
+< 		print ("<h2><A NAME=\"ShortEdges\">Edge Label Confusion Matrix (Short)</A></h2>")
+< 		print ("<p>" + str(len(relOnlyLabels)) + " unique relationship labels + * representing grouping two nodes into an object (any type). " + str(allSegErrors + allRelErrors) + " errors <UL><LI>" + str(allSegErrors) + " Directed segmentation and node pair classification errors (entries in '*'-labeled row and column) <UL><LI><b>" + str(allSegErrors - fposMerge - fnegMerge) + " edges between correctly grouped nodes, but with conflicting classification (* vs. *)</b> <LI>" + str(fposMerge) + " false positive merge edges (* vs. other)<LI>" + str(fnegMerge) + " false negative merge edges (other vs. *) </UL>  <LI>" + str(allRelErrors) + " Directed relationship errors (remaining matrix entries) </UL></p></p>")
+< 		affMatHTML(sys.stdout, relMergeLabels, ShortEdgeMatrix)
+< 		#affMatHTML(sys.stdout, relOnlyLabels, spatRelM)
+< 		
+< 		print("<br><hr><br>")
+< 		print("<h2><A NAME=\"Edges\">Edge Label Confusion Matrix (All Errors)</A></h2>")
+< 		print("<p>"+str(len(allSR)) + " unique edge labels representing relationships and node groupings for specific symbol types. " + str(allSegErrors + allRelErrors) + " errors</p>")
+< 		affMatHTML(sys.stdout, allSR, spatRelM)
+< 		
+< 		print("</font>")
+< 		sys.stdout.write('</html>')
+< 	else:
+< 		print("LgEval Error Summary for: "+fileName)
+< 		print(time.strftime("%c"))
+< 		print("")
+< 		print("NOTE: This file contains 3 confusion matrices.")
+< 		print("")
+< 		print("I. Node Label Confusion Matrix: " + str(len(allLabel)) + " unique labels. ABSENT: a node missing in the output or target graph")
+< 		affMat(sys.stdout, allLabel, labelM)
+< 		
+< 		print("")
+< 		print("")
+< 		print("II. Edge Label Confusion Matrix (Short): " + str(len(relOnlyLabels)) + " unique relationship labels + * (merge)")
+< 		affMat(sys.stdout, relMergeLabels, ShortEdgeMatrix)
+< 		
+< 		print("")
+< 		print("")
+< 		print("III. Edge Label Confusion Matrix (Full): " + str(len(allSR)) + " unique labels for relationships and node groupings for specific symbol types")
+< 		affMat(sys.stdout, allSR, spatRelM)
+---
+>         if len(sys.argv) < 3:
+>                 print("Usage : [[python]] sumDiff.py <file1.diff> <labelsGT.txt> [HTML]\n")
+>                 print("        Merge results for each line in file1.diff into confusion Matrices.")
+>                 print("        By default output is sent to stdout in CSV format.")
+>                 print(" requires list of GT labels from labelsGT.txt.")
+>                 print("        [HTML] option changes output format to HTML.")
+>                 sys.exit(0)
+>         # Read data from CSV file.
+>         fileName = sys.argv[1]
+>         labelFile = sys.argv[2]
+>         try:
+>                 fileReader = csv.reader(open(fileName))
+>         except:
+>                 sys.stderr.write('  !! IO Error (cannot open): ' + fileName)
+>                 sys.exit(1)
+> 
+>         try:
+>                 labelfileReader = csv.reader(open(labelFile))
+>         except:
+>                 sys.stderr.write('  !! IO Error (cannot open): ' + fileName)
+>                 sys.exit(1)
+> 
+>         # Read for node and edge label sets.
+>         readEdges = False
+>         gtNodeLabels = set()
+>         gtEdgeLabels = set()
+>         for row in labelfileReader:
+>                 if len(row) == 0:
+>                         continue
+>                 
+>                 nextEntry = row[0].strip()
+>                 if nextEntry == 'NODE LABELS:':
+>                         continue
+>                 elif nextEntry == 'EDGE LABELS:':
+>                         readEdges = True
+>                 else:
+>                         if readEdges:
+>                                 gtEdgeLabels.add(nextEntry)
+>                         else:
+>                                 gtNodeLabels.add(nextEntry)
+> 
+>         withHTML = False
+>         if len(sys.argv) > 3:
+>                 withHTML = True
+>         #confusion matrix = dict->dict->int
+>         labelM = collections.defaultdict(collections.defaultdict(int).copy)
+>         spatRelM = collections.defaultdict(collections.defaultdict(int).copy)
+>         #segRelM = collections.defaultdict(collections.defaultdict(int).copy)
+>         
+>         allLabel = set()
+>         allSR = set()
+>         rowCount = -1
+> 
+>         # Idenfity all confused symbol labels. We will use this to
+>         # present relationship and segmentation confusions separately.
+>         symbolLabels = set([])
+> 
+>         nodeErrors = 0
+>         allSegErrors = 0
+>         allRelErrors = 0
+>         fposMerge = 0
+>         fnegMerge = 0
+> 
+>         for row in fileReader:
+>                 rowCount += 1
+> 
+>                 # Skip blank lines.
+>                 if len(row) == 0:
+>                         continue
+> 
+>                 entryType = row[0].strip()
+>                 #skip file names
+>                 if entryType == "DIFF":
+>                         continue
+>                 #process node label errors
+>                 elif entryType == "*N":
+>                         # Capture all confused symbol (node) labels.
+>                         symbolLabels.add(row[2].strip())
+>                         symbolLabels.add(row[5].strip())
+> 
+>                         addOneError(labelM,row[2].strip(),row[5].strip())
+>                         allLabel.add(row[2].strip())
+>                         allLabel.add(row[5].strip())
+> 
+>                         nodeErrors += 1
+> 
+>                 #process link errors
+>                 elif entryType == "*E":
+>                         # DEBUG
+>                         if row[3].strip() == "1.0" or row[6].strip() == "1.0":
+>                                 print("ERROR at row: " + str(rowCount) + " for file: " + fileName)
+>                                 print(row)
+>                         elif not len(row) == 8:
+>                                 print("INVALID LENGTH at row: " + str(rowCount) + " for file: " + fileName)
+>                                 print(row)
+>                         
+>                         outputLabel = row[3].strip()
+>                         otherLabel = row[6].strip()
+>                         addOneError(spatRelM, outputLabel, otherLabel)
+> 
+>                         allSR.add(outputLabel)
+>                         allSR.add(otherLabel)
+> 
+>                 elif entryType == "*S":
+>                         # Currently ignore segmentation errors (i.e. object-level errors)
+>                         continue
+>                 
+>         # Obtain the list of edge labels that do not appear on nodes.
+>         # DEBUG: need to consult all GT labels in general case (handling '*' input).
+>         mergeEdgeLabel = '*'
+>         relOnlyLabels = allSR.difference(symbolLabels).difference(gtNodeLabels)
+>         relMergeLabels = relOnlyLabels.union(mergeEdgeLabel)
+> 
+>         # Create a modified confusion histogram where all symbol/segmentation
+>         # edge confusions are treated as being of the same type.
+>         ShortEdgeMatrix = collections.defaultdict(collections.defaultdict(int).copy)
+>         for output in list(spatRelM):
+>                 olabel = output
+>                 if not output in relOnlyLabels:
+>                         olabel = mergeEdgeLabel
+> 
+>                 for target in list(spatRelM[output]):
+>                         tlabel = target
+>                         if not target in relOnlyLabels:
+>                                 tlabel = mergeEdgeLabel
+> 
+>                         # Increment the entry for the appropriate matrix.
+>                         ShortEdgeMatrix[olabel][tlabel] += spatRelM[output][target]
+> 
+>                         if not olabel == output or not tlabel == target:
+>                                 allSegErrors += spatRelM[output][target]
+>                                 if not olabel == output and tlabel == target:
+>                                         fposMerge += spatRelM[output][target]
+>                                 elif not tlabel == target and olabel == output:
+>                                         fnegMerge += spatRelM[output][target]
+>                         else:
+>                                 allRelErrors += spatRelM[output][target]
+> 
+>         if withHTML:
+>                 sys.stdout.write('<html>')
+>                 writeCSS(sys.stdout, allLabel.union(allSR))
+>                 print("<font face=\"helvetica,arial,sans-serif\">")
+>                 print("<h2>LgEval Error Summary</h2>")
+>                 print(time.strftime("%c"))
+>                 print("<br>\n")
+>                 print("<b>File:</b> " + os.path.splitext( os.path.split(fileName)[1] )[0] + "<br>")
+>                 print("<p>All confusion matrices show only errors. In each matrix, output labels appear in the left column, and target labels in the top row.</p>")
+>                 print("<UL><LI><A href=\"#nodes\">Node Label Confusion Matrix</A> <LI> <A HREF=\"#ShortEdges\">Edge Label Confusion Matrix (short - ignoring object class confusions)<A> <LI> <A HREF=\"#Edges\">Edge Label Matrix (all labels)</A> </UL>")
+>                 print ("<hr>")
+>                 print ("<h2><A NAME=\"nodes\">Node Label Confusion Matrix</A></h2>")
+>                 print ("<p>"+str(len(allLabel)) + " unique node labels. " + str(nodeErrors) + " errors. ABSENT: a node missing in the output or target graph</p>")
+>                 affMatHTML(sys.stdout, allLabel, labelM)
+>                 print("<br><hr><br>")
+>                 print ("<h2><A NAME=\"ShortEdges\">Edge Label Confusion Matrix (Short)</A></h2>")
+>                 print ("<p>" + str(len(relOnlyLabels)) + " unique relationship labels + * representing grouping two nodes into an object (any type). " + str(allSegErrors + allRelErrors) + " errors <UL><LI>" + str(allSegErrors) + " Directed segmentation and node pair classification errors (entries in '*'-labeled row and column) <UL><LI><b>" + str(allSegErrors - fposMerge - fnegMerge) + " edges between correctly grouped nodes, but with conflicting classification (* vs. *)</b> <LI>" + str(fposMerge) + " false positive merge edges (* vs. other)<LI>" + str(fnegMerge) + " false negative merge edges (other vs. *) </UL>  <LI>" + str(allRelErrors) + " Directed relationship errors (remaining matrix entries) </UL></p></p>")
+>                 affMatHTML(sys.stdout, relMergeLabels, ShortEdgeMatrix)
+>                 #affMatHTML(sys.stdout, relOnlyLabels, spatRelM)
+>                 
+>                 print("<br><hr><br>")
+>                 print("<h2><A NAME=\"Edges\">Edge Label Confusion Matrix (All Errors)</A></h2>")
+>                 print("<p>"+str(len(allSR)) + " unique edge labels representing relationships and node groupings for specific symbol types. " + str(allSegErrors + allRelErrors) + " errors</p>")
+>                 affMatHTML(sys.stdout, allSR, spatRelM)
+>                 
+>                 print("</font>")
+>                 sys.stdout.write('</html>')
+>         else:
+>                 print("LgEval Error Summary for: "+fileName)
+>                 print(time.strftime("%c"))
+>                 print("")
+>                 print("NOTE: This file contains 3 confusion matrices.")
+>                 print("")
+>                 print("I. Node Label Confusion Matrix: " + str(len(allLabel)) + " unique labels. ABSENT: a node missing in the output or target graph")
+>                 affMat(sys.stdout, allLabel, labelM)
+>                 
+>                 print("")
+>                 print("")
+>                 print("II. Edge Label Confusion Matrix (Short): " + str(len(relOnlyLabels)) + " unique relationship labels + * (merge)")
+>                 affMat(sys.stdout, relMergeLabels, ShortEdgeMatrix)
+>                 
+>                 print("")
+>                 print("")
+>                 print("III. Edge Label Confusion Matrix (Full): " + str(len(allSR)) + " unique labels for relationships and node groupings for specific symbol types")
+>                 affMat(sys.stdout, allSR, spatRelM)
+diff -r src_py2/sumMetric.py src/sumMetric.py
+17,21c17,21
+< 	"""Harmonic mean of recall and precision."""
+< 	value = 0
+< 	if R > 0 or P > 0:
+< 		value = (2 * R * P)/(R+P)
+< 	return value
+---
+>         """Harmonic mean of recall and precision."""
+>         value = 0
+>         if R > 0 or P > 0:
+>                 value = (2 * R * P)/(R+P)
+>         return value
+24,35c24,35
+< 	"""Compute the mean and standard deviation of a *non-empty* list of numbers."""
+< 	numElements = len(valueList)
+< 	if numElements == 0:
+< 		return(None, 0.0)
+< 	
+< 	mean = float(sum(valueList)) / numElements
+< 	variance = 0
+< 	for value in valueList:
+< 		variance += math.pow( value - mean, 2 )
+< 	variance = variance / float(numElements)
+< 	return (scale * mean, scale * math.sqrt(variance))
+< 	
+---
+>         """Compute the mean and standard deviation of a *non-empty* list of numbers."""
+>         numElements = len(valueList)
+>         if numElements == 0:
+>                 return(None, 0.0)
+>         
+>         mean = float(sum(valueList)) / numElements
+>         variance = 0
+>         for value in valueList:
+>                 variance += math.pow( value - mean, 2 )
+>         variance = variance / float(numElements)
+>         return (scale * mean, scale * math.sqrt(variance))
+>         
+37c37
+< 	"""Compute the weighted mean and standard deviation of a *non-empty* list of numbers."""
+---
+>         """Compute the weighted mean and standard deviation of a *non-empty* list of numbers."""
+39,52c39,52
+< 	numElements = sum(weights)
+< 	if len(valueList) < 1 or numElements == 0:
+< 		return(None, 0.0)
+< 
+< 	mean = 0
+< 	for i in range(len(valueList)):
+< 		mean += float(valueList[i]*weights[i])
+< 	mean = mean / numElements
+< 	variance = 0
+< 	for  i in range(len(valueList)):
+< 		variance += math.pow( valueList[i] - mean, 2 )*weights[i]
+< 	variance = variance / float(numElements)
+< 	
+< 	return (scale * mean, scale * math.sqrt(variance))
+---
+>         numElements = sum(weights)
+>         if len(valueList) < 1 or numElements == 0:
+>                 return(None, 0.0)
+> 
+>         mean = 0
+>         for i in range(len(valueList)):
+>                 mean += float(valueList[i]*weights[i])
+>         mean = mean / numElements
+>         variance = 0
+>         for  i in range(len(valueList)):
+>                 variance += math.pow( valueList[i] - mean, 2 )*weights[i]
+>         variance = variance / float(numElements)
+>         
+>         return (scale * mean, scale * math.sqrt(variance))
+55,56c55,56
+< 	(m,s) = meanStdDev(valueList,scale)
+< 	printTable(formatWidth,[label,m,s])
+---
+>         (m,s) = meanStdDev(valueList,scale)
+>         printTable(formatWidth,[label,m,s])
+59,62c59,62
+< 	(m,s) =  weightedMeanStdDev(valueList,weights,scale)
+< 	printTable(formatWidth,[label,m,s])
+< 	#print(label + " (mean, stdev) = " + str(weightedMeanStdDev(valueList,weights,scale)))
+< 	
+---
+>         (m,s) =  weightedMeanStdDev(valueList,weights,scale)
+>         printTable(formatWidth,[label,m,s])
+>         #print(label + " (mean, stdev) = " + str(weightedMeanStdDev(valueList,weights,scale)))
+>         
+64,65c64,65
+< 	(mean,stdev) = c
+< 	sys.stdout.write(sep + str(mean) + "," + str(stdev))
+---
+>         (mean,stdev) = c
+>         sys.stdout.write(sep + str(mean) + "," + str(stdev))
+68c68
+< 	return str(int(dictionary[label]))
+---
+>         return str(int(dictionary[label]))
+71c71
+< 	return str(dictionary[label])
+---
+>         return str(dictionary[label])
+74,83c74,83
+< 	"""Makes it easier to format output for evaluation metrics."""
+< 	cols = len(entries) 
+< 	labelFormat = ''
+< 	for i in range(0,cols):
+< 		extra = ''
+< 		if type(entries[i]) is float:
+< 			labelFormat += '{0[' + str(i) + ']:>{width}.2f' + '}'
+< 		else:
+< 			labelFormat += '{0[' + str(i) + ']:>{width}}'
+< 	print labelFormat.format( entries, width=field_width)
+---
+>         """Makes it easier to format output for evaluation metrics."""
+>         cols = len(entries) 
+>         labelFormat = ''
+>         for i in range(0,cols):
+>                 extra = ''
+>                 if type(entries[i]) is float:
+>                         labelFormat += '{0[' + str(i) + ']:>{width}.2f' + '}'
+>                 else:
+>                         labelFormat += '{0[' + str(i) + ']:>{width}}'
+>         print (labelFormat.format( entries, width=field_width))
+105,109c105,109
+< 		
+< 		# RZ: Inefficient but simple - sum all values, substracted accumulated ones.
+< 		total = 0
+< 		for key in hist.keys():
+< 			total += hist[key]
+---
+>                 
+>                 # RZ: Inefficient but simple - sum all values, substracted accumulated ones.
+>                 total = 0
+>                 for key in list(hist):
+>                         total += hist[key]
+111c111
+< 		remaining = total - cum
+---
+>                 remaining = total - cum
+113c113
+<         printTable(field_width, [ '' ] +  range(0,N) + ['>' + str(N-1)])
+---
+>         printTable(field_width, [ '' ] +  list(range(0,N)) + ['>' + str(N-1)])
+121,153c121,153
+< 	if len(sys.argv) < 2:
+< 		print("Usage : [[python]] sumMetric.py <label> <file1.m> [CSV] \n")
+< 		print("    [CSV] : print all results in one line \n")
+< 		print("")
+< 		print("'label' is a string used to identify data used for comparison.")
+< 		sys.exit(0)
+< 
+< 	showCSV = False
+< 	if len(sys.argv) > 3:
+< 		showCSV = True
+< 	# Read data from CSV file.
+< 	dataSourceLabel = sys.argv[1]
+< 	fileName = sys.argv[2]
+< 	try:
+< 		fileReader = csv.reader(open(fileName))
+< 	except:
+< 		sys.stderr.write('  !! IO Error (cannot open): ' + fileName)
+< 		sys.exit(0)
+< 
+< 	# Compile distributions for all metrics.
+< 	allValues = {}
+< 	nbEM = 0;
+< 	fileList = []
+< 	for row in fileReader:
+< 		# Skip blank lines.
+< 		if len(row) == 0:
+< 			continue
+< 
+< 		entryType = row[0].strip()
+< 		if entryType == "*M":
+< 			fileList = fileList + [row[1]]
+< 			continue
+< 		for i in range(0,len(row),2):
+---
+>         if len(sys.argv) < 2:
+>                 print("Usage : [[python]] sumMetric.py <label> <file1.m> [CSV] \n")
+>                 print("    [CSV] : print all results in one line \n")
+>                 print("")
+>                 print("'label' is a string used to identify data used for comparison.")
+>                 sys.exit(0)
+> 
+>         showCSV = False
+>         if len(sys.argv) > 3:
+>                 showCSV = True
+>         # Read data from CSV file.
+>         dataSourceLabel = sys.argv[1]
+>         fileName = sys.argv[2]
+>         try:
+>                 fileReader = csv.reader(open(fileName))
+>         except:
+>                 sys.stderr.write('  !! IO Error (cannot open): ' + fileName)
+>                 sys.exit(0)
+> 
+>         # Compile distributions for all metrics.
+>         allValues = {}
+>         nbEM = 0;
+>         fileList = []
+>         for row in fileReader:
+>                 # Skip blank lines.
+>                 if len(row) == 0:
+>                         continue
+> 
+>                 entryType = row[0].strip()
+>                 if entryType == "*M":
+>                         fileList = fileList + [row[1]]
+>                         continue
+>                 for i in range(0,len(row),2):
+155,168c155,168
+< 			if vName not in allValues:
+< 				allValues[vName] = []
+< 			allValues[vName] = allValues[vName] \
+< 					+ [float(row[i+1].strip())]
+< 		nbEM+=1
+< 	
+< 	# Compile and display the sum for each metric.
+< 	allSum = {}
+< 	allZeroCount = {}
+< 	zeroFileList = {}
+< 	allHist = {}
+< 	for v in allValues.keys():
+< 		allSum[v] = sum(allValues[v])
+< 		#print(str(v) + " = " + str(allSum[v]))
+---
+>                         if vName not in allValues:
+>                                 allValues[vName] = []
+>                         allValues[vName] = allValues[vName] \
+>                                         + [float(row[i+1].strip())]
+>                 nbEM+=1
+>         
+>         # Compile and display the sum for each metric.
+>         allSum = {}
+>         allZeroCount = {}
+>         zeroFileList = {}
+>         allHist = {}
+>         for v in list(allValues):
+>                 allSum[v] = sum(allValues[v])
+>                 #print(str(v) + " = " + str(allSum[v]))
+170,427c170,427
+< 		allZeroCount[v] = 0
+< 		for s in range(len(allValues[v])):
+< 			if allValues[v][s] == 0:
+< 				allZeroCount[v] += 1
+< 				if v in zeroFileList.keys():
+< 					zeroFileList[v] += '\n' + str(s)
+< 				else:
+< 					zeroFileList[v] = str(s)
+< 				#print fileList[s]
+< 		#print ('    Correct expressions: ' + str(nbZ))
+< 
+< 	# Report input counts.
+< 	correctExps = int(allZeroCount["D_B"])
+< 	#sys.stderr.write( str( zeroFileList[ "D_B" ] ) )
+< 	correctExps2 = int(allZeroCount["D_E(%)"])
+< 	#sys.stdout.write( str( zeroFileList[ "D_E" ] ) )
+< 	if(not correctExps == correctExps2):
+< 		sys.stderr.write( "Warning : correctExps != correctExps2 (" + str(correctExps) + " vs " + str(correctExps2)+")")
+< 
+< 	nodes = int(allSum["nNodes"])
+< 	dcTotal = int(allSum["D_C"])
+< 	edges = int(allSum["nEdges"])
+< 	dlTotal = int(allSum["D_L"])
+< 	dbTotal = int(allSum["D_B"])
+< 	duTotal = int(allSum["dPairs"])
+< 	dsTotal = int(allSum["D_S"])  
+< 	dEdgeClassConflicts = int(allSum["edgeDiffClassCount"])
+< 
+< 	if showCSV:
+< 		print("D_C,D_L,D_S,D_B,D_B(%),var,D_E(%),var,wD_E(%),var")
+< 		sys.stdout.write(intMetric(allSum,"D_C") + "," +intMetric(allSum, "D_L") \
+< 			 + "," + str(dsTotal) + "," \
+< 			 + intMetric(allSum, "D_B"))
+< 		reportCoupleCSV(',',meanStdDev(allValues["D_B(%)"],100))
+< 		reportCoupleCSV(',',meanStdDev(allValues["D_E"],100))
+< 		reportCoupleCSV(',',weightedMeanStdDev(allValues["D_E"],allValues["nNodes"],100))
+< 		print("")
+< 	else:
+< 		fieldWidth = 10
+< 		
+< 		# Add file name and date.
+< 		print("LgEval Evaluation Summary")
+< 		print(time.strftime("%c"))
+< 		print("")
+< 		print(dataSourceLabel)
+< 		#print(os.path.splitext( os.path.split(fileName)[1]) )[0]
+< 		print('')
+< 
+< 		print("****  PRIMITIVES   **************************************************************")
+< 		print('')
+< 		printTable(fieldWidth,['Directed','Rate(%)','Total','Correct','Errors','SegErr','ClErr','RelErr'])
+< 		print("---------------------------------------------------------------------------------")
+< 		nodeRate = 100.0
+< 		if nodes > 0:
+< 			nodeRate = 100 * float(nodes-dcTotal)/nodes
+< 		printTable(fieldWidth,['Nodes', nodeRate, int(allSum["nNodes"]), nodes - dcTotal, dcTotal ])
+< 
+< 	
+< 		edgeRate = 100.0
+< 		if edges > 0:
+< 			edgeRate = 100 * float(edges - dlTotal) / edges
+< 
+< 		# RZ DEBUG: For relation conflicts, need to subtract segmentation and class label
+< 		#           edges from total errors.
+< 		printTable(fieldWidth,['Edges', edgeRate, edges, edges - dlTotal, dlTotal,\
+< 				dsTotal, dEdgeClassConflicts, dlTotal -dsTotal -dEdgeClassConflicts])
+< 
+< 		labelRate = 100.0
+< 		if nodes + edges > 0:
+< 			labelRate =  100 *(nodes + edges - dbTotal)/float(nodes + edges)
+< 		print('')
+< 		printTable(fieldWidth,['Total', labelRate, nodes + edges, nodes + edges - dbTotal, dbTotal])
+< 
+< 	
+< 		print('\n')
+< 		printTable(fieldWidth,['Undirected','Rate(%)','Total','Correct','Errors','SegErr','ClErr','RelErr'])
+< 		print("---------------------------------------------------------------------------------")
+< 		printTable(fieldWidth,['Nodes', nodeRate, int(allSum["nNodes"]), nodes - dcTotal, dcTotal ])
+< 
+< 		undirNodeRel = 100.0
+< 		if edges > 0:
+< 			undirNodeRel = 100 * (float(edges)/2 - duTotal)/(edges/2)
+< 		mergeClassErrors = int(allSum["undirDiffClassCount"])
+< 		segPairErrors = int(allSum["segPairErrors"])
+< 
+< 		# RZ DEBUG: As above for directed edges, reporting of segmentation and relationship count
+< 		#           errors was wrong, despite being correct in the .csv and .diff output.
+< 		printTable(fieldWidth,['Node Pairs', undirNodeRel, edges/2, int(edges)/2 - duTotal, duTotal, \
+< 				segPairErrors, mergeClassErrors, duTotal - segPairErrors - mergeClassErrors ])
+< 
+< 		nodeAllRate = 100.0
+< 		nodeAllCorrect = 100.0
+< 		nodePairCorrect = 100.0
+< 
+< 		correctNodesAndPairs = nodes - dcTotal + float(edges)/2 - duTotal
+< 		pairCount = edges/2 
+< 		if nodes > 0:
+< 			nodeAllCorrect = int(allSum["nodeCorrect"])
+< 			nodeAllRate = 100 * float(nodeAllCorrect)/nodes
+< 			nodePairCorrect = 100 * float(correctNodesAndPairs)/(nodes + pairCount)
+< 		
+< 		print('')
+< 		printTable(fieldWidth,['Total', nodePairCorrect, nodes + pairCount, int(correctNodesAndPairs), int(dcTotal + duTotal) ])
+< 
+< 		print('')
+< 		print('     SegErr: merge/split   ClErr: valid merge class error   RelErr: relation error')
+< 		
+< 		print("\n")
+< 
+< 		print("****  OBJECTS   **************************************************************************") 
+< 		print('')
+< 		printTable(fieldWidth,['','Recall(%)','Prec(%)','2RP/(R+P)','Targets','Correct','FalseNeg','*Detected','*FalsePos'])
+< 		print("------------------------------------------------------------------------------------------")
+< 		
+< 		# Compute segmentation and classification errors.
+< 		numSegments = int(allSum["nSeg"])
+< 		detectedSegs = int(allSum["detectedSeg"])
+< 		correctSegments = int(allSum["CorrectSegments"]) 
+< 		classErrors = int(allSum["ClassError"])
+< 		correctClass = int(allSum["CorrectSegmentsAndClass"]) 
+< 
+< 		# DEBUG: now explicitly record the number of correct segment rel. edges.
+< 		numSegRelEdges = int(allSum["nSegRelEdges"])
+< 		detectedSegRelEdges = int(allSum["dSegRelEdges"])
+< 		segRelErrors = int(allSum["SegRelErrors"])
+< 		correctSegRelEdges = int(allSum["CorrectSegRels"])
+< 		correctSegRelLocations = int(allSum["CorrectSegRelLocations"])
+< 
+< 		segRelRecall = 100.0
+< 		if numSegRelEdges > 0:
+< 			segRelRecall = 100*float(correctSegRelEdges)/numSegRelEdges
+< 		segRelPrecision = 100.0
+< 		if detectedSegRelEdges > 0:
+< 			segRelPrecision = float(100*float(correctSegRelEdges)/detectedSegRelEdges)
+< 		relFalsePositive = 0
+< 		if detectedSegRelEdges > 0:
+< 			relFalsePositive = segRelErrors
+< 
+< 
+< 		segRate = 100.0
+< 		segClassRate = 100.0
+< 		if numSegments > 0:
+< 			segRate = 100 * float(correctSegments)/numSegments
+< 			segClassRate = 100*float(correctClass)/numSegments
+< 		segPrec = 100.0
+< 		segClassPrec = 100.0
+< 		if detectedSegs > 0:
+< 			segPrec = 100 * float(correctSegments)/detectedSegs
+< 			segClassPrec = 100*float(correctClass)/detectedSegs
+< 
+< 
+< 		segRelLocRecall = 100.0
+< 		if numSegRelEdges > 0:
+< 			segRelLocRecall = 100 * float (correctSegRelLocations) / numSegRelEdges
+< 		segRelLocPrecision = 100.0
+< 		if detectedSegRelEdges > 0:
+< 			segRelLocPrecision = 100 * float(correctSegRelLocations) / detectedSegRelEdges
+< 		segRelLocFalsePositive = 0
+< 		if detectedSegRelEdges > 0:
+< 			segRelLocFalsePositive = detectedSegRelEdges - correctSegRelLocations 
+< 
+< 		segRelativeRecall = '(Empty)'
+< 		if correctSegments > 0:
+< 			segRelativeRecall = 100 * float(correctClass)/correctSegments
+< 
+< 
+< 		segRelativeRelRecall = '(Empty)' 
+< 		if correctSegRelLocations > 0:
+< 			segRelativeRelRecall = 100 * float(correctSegRelEdges)/correctSegRelLocations
+< 
+< 		printTable(fieldWidth,['Objects', segRate, \
+< 				segPrec, fmeasure(segRate,segPrec),
+< 				numSegments, correctSegments, numSegments - correctSegments,\
+< 						detectedSegs, detectedSegs - correctSegments ])
+< 
+< 		
+< 		printTable(fieldWidth,['+ Classes', segClassRate, \
+< 				segClassPrec, fmeasure(segClassRate, segClassPrec), \
+< 				numSegments, correctClass, numSegments - correctClass,\
+< 				detectedSegs, detectedSegs - correctClass])
+< 
+< 		printTable(fieldWidth,['Class/Det', segRelativeRecall,'','', \
+< 				correctSegments, correctClass])
+< 
+< 		print('')
+< 		printTable(fieldWidth,['Relations',\
+< 				segRelLocRecall, \
+< 				segRelLocPrecision, \
+< 				fmeasure(segRelLocRecall, segRelLocPrecision), \
+< 				numSegRelEdges,\
+< 				correctSegRelLocations,\
+< 				numSegRelEdges - correctSegRelLocations, \
+< 				intMetric(allSum, "dSegRelEdges"),\
+< 				segRelLocFalsePositive])
+< 
+< 
+< 		printTable(fieldWidth,['+ Classes',\
+< 				segRelRecall, \
+< 				segRelPrecision, \
+< 				fmeasure(segRelRecall, segRelPrecision), \
+< 				numSegRelEdges,\
+< 				correctSegRelEdges,\
+< 				numSegRelEdges - correctSegRelEdges, \
+< 				intMetric(allSum, "dSegRelEdges"),\
+< 				relFalsePositive])
+< 
+< 		printTable(fieldWidth,['Class/Det', segRelativeRelRecall, '', '', \
+< 				correctSegRelLocations, correctSegRelEdges])
+< 
+< 		print("\n     2RP/(R+P): harmonic mean (f-measure) for (R)ecall and (P)recision")
+< 		print("     Class/Det: (correct detection and classification) / correct detection") 
+< 		print("\n")
+< 
+< 		print("****  FILES  ***************************************")
+< 		print('')
+< 		printTable(fieldWidth,['','Rate(%)','Total','Correct','Errors'])
+< 		print('---------------------------------------------------')
+< 		correctSegments = 0
+< 		if 1 in allHist['hasCorrectSegments']:
+< 			correctSegments = allHist['hasCorrectSegments'][1]
+< 		correctRelLocs = 0
+< 		if 1 in allHist['hasCorrectRelationLocations']:
+< 			correctRelLocs = allHist['hasCorrectRelationLocations'][1]
+< 		correctSegAndClass = 0
+< 		if 1 in allHist['hasCorrectSegLab']:
+< 			correctSegAndClass = allHist['hasCorrectSegLab'][1]
+< 		correctRelAndClass = 0
+< 		if 1 in allHist['hasCorrectRelLab']:
+< 			correctRelAndClass = allHist['hasCorrectRelLab'][1]
+< 		correctStructure = 0
+< 		if 1 in allHist['hasCorrectStructure']:
+< 			correctStructure = allHist['hasCorrectStructure'][1]
+< 		
+< 
+< 		objRelative = '(Empty)' if correctSegments <  1 else 100 * float(correctSegAndClass)/correctSegments 
+< 		printTable(fieldWidth,['Objects',100 * float(correctSegments)/nbEM,nbEM,correctSegments,nbEM-correctSegments])
+< 		printTable(fieldWidth,['+ Classes',100 * float(correctSegAndClass)/nbEM, nbEM, correctSegAndClass, nbEM - correctSegAndClass])
+< 		printTable(fieldWidth,['Class/Det',objRelative,correctSegments,correctSegAndClass,'']) #correctSegments-correctSegAndClass])
+< 
+< 		print('')
+< 		relRelative = '(Empty)' if correctRelLocs < 1 else 100 * float(correctRelAndClass)/correctRelLocs
+< 		printTable(fieldWidth,['Relations',100 * float(correctRelLocs)/nbEM,nbEM,correctRelLocs,nbEM-correctRelLocs])
+< 		printTable(fieldWidth,['+ Classes',100 * float(correctRelAndClass)/nbEM, nbEM, correctRelAndClass, nbEM - correctRelAndClass])
+< 		printTable(fieldWidth,['Class/Det',relRelative, correctRelLocs,correctRelAndClass,'']) #correctRelLocs - correctRelAndClass])
+< 
+< 		print('')
+< 		expRelative = '(Empty)' if correctStructure < 1 else 100 * float(correctExps)/correctStructure
+< 		printTable(fieldWidth,['Structure',100 * float(correctStructure)/nbEM, nbEM, correctStructure, nbEM - correctStructure])
+< 
+< 		printTable(fieldWidth,['+ Classes',100 * float(correctExps)/nbEM,nbEM,correctExps,nbEM-correctExps,'*Final'])
+< 		printTable(fieldWidth,['Class/Det',expRelative,correctStructure,correctExps,'']) #correctStructure-correctExps])
+< 		print('')
+< 		
+< 		print('')
+< 		print("****  LABEL ERROR HISTOGRAM (Dir. Edges, D_B)  ****")
+< 		print('')
+< 		printHist(allHist['D_B'],6,fieldWidth)
+< 		print('')
+---
+>                 allZeroCount[v] = 0
+>                 for s in range(len(allValues[v])):
+>                         if allValues[v][s] == 0:
+>                                 allZeroCount[v] += 1
+>                                 if v in list(zeroFileList):
+>                                         zeroFileList[v] += '\n' + str(s)
+>                                 else:
+>                                         zeroFileList[v] = str(s)
+>                                 #print fileList[s]
+>                 #print ('    Correct expressions: ' + str(nbZ))
+> 
+>         # Report input counts.
+>         correctExps = int(allZeroCount["D_B"])
+>         #sys.stderr.write( str( zeroFileList[ "D_B" ] ) )
+>         correctExps2 = int(allZeroCount["D_E(%)"])
+>         #sys.stdout.write( str( zeroFileList[ "D_E" ] ) )
+>         if(not correctExps == correctExps2):
+>                 sys.stderr.write( "Warning : correctExps != correctExps2 (" + str(correctExps) + " vs " + str(correctExps2)+")")
+> 
+>         nodes = int(allSum["nNodes"])
+>         dcTotal = int(allSum["D_C"])
+>         edges = int(allSum["nEdges"])
+>         dlTotal = int(allSum["D_L"])
+>         dbTotal = int(allSum["D_B"])
+>         duTotal = int(allSum["dPairs"])
+>         dsTotal = int(allSum["D_S"])  
+>         dEdgeClassConflicts = int(allSum["edgeDiffClassCount"])
+> 
+>         if showCSV:
+>                 print("D_C,D_L,D_S,D_B,D_B(%),var,D_E(%),var,wD_E(%),var")
+>                 sys.stdout.write(intMetric(allSum,"D_C") + "," +intMetric(allSum, "D_L") \
+>                          + "," + str(dsTotal) + "," \
+>                          + intMetric(allSum, "D_B"))
+>                 reportCoupleCSV(',',meanStdDev(allValues["D_B(%)"],100))
+>                 reportCoupleCSV(',',meanStdDev(allValues["D_E"],100))
+>                 reportCoupleCSV(',',weightedMeanStdDev(allValues["D_E"],allValues["nNodes"],100))
+>                 print("")
+>         else:
+>                 fieldWidth = 10
+>                 
+>                 # Add file name and date.
+>                 print("LgEval Evaluation Summary")
+>                 print(time.strftime("%c"))
+>                 print("")
+>                 print(dataSourceLabel)
+>                 #print(os.path.splitext( os.path.split(fileName)[1]) )[0]
+>                 print('')
+> 
+>                 print("****  PRIMITIVES   **************************************************************")
+>                 print('')
+>                 printTable(fieldWidth,['Directed','Rate(%)','Total','Correct','Errors','SegErr','ClErr','RelErr'])
+>                 print("---------------------------------------------------------------------------------")
+>                 nodeRate = 100.0
+>                 if nodes > 0:
+>                         nodeRate = 100 * float(nodes-dcTotal)/nodes
+>                 printTable(fieldWidth,['Nodes', nodeRate, int(allSum["nNodes"]), nodes - dcTotal, dcTotal ])
+> 
+>         
+>                 edgeRate = 100.0
+>                 if edges > 0:
+>                         edgeRate = 100 * float(edges - dlTotal) / edges
+> 
+>                 # RZ DEBUG: For relation conflicts, need to subtract segmentation and class label
+>                 #           edges from total errors.
+>                 printTable(fieldWidth,['Edges', edgeRate, edges, edges - dlTotal, dlTotal,\
+>                                 dsTotal, dEdgeClassConflicts, dlTotal -dsTotal -dEdgeClassConflicts])
+> 
+>                 labelRate = 100.0
+>                 if nodes + edges > 0:
+>                         labelRate =  100 *(nodes + edges - dbTotal)/float(nodes + edges)
+>                 print('')
+>                 printTable(fieldWidth,['Total', labelRate, nodes + edges, nodes + edges - dbTotal, dbTotal])
+> 
+>         
+>                 print('\n')
+>                 printTable(fieldWidth,['Undirected','Rate(%)','Total','Correct','Errors','SegErr','ClErr','RelErr'])
+>                 print("---------------------------------------------------------------------------------")
+>                 printTable(fieldWidth,['Nodes', nodeRate, int(allSum["nNodes"]), nodes - dcTotal, dcTotal ])
+> 
+>                 undirNodeRel = 100.0
+>                 if edges > 0:
+>                         undirNodeRel = 100 * (float(edges)/2 - duTotal)/(edges/2)
+>                 mergeClassErrors = int(allSum["undirDiffClassCount"])
+>                 segPairErrors = int(allSum["segPairErrors"])
+> 
+>                 # RZ DEBUG: As above for directed edges, reporting of segmentation and relationship count
+>                 #           errors was wrong, despite being correct in the .csv and .diff output.
+>                 printTable(fieldWidth,['Node Pairs', undirNodeRel, edges/2, int(edges)/2 - duTotal, duTotal, \
+>                                 segPairErrors, mergeClassErrors, duTotal - segPairErrors - mergeClassErrors ])
+> 
+>                 nodeAllRate = 100.0
+>                 nodeAllCorrect = 100.0
+>                 nodePairCorrect = 100.0
+> 
+>                 correctNodesAndPairs = nodes - dcTotal + float(edges)/2 - duTotal
+>                 pairCount = edges/2 
+>                 if nodes > 0:
+>                         nodeAllCorrect = int(allSum["nodeCorrect"])
+>                         nodeAllRate = 100 * float(nodeAllCorrect)/nodes
+>                         nodePairCorrect = 100 * float(correctNodesAndPairs)/(nodes + pairCount)
+>                 
+>                 print('')
+>                 printTable(fieldWidth,['Total', nodePairCorrect, nodes + pairCount, int(correctNodesAndPairs), int(dcTotal + duTotal) ])
+> 
+>                 print('')
+>                 print('     SegErr: merge/split   ClErr: valid merge class error   RelErr: relation error')
+>                 
+>                 print("\n")
+> 
+>                 print("****  OBJECTS   **************************************************************************") 
+>                 print('')
+>                 printTable(fieldWidth,['','Recall(%)','Prec(%)','2RP/(R+P)','Targets','Correct','FalseNeg','*Detected','*FalsePos'])
+>                 print("------------------------------------------------------------------------------------------")
+>                 
+>                 # Compute segmentation and classification errors.
+>                 numSegments = int(allSum["nSeg"])
+>                 detectedSegs = int(allSum["detectedSeg"])
+>                 correctSegments = int(allSum["CorrectSegments"]) 
+>                 classErrors = int(allSum["ClassError"])
+>                 correctClass = int(allSum["CorrectSegmentsAndClass"]) 
+> 
+>                 # DEBUG: now explicitly record the number of correct segment rel. edges.
+>                 numSegRelEdges = int(allSum["nSegRelEdges"])
+>                 detectedSegRelEdges = int(allSum["dSegRelEdges"])
+>                 segRelErrors = int(allSum["SegRelErrors"])
+>                 correctSegRelEdges = int(allSum["CorrectSegRels"])
+>                 correctSegRelLocations = int(allSum["CorrectSegRelLocations"])
+> 
+>                 segRelRecall = 100.0
+>                 if numSegRelEdges > 0:
+>                         segRelRecall = 100*float(correctSegRelEdges)/numSegRelEdges
+>                 segRelPrecision = 100.0
+>                 if detectedSegRelEdges > 0:
+>                         segRelPrecision = float(100*float(correctSegRelEdges)/detectedSegRelEdges)
+>                 relFalsePositive = 0
+>                 if detectedSegRelEdges > 0:
+>                         relFalsePositive = segRelErrors
+> 
+> 
+>                 segRate = 100.0
+>                 segClassRate = 100.0
+>                 if numSegments > 0:
+>                         segRate = 100 * float(correctSegments)/numSegments
+>                         segClassRate = 100*float(correctClass)/numSegments
+>                 segPrec = 100.0
+>                 segClassPrec = 100.0
+>                 if detectedSegs > 0:
+>                         segPrec = 100 * float(correctSegments)/detectedSegs
+>                         segClassPrec = 100*float(correctClass)/detectedSegs
+> 
+> 
+>                 segRelLocRecall = 100.0
+>                 if numSegRelEdges > 0:
+>                         segRelLocRecall = 100 * float (correctSegRelLocations) / numSegRelEdges
+>                 segRelLocPrecision = 100.0
+>                 if detectedSegRelEdges > 0:
+>                         segRelLocPrecision = 100 * float(correctSegRelLocations) / detectedSegRelEdges
+>                 segRelLocFalsePositive = 0
+>                 if detectedSegRelEdges > 0:
+>                         segRelLocFalsePositive = detectedSegRelEdges - correctSegRelLocations 
+> 
+>                 segRelativeRecall = '(Empty)'
+>                 if correctSegments > 0:
+>                         segRelativeRecall = 100 * float(correctClass)/correctSegments
+> 
+> 
+>                 segRelativeRelRecall = '(Empty)' 
+>                 if correctSegRelLocations > 0:
+>                         segRelativeRelRecall = 100 * float(correctSegRelEdges)/correctSegRelLocations
+> 
+>                 printTable(fieldWidth,['Objects', segRate, \
+>                                 segPrec, fmeasure(segRate,segPrec),
+>                                 numSegments, correctSegments, numSegments - correctSegments,\
+>                                                 detectedSegs, detectedSegs - correctSegments ])
+> 
+>                 
+>                 printTable(fieldWidth,['+ Classes', segClassRate, \
+>                                 segClassPrec, fmeasure(segClassRate, segClassPrec), \
+>                                 numSegments, correctClass, numSegments - correctClass,\
+>                                 detectedSegs, detectedSegs - correctClass])
+> 
+>                 printTable(fieldWidth,['Class/Det', segRelativeRecall,'','', \
+>                                 correctSegments, correctClass])
+> 
+>                 print('')
+>                 printTable(fieldWidth,['Relations',\
+>                                 segRelLocRecall, \
+>                                 segRelLocPrecision, \
+>                                 fmeasure(segRelLocRecall, segRelLocPrecision), \
+>                                 numSegRelEdges,\
+>                                 correctSegRelLocations,\
+>                                 numSegRelEdges - correctSegRelLocations, \
+>                                 intMetric(allSum, "dSegRelEdges"),\
+>                                 segRelLocFalsePositive])
+> 
+> 
+>                 printTable(fieldWidth,['+ Classes',\
+>                                 segRelRecall, \
+>                                 segRelPrecision, \
+>                                 fmeasure(segRelRecall, segRelPrecision), \
+>                                 numSegRelEdges,\
+>                                 correctSegRelEdges,\
+>                                 numSegRelEdges - correctSegRelEdges, \
+>                                 intMetric(allSum, "dSegRelEdges"),\
+>                                 relFalsePositive])
+> 
+>                 printTable(fieldWidth,['Class/Det', segRelativeRelRecall, '', '', \
+>                                 correctSegRelLocations, correctSegRelEdges])
+> 
+>                 print("\n     2RP/(R+P): harmonic mean (f-measure) for (R)ecall and (P)recision")
+>                 print("     Class/Det: (correct detection and classification) / correct detection") 
+>                 print("\n")
+> 
+>                 print("****  FILES  ***************************************")
+>                 print('')
+>                 printTable(fieldWidth,['','Rate(%)','Total','Correct','Errors'])
+>                 print('---------------------------------------------------')
+>                 correctSegments = 0
+>                 if 1 in allHist['hasCorrectSegments']:
+>                         correctSegments = allHist['hasCorrectSegments'][1]
+>                 correctRelLocs = 0
+>                 if 1 in allHist['hasCorrectRelationLocations']:
+>                         correctRelLocs = allHist['hasCorrectRelationLocations'][1]
+>                 correctSegAndClass = 0
+>                 if 1 in allHist['hasCorrectSegLab']:
+>                         correctSegAndClass = allHist['hasCorrectSegLab'][1]
+>                 correctRelAndClass = 0
+>                 if 1 in allHist['hasCorrectRelLab']:
+>                         correctRelAndClass = allHist['hasCorrectRelLab'][1]
+>                 correctStructure = 0
+>                 if 1 in allHist['hasCorrectStructure']:
+>                         correctStructure = allHist['hasCorrectStructure'][1]
+>                 
+> 
+>                 objRelative = '(Empty)' if correctSegments <  1 else 100 * float(correctSegAndClass)/correctSegments 
+>                 printTable(fieldWidth,['Objects',100 * float(correctSegments)/nbEM,nbEM,correctSegments,nbEM-correctSegments])
+>                 printTable(fieldWidth,['+ Classes',100 * float(correctSegAndClass)/nbEM, nbEM, correctSegAndClass, nbEM - correctSegAndClass])
+>                 printTable(fieldWidth,['Class/Det',objRelative,correctSegments,correctSegAndClass,'']) #correctSegments-correctSegAndClass])
+> 
+>                 print('')
+>                 relRelative = '(Empty)' if correctRelLocs < 1 else 100 * float(correctRelAndClass)/correctRelLocs
+>                 printTable(fieldWidth,['Relations',100 * float(correctRelLocs)/nbEM,nbEM,correctRelLocs,nbEM-correctRelLocs])
+>                 printTable(fieldWidth,['+ Classes',100 * float(correctRelAndClass)/nbEM, nbEM, correctRelAndClass, nbEM - correctRelAndClass])
+>                 printTable(fieldWidth,['Class/Det',relRelative, correctRelLocs,correctRelAndClass,'']) #correctRelLocs - correctRelAndClass])
+> 
+>                 print('')
+>                 expRelative = '(Empty)' if correctStructure < 1 else 100 * float(correctExps)/correctStructure
+>                 printTable(fieldWidth,['Structure',100 * float(correctStructure)/nbEM, nbEM, correctStructure, nbEM - correctStructure])
+> 
+>                 printTable(fieldWidth,['+ Classes',100 * float(correctExps)/nbEM,nbEM,correctExps,nbEM-correctExps,'*Final'])
+>                 printTable(fieldWidth,['Class/Det',expRelative,correctStructure,correctExps,'']) #correctStructure-correctExps])
+>                 print('')
+>                 
+>                 print('')
+>                 print("****  LABEL ERROR HISTOGRAM (Dir. Edges, D_B)  ****")
+>                 print('')
+>                 printHist(allHist['D_B'],6,fieldWidth)
+>                 print('')
+Only in src_py2/: t1
+Only in src_py2/: t2
+diff -r src_py2/testlg.py src/testlg.py
+51c51
+< 		for k in check.keys():
+---
+> 		for k in list(check):
+Only in src_py2/: Tests

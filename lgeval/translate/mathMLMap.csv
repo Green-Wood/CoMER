@@ -1,0 +1,405 @@
+# mathMLMap.csv
+#  - file to translate .lg files to Presentation MathML format 
+#    repr. of expression structure.
+#
+# For latex symbols, both versions with an initial backslash (\) and without
+# are included in the symbol mapping table below.
+#
+# SYNONYMNS for SYMBOL NAMES:
+#
+# Note that some symbols have synonymns - these are being
+# mapped to a single output representation:
+# 	- <, \lt, \langle
+#	- Integral, \int
+#	- Sigma, \sum
+
+SYMBOLS
+# Letters
+a,->,<mi xml:id=_I_>a</mi>
+b,->,<mi xml:id=_I_>b</mi>
+c,->,<mi xml:id=_I_>c</mi>
+d,->,<mi xml:id=_I_>d</mi>
+e,->,<mi xml:id=_I_>e</mi>
+f,->,<mi xml:id=_I_>f</mi>
+g,->,<mi xml:id=_I_>g</mi>
+h,->,<mi xml:id=_I_>h</mi>
+i,->,<mi xml:id=_I_>i</mi>
+j,->,<mi xml:id=_I_>j</mi>
+k,->,<mi xml:id=_I_>k</mi>
+l,->,<mi xml:id=_I_>l</mi>
+m,->,<mi xml:id=_I_>m</mi>
+n,->,<mi xml:id=_I_>n</mi>
+o,->,<mi xml:id=_I_>o</mi>
+p,->,<mi xml:id=_I_>p</mi>
+q,->,<mi xml:id=_I_>q</mi>
+r,->,<mi xml:id=_I_>r</mi>
+s,->,<mi xml:id=_I_>s</mi>
+t,->,<mi xml:id=_I_>t</mi>
+u,->,<mi xml:id=_I_>u</mi>
+v,->,<mi xml:id=_I_>v</mi>
+w,->,<mi xml:id=_I_>w</mi>
+x,->,<mi xml:id=_I_>x</mi>
+y,->,<mi xml:id=_I_>y</mi>
+z,->,<mi xml:id=_I_>z</mi>
+
+A,->,<mi xml:id=_I_>A</mi>
+B,->,<mi xml:id=_I_>B</mi>
+C,->,<mi xml:id=_I_>C</mi>
+# NOTE: D is not included in CROHME 2013.
+#D,->,<mi xml:id=_I_>D</mi>
+E,->,<mi xml:id=_I_>E</mi>
+F,->,<mi xml:id=_I_>F</mi>
+G,->,<mi xml:id=_I_>G</mi>
+H,->,<mi xml:id=_I_>H</mi>
+I,->,<mi xml:id=_I_>I</mi>
+# NOTE: J, K are not included in CROHME 2013.
+L,->,<mi xml:id=_I_>L</mi>
+M,->,<mi xml:id=_I_>M</mi>
+N,->,<mi xml:id=_I_>N</mi>
+P,->,<mi xml:id=_I_>P</mi>
+# NOTE: Q is not included in CROHME 2013.
+R,->,<mi xml:id=_I_>R</mi>
+S,->,<mi xml:id=_I_>S</mi>
+T,->,<mi xml:id=_I_>T</mi>
+# NOTE: U is not inclided in CROHME 2013
+#U,->,<mi xml:id=_I_>U</mi>
+V,->,<mi xml:id=_I_>V</mi>
+# NOTE: W is not included in CROHME 2013
+#W,->,<mi xml:id=_I_>W</mi>
+X,->,<mi xml:id=_I_>X</mi>
+Y,->,<mi xml:id=_I_>Y</mi>
+# NOTE: Z is not included in CROHME 2013
+
+# Digits
+0,->,<mn xml:id=_I_>0</mn>
+1,->,<mn xml:id=_I_>1</mn>
+2,->,<mn xml:id=_I_>2</mn>
+3,->,<mn xml:id=_I_>3</mn>
+4,->,<mn xml:id=_I_>4</mn>
+5,->,<mn xml:id=_I_>5</mn>
+6,->,<mn xml:id=_I_>6</mn>
+7,->,<mn xml:id=_I_>7</mn>
+8,->,<mn xml:id=_I_>8</mn>
+9,->,<mn xml:id=_I_>9</mn>
+
+# Greek Letters
+\alpha,->,<mi xml:id=_I_>\alpha</mi>
+\beta,->,<mi xml:id=_I_>\beta</mi>
+\gamma,->,<mi xml:id=_I_>\gamma</mi>
+\lambda,->,<mi xml:id=_I_>\lambda</mi> 
+\omega,->,<mi xml:id=_I_>\omega</mi>
+\phi,->,<mi xml:id=_I_>\phi</mi>
+# **Mapping upper and lower case pi to lower case.
+\pi,->,<mi xml:id=_I_>\pi</mi>
+\Pi,->,<mi xml:id=_I_>\pi</,mi>
+\theta,->,<mi xml:id=_I_>\theta</mi>
+\sigma,->,<mi xml:id=_I_>\sigma</mi>
+\mu,->,<mi xml:id=_I_>\mu</mi>
+\Delta,->,<mi xml:id=_I_>\Delta</mi>
+
+alpha,->,<mi xml:id=_I_>\alpha</mi>
+beta,->,<mi xml:id=_I_>\beta</mi>
+gamma,->,<mi xml:id=_I_>\gamma</mi>
+lambda,->,<mi xml:id=_I_>\lambda</mi> 
+omega,->,<mi xml:id=_I_>\omega</mi>
+phi,->,<mi xml:id=_I_>\phi</mi>
+pi,->,<mi xml:id=_I_>\pi</mi>
+Pi,->,<mi xml:id=_I_>\pi</mi>
+# NOTE: tau, psi, epsilon, Pi are not in CROHME 2013
+#tau,->,<mi xml:id=_I_>\tau</mi>
+#psi,->,<mi xml:id=_I_>\psi</mi>
+#epsilon,->,<mi xml:id=_I_>\epsilon</mi>
+#Pi,->,<mi xml:id=_I_>\Pi</mi>
+
+theta,->,<mi xml:id=_I_>\theta</mi>
+#Theta,->,<mi xml:id=_I_>\theta</mi>
+sigma,->,<mi xml:id=_I_>\sigma</mi>
+mu,->,<mi xml:id=_I_>\mu</mi>
+Delta,->,<mi xml:id=_I_>\Delta</mi>
+
+# Other quantities/spaces
+\infty,->,<mi xml:id=_I_>\infty</mi>
+infin,->,<mi xml:id=_I_>\infty</mi>
+infinity,->,<mi xml:id=_I_>\infty</mi>
+\Real,->,<mi xml:id=_I_>\Real</mi>
+
+infty,->,<mi xml:id=_I_>\infty</mi>
+Real,->,<mi xml:id=_I_>\Real</mi>
+
+# Arithmetic Operators
++,->,<mo xml:id=_I_>+</mo>
+-,->,<mo xml:id=_I_>-</mo>
+horizontal-line,->,<mo xml:id=_I_>-</mo>
+\pm,->,<mo xml:id=_I_>\pm</mo>
+\div,->,<mo xml:id=_I_>\div</mo>
+!,->,<mo xml:id=_I_>!</mo>
+\times,->,<mo xml:id=_I_>\times</mo>
+/,->,<mo xml:id=_I_>/</mo>
+\ast,->,<mo xml:id=_I_>\ast</mo>
+
+plus,->,<mo xml:id=_I_>+</mo>
+minus,->,<mo xml:id=_I_>-</mo>
+pm,->,<mo xml:id=_I_>\pm</mo>
+div,->,<mo xml:id=_I_>\div</mo>
+# **Disinguish 'times' from X? [Not initially.]
+times,->,<mo xml:id=_I_>\times</mo>
+ast,->,<mo xml:id=_I_>\ast</mo>
+
+# Logical Operators
+\wedge,->,<mo xml:id=_I_>\wedge</mo>
+\vee,->,<mo xml:id=_I_>\vee</mo>
+\rightarrow,->,<mo xml:id=_I_>\rightarrow</mo>
+\supset,->,<mo xml:id=_I_>\supset</mo>
+\subset,->,<mo xml:id=_I_>\subset</mo>
+|,->,<mo xml:id=_I_>|</mo>
+\forall,->,<mo xml:id=_I_>\forall</mo>
+\exists,->,<mo xml:id=_I_>\exists</mo>
+
+wedge,->,<mo xml:id=_I_>\wedge</mo>
+vee,->,<mo xml:id=_I_>\vee</mo>
+rightarrow,->,<mo xml:id=_I_>\rightarrow</mo>
+supset,->,<mo xml:id=_I_>\supset</mo>
+subset,->,<mo xml:id=_I_>\subset</mo>
+forall,->,<mo xml:id=_I_>\forall</mo>
+exists,->,<mo xml:id=_I_>\exists</mo>
+
+# Misc
+prime,->,<mo xml:id=_I_>\'</mo>
+\',->,<mo xml:id=_I_>\'</mo>
+
+# Calculus
+\partial,->,<mo xml:id=_I_>\partial</mo>
+partial,->,<mo xml:id=_I_>\partial</mo>
+
+# Set operations
+\cup,->,<mo xml:id=_I_>\cup</mo>
+\cap,->,<mo xml:id=_I_>\cap</mo>
+\in,->,<mo xml:id=_I_>\in</mo>
+
+cup,->,<mo xml:id=_I_>\cup</mo>
+cap,->,<mo xml:id=_I_>\cap</mo>
+in,->,<mo xml:id=_I_>\in</mo>
+
+# Functions and Relations
+\log,->,<mi xml:id=_I_>\log</mi>
+\sin,->,<mi xml:id=_I_>\sin</mi>
+\cos,->,<mi xml:id=_I_>\cos</mi>
+\tan,->,<mi xml:id=_I_>\tan</mi>
+\neq,->,<mi xml:id=_I_>\neq</mi>
+\leq,->,<mi xml:id=_I_>\leq</mi>
+\geq,->,<mi xml:id=_I_>\geq</mi>
+=,->,<mo xml:id=_I_>=</mo>
+equals,->,<mo xml:id=_I_>=</mo>
+# !! Note: we have synonymns here; mapping to same MathML objects.
+<,->,<mo xml:id=_I_>\lt</mo>
+>,->,<mo xml:id=_I_>\gt</mo>
+\lt,->,<mo xml:id=_I_>\lt</mo>
+&lt;,->,<mo xml:id=_I_>\lt</mo>
+\gt,->,<mo xml:id=_I_>\gt</mo>
+&gt;,->,<mo xml:id=_I_>\gt</mo>
+
+log,->,<mi xml:id=_I_>\log</mi>
+sin,->,<mi xml:id=_I_>\sin</mi>
+cos,->,<mi xml:id=_I_>\cos</mi>
+tan,->,<mi xml:id=_I_>\tan</mi>
+eq,->,<mo xml:id=_I_>=</mo>
+neq,->,<mi xml:id=_I_>\neq</mi>
+ne,->,<mi xml:id=_I_>\neq</mi>
+leq,->,<mi xml:id=_I_>\leq</mi>
+geq,->,<mi xml:id=_I_>\geq</mi>
+ge,->,<mi xml:id=_I_>\geq</mi>
+lt,->,<mo xml:id=_I_>\lt</mo>
+gt,->,<mo xml:id=_I_>\gt</mo>
+
+
+# Punctuation and Elipsis
+# NOTE: COMMA symbol id, and quoting used to avoid problems with using ','
+COMMA,->,"<mo xml:id=_I_>,</mo>"
+",",->,"<mo xml:id=_I_>,</mo>"
+.,->,<mo xml:id=_I_>.</mo>
+dot,->,<mo xml:id=_I_>.</mo>
+cdot,->,<mo xml:id=_I_>.</mo>
+ctdot,->,<mo xml:id=_I_>.</mo>
+\cdot,->,<mo xml:id=_I_>.</mo>
+\ldots,->,<mo xml:id=_I_>\ldots</mo>
+\cdots,->,<mo xml:id=_I_>\cdots</mo>
+
+ldots,->,<mo xml:id=_I_>\ldots</mo>
+cdots,->,<mo xml:id=_I_>\cdots</mo>
+
+# Fence symbols (square and angle brackets, parentheses, braces)
+(,->,<mo xml:id=_I_>(</mo>
+\(,->,<mo xml:id=_I_>(</mo>
+lparen,->,<mo xml:id=_I_>(</mo>
+left-paren,->,<mo xml:id=_I_>(</mo>
+),->,<mo xml:id=_I_>)</mo>
+\),->,<mo xml:id=_I_>)</mo>
+rparen,->,<mo xml:id=_I_>)</mo>
+right-paren,->,<mo xml:id=_I_>)</mo>
+
+\{,->,<mo xml:id=_I_>\{</mo>
+\},->,<mo xml:id=_I_>\}</mo>
+{,->,<mo xml:id=_I_>\}</mo>
+},->,<mo xml:id=_I_>\}</mo>
+
+[,->,<mo xml:id=_I_>[</mo>
+\[,->,<mo xml:id=_I_>[</mo>
+lbracket,->,<mo xml:id=_I_>[</mo>
+left-bracket,->,<mo xml:id=_I_>[</mo>
+
+],->,<mo xml:id=_I_>]</mo>
+\],->,<mo xml:id=_I_>]</mo>
+rbracket,->,<mo xml:id=_I_>]</mo>
+right-bracket,->,<mo xml:id=_I_>]</mo>
+# **Distinguishing from < and > ? [Not initially (RZ)]
+\langle,->,<mo xml:id=_I_>\lt</mo>
+\rangle,->,<mo xml:id=_I_>\gt</mo>
+
+# Operators with optional limits
+\sum,->,<mo xml:id=_I_>\sum</mo>
+\int,->,<mo xml:id=_I_>\int</mo>
+\lim,->,<mi xml:id=_I_>\lim</mi>
+
+sum,->,<mo xml:id=_I_>\sum</mo>
+int,->,<mo xml:id=_I_>\int</mo>
+lim,->,<mi xml:id=_I_>\lim</mi>
+
+# RZ: Addition (March 13)
+Sigma,->,<mo xml:id=_I_>\sum</mo>
+Integral,->,<mo xml:id=_I_>\int</mo>
+integral,->,<mo xml:id=_I_>\int</mo>
+
+# ?? Treating prime (e.g. ' in a') as superscript relative to base.
+\prime,->,<mo xml:id=_I_>\prime</mo>
+prime,->,<mo xml:id=_I_>\prime</mo>
+',->,<mo xml:id=_I_>\prime</mo>
+
+# Empty square root.
+\sqrt,->,<msqrt xml:id=_I_></msqrt>
+sqrt,->,<msqrt xml:id=_I_></msqrt>
+
+# Grids
+<mtable>,->,<mtable>
+<mtr>,->,<mtr>
+<mtd>,->,<mtd>
+
+# Treat symbol by default as an identifier (_L_ holds symbol label).
+OBJ_DEFAULT,->,<mi xml:id=_I_>_L_</mi>
+
+################################################################
+# STRUCTURES
+# 
+# Mappings are defined by (symbol, REL1, REL2, ..., RELN) tuples.
+#    At right of the arrow, subtrees belonging to identified
+#    relationships may be arranged in the output.
+#
+# NOTE: relationships on the left side of an arrow are matched
+#       alphabetically, independent of their order as children.
+#       This assumes that child relationships are labeled
+#       uniquely!!
+#
+# Special Symbol Identifiers:
+#  ANY: any symbol.
+#  PARENT: parent symbol in a directed relationship.
+#  CHILD: child symbol in a directed relationship.
+#################################################################
+
+STRUCTURE
+
+# CROHME 2014: adding relationships for tables/grids (for matrices, etc.)
+# WARNING: these will be translated in the order visited in the file - this
+#   is important if one wishes to keep the order of rows and cells 
+#   consistent with the original file.
+<mtable>,GRID,->,<mtable>,GRID,</mtable>
+
+# Map 1st -> n-1st elements (e.g. rows, cells) first.
+<mtr>,GRID,NEXT,->,<mtr>,GRID,</mtr>,NEXT
+<mtd>,GRID,NEXT,->,<mtd>,GRID,</mtd>,NEXT
+# Then map the last row separately (no "NEXT" relationship)
+<mtr>,GRID,->,<mtr>,GRID,</mtr>
+<mtd>,GRID,->,<mtd>,GRID,</mtd>
+
+# Need to define unique set of labels for the competition.
+sqrt,I,->,<msqrt xml:id=_I_>,I,</msqrt>
+sqrt,C,->,<msqrt xml:id=_I_>,C,</msqrt>
+sqrt,Inside,->,<msqrt xml:id=_I_>,Inside,</msqrt>
+
+\sqrt,I,->,<msqrt xml:id=_I_>,I,</msqrt>
+\sqrt,C,->,<msqrt xml:id=_I_>,C,</msqrt>
+\sqrt,Inside,->,<msqrt xml:id=_I_>,Inside,</msqrt>
+
+# RZ: Addition for nth-roots (e.g. cube roots, March 25)
+sqrt,I,Above,->,<mroot xml:id=_I_>,I,Above,</mroot>
+sqrt,C,Above,->,<mroot xml:id=_I_>,C,Above,</mroot>
+sqrt,Inside,Above,->,<mroot xml:id=_I_>,Inside,Above,</mroot>
+
+sqrt,I,A,->,<mroot xml:id=_I_>,I,A,</mroot>
+sqrt,C,A,->,<mroot xml:id=_I_>,C,A,</mroot>
+sqrt,Inside,Above,->,<mroot xml:id=_I_>,Inside,Above,</mroot>
+
+\sqrt,I,A,->,<mroot xml:id=_I_>,I,A,</mroot>
+\sqrt,C,A,->,<mroot xml:id=_I_>,C,A,</mroot>
+
+\sqrt,I,Above,->,<mroot xml:id=_I_>,I,Above,</mroot>
+\sqrt,C,Above,->,<mroot xml:id=_I_>,C,Above,</mroot>
+\sqrt,Inside,Above,->,<mroot xml:id=_I_>,Inside,Above,</mroot>
+
+-,Above,Below,->,<mfrac xml:id=_I_>,Above,Below,</mfrac>
+-,A,B,->,<mfrac xml:id=_I_>,A,B,</mfrac>
+-,ABOVE,BELOW,->,<mfrac xml:id=_I_>,ABOVE,BELOW,</mfrac>
+horizontal-line,ABOVE,BELOW,->,<mfrac xml:id=_I_>,ABOVE,BELOW,</mfrac>
+
+ANY,Above,Below,->,<munderover>,PARENT,Below,Above,</munderover>
+ANY,A,B,->,<munderover>,PARENT,B,A,</munderover>
+ANY,ABOVE,BELOW,->,<munderover>,PARENT,BELOW,ABOVE,</munderover>
+ANY,ULIMIT,LLIMIT,->,<munderover>,PARENT,LLIMIT,ULIMIT,</munderover>
+ANY,Sub,Sup,->,<msubsup>,PARENT,Sub,Sup,</msubsup>
+ANY,SUB,SUP,->,<msubsup>,PARENT,SUB,SUP,</msubsup>
+ANY,SUBSC,SUPER,->,<msubsup>,PARENT,SUBSC,SUPER,</msubsup>
+
+
+
+# Individual relationships (arbitrary PARENT/CHILD relationships).
+#GRID,->,PARENT,CHILD
+
+Right,->,<mrow>,PARENT,CHILD,</mrow>
+R,->,<mrow>,PARENT,CHILD,</mrow>
+r,->,<mrow>,PARENT,CHILD,</mrow>
+HOR,->,<mrow>,PARENT,CHILD,</mrow>
+^,->,<msup>,PARENT,CHILD,</msup>
+_,->,<msub>,PARENT,CHILD,</msub>
+SUB,->,<msub>,PARENT,CHILD,</msub>
+Sub,->,<msub>,PARENT,CHILD,</msub>
+sub,->,<msub>,PARENT,CHILD,</msub>
+SUBSC,->,<msub>,PARENT,CHILD,</msub>
+SUP,->,<msup>,PARENT,CHILD,</msup>
+Sup,->,<msup>,PARENT,CHILD,</msup>
+sup,->,<msup>,PARENT,CHILD,</msup>
+SUPER,->,<msup>,PARENT,CHILD,</msup>
+
+A,->,<munder>,CHILD,PARENT,</munder>
+ABOVE,->,<munder>,CHILD,PARENT,</munder>
+Above,->,<munder>,CHILD,PARENT,</munder>
+a,->,<munder>,CHILD,PARENT,</munder>
+ULIMIT,->,<munder>,CHILD,PARENT,</munder>
+
+B,->,<munder>,PARENT,CHILD,</munder>
+BELOW,->,<munder>,PARENT,CHILD,</munder>
+Below,->,<munder>,PARENT,CHILD,</munder>
+b,->,<munder>,PARENT,CHILD,</munder>
+LLIMIT,->,<munder>,PARENT,CHILD,</munder>
+
+
+REL_DEFAULT,->,<mrow>,PARENT,CHILD,</mrow>
+#REL_DEFAULT,->,PARENT,CHILD
+#%REL_DEFAULT,->,<mrow>,PARENT,CHILD,</mrow>
+
+# Accents
+# ?? Overline handlined by 'below' mapping above for simplicity
+#\overline,->,  
+# REMOVED from 'whitelist' of CROHME 2013 LaTeX symbols (formatting tags):
+#\left,->,
+#\right,->,
+#\mathrm,->,
+#\mbox,->,
+

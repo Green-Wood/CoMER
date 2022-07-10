@@ -1,0 +1,12 @@
+# 2 + 2 (with inherited right-of relationship)
+N,s1,2,1.0
+N,s2,+,1.0
+N,s3,+,1.0
+N,s4,2,1.0
+E,s1,s2,R,1.0
+E,s1,s3,R,1.0
+E,s1,s4,R,1.0
+E,s2,s3,*,1.0
+E,s2,s4,R,1.0
+E,s3,s2,*,1.0
+E,s3,s4,R,1.0

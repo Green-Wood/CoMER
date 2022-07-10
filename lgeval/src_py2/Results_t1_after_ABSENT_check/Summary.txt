@@ -1,0 +1,58 @@
+LgEval Evaluation Summary
+Sun May 17 22:13:13 2015
+
+Output File Directory:  t1
+Ground Truth Directory: t2
+
+****  PRIMITIVES   **************************************************************
+
+  Directed   Rate(%)     Total   Correct    Errors    SegErr     ClErr    RelErr
+---------------------------------------------------------------------------------
+     Nodes      0.00         4         0         4
+     Edges     50.00        12         6         6         2         0         4
+
+     Total     37.50        16         6        10
+
+
+Undirected   Rate(%)     Total   Correct    Errors    SegErr     ClErr    RelErr
+---------------------------------------------------------------------------------
+     Nodes      0.00         4         0         4
+Node Pairs     16.67         6         1         5         1         0         4
+
+     Total     10.00        10         1         9
+
+     SegErr: merge/split   ClErr: valid merge class error   RelErr: relation error
+
+
+****  OBJECTS   **************************************************************************
+
+           Recall(%)   Prec(%) 2RP/(R+P)   Targets   Correct  FalseNeg *Detected *FalsePos
+------------------------------------------------------------------------------------------
+   Objects      0.00    100.00      0.00         3         0         3         0         0
+ + Classes      0.00    100.00      0.00         3         0         3         0         0
+ Class/Det   (Empty)                             0         0
+
+ Relations      0.00    100.00      0.00         2         0         2         0         0
+ + Classes      0.00    100.00      0.00         2         0         2         0         0
+ Class/Det   (Empty)                             0         0
+
+     2RP/(R+P): harmonic mean (f-measure) for (R)ecall and (P)recision
+     Class/Det: (correct detection and classification) / correct detection
+
+
+****  FILES  ***************************************
+
+             Rate(%)     Total   Correct    Errors
+---------------------------------------------------
+   Objects      0.00         1         0         1
+ + Classes      0.00         1         0         1
+ Class/Det   (Empty)         0         0          
+
+ Relations      0.00         1         0         1
+ + Classes      0.00         1         0         1
+ Class/Det   (Empty)         0         0          
+
+ Structure      0.00         1         0         1
+ + Classes      0.00         1         0         1    *Final
+ Class/Det   (Empty)         0         0          
+

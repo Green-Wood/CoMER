@@ -1,0 +1,65 @@
+# IUD, 2013_IVC_CROHME_F103_E15
+# [ OBJECTS ]
+# Primitive Nodes (N): 14
+#    Objects (O): 10
+# Object: 3_1 . 
+N, 3, 3, 1.0
+# Object: \pi_1 . 
+N, 5, \pi, 1.0
+N, 7, \pi, 1.0
+N, 6, \pi, 1.0
+E, 5, 7, \pi, 1.0
+E, 5, 6, \pi, 1.0
+E, 7, 5, \pi, 1.0
+E, 7, 6, \pi, 1.0
+E, 6, 5, \pi, 1.0
+E, 6, 7, \pi, 1.0
+# Object: v_1 . 
+N, 8, v, 1.0
+# Object: _1 . 
+N, 10, -, 1.0
+# Object: 2_1 . 
+N, 9, 2, 1.0
+# Object: =_1 . 
+N, 2, =, 1.0
+N, 1, =, 1.0
+E, 2, 1, =, 1.0
+E, 1, 2, =, 1.0
+# Object: q_1 . 
+N, 0, q, 1.0
+# Object: 3_2 . 
+N, 13, 3, 1.0
+# Object: 6_1 . 
+N, 4, 6, 1.0
+# Object: s_1 . 
+N, 11, s, 1.0
+N, 12, s, 1.0
+E, 11, 12, s, 1.0
+E, 12, 11, s, 1.0
+
+# [ RELATIONSHIPS ]
+# Primitive Edges (E): 27 (10 merge, 17 relationship)
+#    Object Relationships (R): 9
+E, 0, 1, Right, 1.0
+E, 0, 2, Right, 1.0
+E, 1, 3, Right, 1.0
+E, 2, 3, Right, 1.0
+E, 3, 4, Right, 1.0
+E, 4, 5, Right, 1.0
+E, 4, 6, Right, 1.0
+E, 4, 7, Right, 1.0
+E, 5, 10, Right, 1.0
+E, 6, 10, Right, 1.0
+E, 7, 10, Right, 1.0
+E, 8, 9, Sup, 1.0
+E, 10, 8, Above, 1.0
+E, 10, 11, Below, 1.0
+E, 10, 12, Below, 1.0
+E, 11, 13, Sup, 1.0
+E, 12, 13, Sup, 1.0
+
+# [ SUMMARY ]
+# Primitive Nodes (N): 14
+#    Objects (O): 10
+# Primitive Edges (E): 27 (10 merge, 17 relationship)
+#    Object Relationships (R): 9

@@ -1,0 +1,98 @@
+seed_everything: 7
+trainer:
+  logger: true
+  checkpoint_callback: true
+  callbacks:
+  - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+    init_args:
+      logging_interval: epoch
+      log_momentum: false
+  - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+    init_args:
+      filename: '{epoch}-{step}-{val_ExpRate:.4f}'
+      monitor: val_ExpRate
+      verbose: false
+      save_top_k: 1
+      save_weights_only: false
+      mode: max
+      auto_insert_metric_name: true
+  default_root_dir: null
+  gradient_clip_val: 0.0
+  gradient_clip_algorithm: norm
+  process_position: 0
+  num_nodes: 1
+  num_processes: 1
+  devices: null
+  gpus: 4,5,6,7
+  auto_select_gpus: false
+  tpu_cores: null
+  ipus: null
+  log_gpu_memory: null
+  progress_bar_refresh_rate: null
+  overfit_batches: 0.0
+  track_grad_norm: -1
+  check_val_every_n_epoch: 2
+  fast_dev_run: false
+  accumulate_grad_batches: 1
+  max_epochs: 300
+  min_epochs: null
+  max_steps: null
+  min_steps: null
+  max_time: null
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  limit_test_batches: 1.0
+  limit_predict_batches: 1.0
+  val_check_interval: 1.0
+  flush_logs_every_n_steps: 100
+  log_every_n_steps: 50
+  accelerator: ddp
+  sync_batchnorm: false
+  precision: 32
+  weights_summary: top
+  weights_save_path: null
+  num_sanity_val_steps: 2
+  truncated_bptt_steps: null
+  resume_from_checkpoint: null
+  profiler: null
+  benchmark: false
+  deterministic: true
+  reload_dataloaders_every_n_epochs: 0
+  reload_dataloaders_every_epoch: false
+  auto_lr_find: false
+  replace_sampler_ddp: true
+  terminate_on_nan: false
+  auto_scale_batch_size: false
+  prepare_data_per_node: true
+  plugins: <pytorch_lightning.plugins.training_type.ddp.DDPPlugin object at 0x7ff64d956290>
+  amp_backend: native
+  amp_level: O2
+  distributed_backend: null
+  move_metrics_to_cpu: false
+  multiple_trainloader_mode: max_size_cycle
+  stochastic_weight_avg: false
+model:
+  d_model: 256
+  growth_rate: 24
+  num_layers: 16
+  nhead: 8
+  num_decoder_layers: 3
+  dim_feedforward: 1024
+  dropout: 0.3
+  dc: 32
+  cross_coverage: true
+  self_coverage: true
+  beam_size: 10
+  max_len: 200
+  alpha: 1.0
+  early_stopping: false
+  temperature: 1.0
+  learning_rate: 0.08
+  patience: 20
+data:
+  zipfile_path: data.zip
+  test_year: '2014'
+  train_batch_size: 8
+  eval_batch_size: 4
+  num_workers: 5
+  scale_aug: true

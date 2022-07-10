@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Make sure that CROHMELibDir and LgEvalDir are defined in
+# your shell enviroment, e.g. by including:
+#	
+#	export LgEvalDir=<path_to_LgEval>
+#	export CROHMELibDir=<path_to_CROHMELib>       		
+#	export PATH=$PATH:$CROHMELibDir/bin:$LgEvalDir/bin
+# 
+# in your .bashrc file (the initialization file for bash shell). The PATH
+# alteration will add the tools to your search path. 
+
+if [ $# -lt 1 ]
+then
+	echo "LgEval lgfilter: Label graph edge filter"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: lgfilter <infile> [outfile]"
+	echo ""
+	echo "Removes non-tree edges in the graph (assuming a tree is present!)"
+	echo "and produces an .lg file with objects and relationships defined"
+	echo "at the bottom of the file."
+	echo ""
+	echo "Warning: this assumes that each node and edge has a single label."
+		
+	exit 0
+fi
+
+# Call function : make sure to pass all arguments ($@)
+python $LgEvalDir/src/lgfilter.py $@ 
+

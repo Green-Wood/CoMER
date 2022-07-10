@@ -1,0 +1,27 @@
+# IUD, CROHME_2014_ISICAL_F6_E5
+# Objects(15):
+O, 1_11, 1, 1.0, 5
+O, SUB_1, *M, 1.0, 2, 3, 4, 5
+O, SUB_4, *Cell, 1.0, 3
+O, SUB_2, *R, 1.0, 2, 3
+O, 1_9, 1, 1.0, 3
+O, 3_10, 3, 1.0, 4
+O, )_12, ), 1.0, 1
+O, SUB_6, *Cell, 1.0, 4
+O, COL_8, *C, 1.0, 2, 4
+O, (_7, (, 1.0, 0
+O, SUB_5, *R, 1.0, 4, 5
+O, SUB_7, *Cell, 1.0, 5
+O, 2_8, 2, 1.0, 2
+O, COL_9, *C, 1.0, 3, 5
+O, SUB_3, *Cell, 1.0, 2
+
+# Relations from SRT:
+EO, (_7, SUB_1, R, 1.0
+EO, COL_8, COL_9, Ncol, 1.0
+EO, SUB_1, )_12, R, 1.0
+EO, SUB_2, SUB_5, Nrow, 1.0
+EO, SUB_3, SUB_4, NcellR, 1.0
+EO, SUB_3, SUB_6, NcellC, 1.0
+EO, SUB_4, SUB_7, NcellC, 1.0
+EO, SUB_6, SUB_7, NcellR, 1.0

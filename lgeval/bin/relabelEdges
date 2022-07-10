@@ -1,0 +1,42 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo "LgEval relabelEdges: Edge relabeling tool"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: relabelEdges <file.lg> [ Label1 ] [ Replacement1 ] ..."
+	echo ""
+	echo "Replace edge labels in a 'raw' label graph file (using node (N) and"
+	echo "edge (E) entries for primitives). A list of edge labels and their"
+	echo "replacements are provided as arguments."
+	echo ""
+	echo "This was created to handle cases where * was used to represent"
+	echo "merge relationships, and edge relationships match symbol labels."
+	echo "These labels will conflict with segmentation edges in the new"
+	echo "label graph representation (e.g. if R is used both to label"
+	echo "symbols and to represent a Right-of relationship)."
+
+	exit 0
+fi
+
+grep "^N,\|#" $1 > HEAD_TEMP
+grep "^E," $1 > EDGE_TEMP
+
+# Shift the arguments to allow for simple iteration through pairs.
+shift
+
+while test $# -gt 0
+do
+	perl -p -i -e "s/$1/$2/g" EDGE_TEMP
+	shift
+	shift
+done
+
+cat HEAD_TEMP
+cat EDGE_TEMP
+
+rm -f HEAD_TEMP EDGE_TEMP
+
+exit 0
+

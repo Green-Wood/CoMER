@@ -1,0 +1,32 @@
+digraph dag {
+	rankdir=LR; ranksep=1.0;
+	edge[fontsize=13,weight=1]; node[fontsize=13,shape=box]; graph[ordering=out];
+
+	/* NODES (OBJECTS) */
+	Obj0 [label="process\nObj0\n26 27 28", color = blue];
+	Obj1 [label="arrow\nObj1\n29 30", color = blue];
+	Obj10 [label="text\nObj10\n31 32 33 34 35 36 37 38 39", color = blue];
+	Obj11 [label="data\nObj11\n11 12 13", color = blue];
+	Obj2 [label="text\nObj2\n14 15 16 17 18 19 20 21 22 23 24 25", color = blue];
+	Obj3 [label="arrow\nObj3\n46 47", color = blue];
+	Obj4 [label="arrow\nObj4\n43 44", color = blue];
+	Obj5 [label="connection\nObj5\n45", color = blue];
+	Obj6 [label="data\nObj6\n40 41 42", color = blue];
+	Obj7 [label="arrow\nObj7\n1 2", color = blue];
+	Obj8 [label="connection\nObj8\n0", color = blue];
+	Obj9 [label="text\nObj9\n10 3 4 5 6 7 8 9", color = blue];
+	
+	/* EDGES (OBJECT RELATIONSHIPS)    */
+	Obj1 -> Obj0 [label="Targ"];
+	Obj3 -> Obj6 [label="Src"];
+	Obj7 -> Obj8 [label="Src"];
+	Obj11 -> Obj9 [label="AssTxt"];
+	Obj1 -> Obj11 [label="Src"];
+	Obj3 -> Obj5 [label="Targ"];
+	Obj6 -> Obj10 [label="AssTxt"];
+	Obj0 -> Obj2 [label="AssTxt"];
+	Obj7 -> Obj11 [label="Targ"];
+	Obj4 -> Obj0 [label="Src"];
+	Obj4 -> Obj6 [label="Targ"];
+	
+}

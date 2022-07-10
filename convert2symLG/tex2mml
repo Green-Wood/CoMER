@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#Mahshad Mahdavi, Feb 2019
+
+# generating mathML from latex using pandoc
+
+if [ $# -lt 3 ]
+then
+	echo " -----------------------------------------"
+        echo "Usage: tex2mml <fileList> <texdir> <mmldir>"
+        echo " -----------------------------------------"
+	exit 0
+fi
+
+echo "Creating directory $3."
+mkdir $3
+
+for file in `cat $1`
+do	
+	txtDir="$2/$file.txt"
+	mmlDir="$3/$file.mml"
+
+        pandoc --mathml -s $txtDir -o $mmlDir
+      
+done
+
+
+

@@ -1,0 +1,28 @@
+digraph dag {
+	rankdir=LR; ranksep=1.0;
+	edge[fontsize=13,weight=1]; node[fontsize=13,shape=box]; graph[ordering=out];
+
+	/* NODES (OBJECTS) */
+	Obj0 [label="5\n(s)\nObj0\n11 12", color = red,fontcolor=red];
+	Obj1 [label="-\nObj1\n10", color = blue];
+	Obj2 [label="3\nObj2\n13", color = blue];
+	Obj3 [label="=\nObj3\n1 2", color = blue];
+	Obj4 [label="y\n(q)\nObj4\n0", color = red,fontcolor=red];
+	Obj5 [label="3\nObj5\n3", color = blue];
+	Obj6 [label="\\pi\nObj6\n5 6 7", color = blue];
+	Obj7 [label="6\nObj7\n4", color = blue];
+	Obj8 [label="2\nObj8\n9", color = blue];
+	Obj9 [label="v\nObj9\n8", color = blue];
+	
+	/* EDGES (OBJECT RELATIONSHIPS)    */
+	Obj1 -> Obj0 [label="Below"];
+	Obj0 -> Obj2 [label="Sup"];
+	Obj6 -> Obj1 [label="Right"];
+	Obj5 -> Obj7 [label="Right"];
+	Obj9 -> Obj8 [label="Sup"];
+	Obj7 -> Obj6 [label="Right"];
+	Obj1 -> Obj9 [label="Above"];
+	Obj4 -> Obj3 [label="Right"];
+	Obj3 -> Obj5 [label="Right"];
+	
+}

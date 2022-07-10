@@ -1,0 +1,45 @@
+#!/bin/bash
+
+#Mahshad Mahdavi, Feb 2019
+
+# generating symbol level LG files from MathML 
+
+if [ $# -lt 2 ]
+then
+	echo " -----------------------------------------"
+        echo "Usage: mml2lg <mmldir> <outdir>"
+        echo " -----------------------------------------"
+	exit 0
+fi
+
+OUTDIR=$2
+
+if ! [ -d $OUTDIR ]
+then
+	mkdir $OUTDIR
+fi
+
+inkmlDir="$1/../inkml_temp/"
+lgDir="$1/../lg_temp/"
+
+mkdir $inkmlDir
+mkdir $lgDir
+
+python3 $Convert2SymLGDir/process_mml.py $1 $inkmlDir
+		
+$Convert2SymLGDir/batch_mml2lg $inkmlDir $lgDir 2> $1/../perl_warning.txt
+
+python3 $Convert2SymLGDir/update_nodeTags.py $lgDir $OUTDIR >/dev/null
+
+
+#remove temp folders
+
+rm -r $inkmlDir
+rm -r $lgDir
+	
+
+      
+    
+
+
+

@@ -1,0 +1,27 @@
+# IUD, 2010_IRCCyN_FC_writer21_2
+# Objects(12):
+O, Outputx_1, text, 1.0, 31, 32, 33, 34, 35, 36, 37, 38, 39
+O, connection_1, connection, 1.0, 0
+O, data_1, data, 1.0, 11, 12, 13
+O, _4, arrow, 1.0, 46, 47
+O, connection_2, connection, 1.0, 45
+O, process_1, process, 1.0, 26, 27, 28
+O, Inputx_1, text, 1.0, 3, 4, 5, 6, 7, 8, 9, 10
+O, _1, arrow, 1.0, 1, 2
+O, x=x*x_1, text, 1.0, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+O, _2, arrow, 1.0, 29, 30
+O, data_2, data, 1.0, 40, 41, 42
+O, _3, arrow, 1.0, 43, 44
+
+# Relations from SRT:
+EO, _1, connection_1, Src, 1.0
+EO, _1, data_1, Targ, 1.0
+EO, _2, data_1, Src, 1.0
+EO, _2, process_1, Targ, 1.0
+EO, _3, data_2, Targ, 1.0
+EO, _3, process_1, Src, 1.0
+EO, _4, connection_2, Targ, 1.0
+EO, _4, data_2, Src, 1.0
+EO, data_1, Inputx_1, AssTxt, 1.0
+EO, data_2, Outputx_1, AssTxt, 1.0
+EO, process_1, x=x*x_1, AssTxt, 1.0

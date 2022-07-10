@@ -1,0 +1,10 @@
+digraph lg {
+	rankdir=LR;
+	edge[fontsize=16,weight=1]; node[fontsize=16]; graph[ordering=out];
+
+	/*  NODES (PRIMITIVES) */Pn1 [label="'a', '*', '*c'\nn1", color = blue];
+		Pn2 [label="'*', 'b', '*c'\nn2", color = blue];
+		
+	/*  EDGES (PRIMITIVE RELATIONSHIPS) */
+	Pn1 -> Pn2 [label="'R'"];
+}

@@ -1,0 +1,12 @@
+SYMBOLS
+cos,->,\cos
+sqrt,->,\sqrt
+
+STRUCTURE
+sqrt,CONTAINS,->,\sqrt,CONTAINS
+-,A,B,->,\frac,A,B
+SUP,->, ^, { , }
+SUB,->, _, { , }
+R,->, ,,
+HOR,->, ,,
+

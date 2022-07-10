@@ -1,0 +1,5 @@
+# example with multiple label to embedded segmentation
+# a      with cell and symbol
+N, n1, a, 1.0
+N, n1, *c, 1.0
+N, n1, *, 1.0

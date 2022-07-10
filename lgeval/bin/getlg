@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ $# -lt 3 ]
+then
+	echo "LgEval getlg: Copy label graphs in list file to a directory"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2014"
+	echo ""
+	echo "Usage: getlg <lgfilelist> <lgindir> <outdir>"
+	echo ""
+	echo "Copies the .lg files names in lgfilelist from indir to outdir."
+	exit 0
+fi
+
+if [ ! -f $1 ]
+then
+	echo ".lg list file $1 does not exist."
+	exit 1
+fi
+
+if [ ! -d $2 ]
+then
+	echo "Directory $2 does not exist."
+	exit 2
+fi
+
+if [ ! -d $3 ]
+then
+	echo "Creating directory $3."
+	mkdir $3
+fi
+
+for file in `cat $1`
+do
+	LGFILE=`basename $file`
+	cp $2/$LGFILE $3
+done

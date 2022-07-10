@@ -1,0 +1,102 @@
+#!/bin/bash
+
+if [ $# -lt 3 ]
+then
+	echo "LgEval ldiff: List Files with Common Errors"
+	echo "Copyright (c) R. Zanibbi, H. Mouchere, 2012-2014"
+	echo ""
+	echo "Usage: ldiff [-NESC^] outputPattern targetPattern <files>"
+	echo ""
+	echo "Create a list of files that contain errors on label graph"
+	echo "nodes or edges matching the provided patterns (egrep-format"
+	echo "regular expressions). Matching files are written on standard output."
+	echo ""
+	echo "*Note: the pattern 'any' will match any label."
+	echo ""
+	echo "A single flag list token indicates whether to limit matches to"
+	echo "(N)ode label errors, (E)dge label errors, and/or files with"
+	echo "(S)egmentation errors or only (C)orrect segmentations. Including"
+	echo "^ in the flag list token will return files that do not match the"
+	echo "passed patterns."
+	exit 0
+fi
+
+# By default, return files matching the given patterns.
+FLIST="-l"
+
+# Create initial list of all .diff files.
+CFILES=""
+FLAGS=""
+
+if [[ $1 == -* ]]
+then
+	# Grab flag string and shift.
+	FLAGS=$1
+	shift
+fi
+
+# Grad the patterns; shift to file list.
+OUTP=$1
+TARP=$2
+shift
+shift
+
+# Take CFILES (current files) as all passed .diff files.
+CFILES="$@"
+
+
+# Indicate if we want the complement of a match.
+if [[ $FLAGS == *^* ]]
+then
+	FLIST="-L"
+fi
+
+# Note that segment error/correct seg are exclusive.
+if [[ $FLAGS == *S* ]]
+then
+	CFILES=`grep -l "^*S" $@`
+elif [[ $FLAGS == *C* ]]
+then	
+	# -L flag selects inverse of the pattern ('negates' it)
+	CFILES=`grep -L "^*S" $@`
+fi
+
+# one or more non-comma characters: reg expression for 'any label' (*)
+# Create the pattern string to use with grep, then run the filter and
+# obtain the list of matching files.
+ANYLABEL="[^,][^,]*"
+MID=",1.0,:vs:,"
+
+OUTLABEL=$ANYLABEL
+TARLABEL=$ANYLABEL
+if [ "$OUTP" != "any" ]
+then
+	OUTLABEL="$OUTP"
+fi
+
+if [ "$TARP" != "any" ]
+then
+	TARLABEL="$TARP"
+fi
+
+PATTERN="$OUTLABEL$MID$TARLABEL"
+
+# Note that Node/Edge filtering is also exclusive.
+if [[ $FLAGS == *N* ]]
+then
+	PATTERN="^\*N.*$PATTERN"
+elif [[ $FLAGS == *E* ]]
+then	
+	PATTERN="^\*E.*$PATTERN"
+fi
+
+# Use extended regular expressions to ease usage.
+# FLIST allows the complement to be returned if desired.
+CFILES=`grep $FLIST -E "$PATTERN" $CFILES`
+
+# Write the matching file names on standard output.
+for file in $CFILES
+do
+	echo `basename $file`
+done
+	

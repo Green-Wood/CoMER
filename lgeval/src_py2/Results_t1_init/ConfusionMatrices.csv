@@ -1,0 +1,24 @@
+LgEval Error Summary for: Results_t1/t1.diff
+Sun May 17 22:08:34 2015
+
+NOTE: This file contains 3 confusion matrices.
+
+I. Node Label Confusion Matrix: 3 unique labels. ABSENT: a node missing in the output or target graph
+Output:,'+','2','ABSENT'
+'+',,,
+'2',,,
+'ABSENT',2,2,
+
+
+II. Edge Label Confusion Matrix (Short): 2 unique relationship labels + * (merge)
+Output:,'*','Right','_'
+'*',,,
+'Right',,,
+'_',2,4,
+
+
+III. Edge Label Confusion Matrix (Full): 3 unique labels for relationships and node groupings for specific symbol types
+Output:,'+','Right','_'
+'+',,,
+'Right',,,
+'_',2,4,

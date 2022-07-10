@@ -1,0 +1,17 @@
+alpha: 1.0
+beam_size: 10
+cross_coverage: true
+d_model: 256
+dc: 32
+dim_feedforward: 1024
+dropout: 0.3
+early_stopping: false
+growth_rate: 24
+learning_rate: 0.08
+max_len: 200
+nhead: 8
+num_decoder_layers: 3
+num_layers: 16
+patience: 20
+self_coverage: true
+temperature: 1.0

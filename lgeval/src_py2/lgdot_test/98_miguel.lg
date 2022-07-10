@@ -1,0 +1,80 @@
+# IUD, 98_miguel
+# [ OBJECTS ]
+# Primitive Nodes (N): 19
+#    Objects (O): 14
+# Object: 2_3 . 
+N, 18, 2, 1.0
+# Object: =_1 . 
+N, 4, =, 1.0
+N, 5, =, 1.0
+E, 4, 5, =, 1.0
+E, 5, 4, =, 1.0
+# Object: +_1 . 
+N, 11, +, 1.0
+N, 12, +, 1.0
+E, 11, 12, +, 1.0
+E, 12, 11, +, 1.0
+# Object: cos_1 . 
+N, 2, \cos, 1.0
+N, 1, \cos, 1.0
+N, 0, \cos, 1.0
+E, 2, 1, \cos, 1.0
+E, 2, 0, \cos, 1.0
+E, 1, 2, \cos, 1.0
+E, 1, 0, \cos, 1.0
+E, 0, 2, \cos, 1.0
+E, 0, 1, \cos, 1.0
+# Object: b_1 . 
+N, 13, b, 1.0
+# Object: 2_2 . 
+N, 14, 2, 1.0
+# Object: a_1 . 
+N, 6, a, 1.0
+# Object: c_1 . 
+N, 17, c, 1.0
+# Object: +_2 . 
+N, 15, +, 1.0
+N, 16, +, 1.0
+E, 15, 16, +, 1.0
+E, 16, 15, +, 1.0
+# Object: alpha_1 . 
+N, 3, \alpha, 1.0
+# Object: _1 . 
+N, 7, -, 1.0
+# Object: _2 . 
+N, 8, \sqrt, 1.0
+# Object: a_2 . 
+N, 9, a, 1.0
+# Object: 2_1 . 
+N, 10, 2, 1.0
+
+# [ RELATIONSHIPS ]
+# Primitive Edges (E): 33 (12 merge, 21 relationship)
+#    Object Relationships (R): 13
+E, 0, 3, Right, 1.0
+E, 1, 3, Right, 1.0
+E, 2, 3, Right, 1.0
+E, 3, 4, Right, 1.0
+E, 3, 5, Right, 1.0
+E, 4, 7, Right, 1.0
+E, 5, 7, Right, 1.0
+E, 7, 6, Above, 1.0
+E, 7, 8, Below, 1.0
+E, 8, 9, Inside, 1.0
+E, 9, 10, Sup, 1.0
+E, 9, 11, Right, 1.0
+E, 9, 12, Right, 1.0
+E, 11, 13, Right, 1.0
+E, 12, 13, Right, 1.0
+E, 13, 14, Sup, 1.0
+E, 13, 15, Right, 1.0
+E, 13, 16, Right, 1.0
+E, 15, 17, Right, 1.0
+E, 16, 17, Right, 1.0
+E, 17, 18, Sup, 1.0
+
+# [ SUMMARY ]
+# Primitive Nodes (N): 19
+#    Objects (O): 14
+# Primitive Edges (E): 33 (12 merge, 21 relationship)
+#    Object Relationships (R): 13

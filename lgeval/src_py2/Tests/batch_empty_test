@@ -1,0 +1,15 @@
+# All ICDAR 2011 examples, plus empty files.
+
+tests/paperExampleGT,tests/paperExampleGT
+tests/paperExampleGT,tests/paperExampleErrA
+tests/paperExampleGT,tests/paperExampleErrB
+tests/paperExampleGT,tests/paperExampleErrC
+tests/paperExampleGT,tests/paperExampleErrD
+
+tests/paperExampleGT,tests/emptyfile
+tests/paperExampleGT,tests/emptyfile
+tests/paperExampleGT,tests/emptyfile
+tests/paperExampleGT,tests/emptyfile
+tests/paperExampleGT,tests/emptyfile
+
+

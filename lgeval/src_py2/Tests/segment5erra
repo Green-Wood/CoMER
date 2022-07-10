@@ -1,0 +1,13 @@
+# idem as segmemt5 but with layout err
+# Two symbols of same label in super/subscript regions.
+# 
+# I -> SUP -> a
+# I  -> R -> a
+
+N,node1,I,1.0
+N,node2,a,1.0
+N,node3,a,1.0
+
+E,node1,node2,SUP,1.0
+E,node1,node3,R,1.0
+
