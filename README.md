@@ -2,6 +2,8 @@
  
 # CoMER: Modeling Coverage for Transformer-based Handwritten Mathematical Expression Recognition  
  
+[![arXiv](https://img.shields.io/badge/arXiv-2207.04410-b31b1b.svg)](https://arxiv.org/abs/2207.04410)
+
 </div>
 
 ## Project structure
