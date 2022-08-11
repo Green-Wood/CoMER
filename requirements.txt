@@ -10,6 +10,6 @@ jupyter==1.0.0
 opencv-python==4.5.4.60
 matplotlib==3.5.1
 # for test in crohme
-typer==0.4.0
+typer==0.4.1
 beautifulsoup4==4.10.0
 lxml==4.7.1
