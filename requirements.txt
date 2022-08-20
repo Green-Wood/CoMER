@@ -4,7 +4,7 @@ editdistance==0.5.3
 jsonargparse[signatures]==3.17.0
 # dev-dependency
 flake8==3.9.0
-black==20.8b1
+black==22.3.0
 isort==5.8.0
 jupyter==1.0.0
 opencv-python==4.5.4.60
